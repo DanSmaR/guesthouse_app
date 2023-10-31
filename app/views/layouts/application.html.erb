@@ -9,27 +9,32 @@
     <%= stylesheet_link_tag "application" %>
   </head>
 
-  <header>
-    <h1>Pousada App</h1>
-    <nav>
-      <ul>
-        <li><%= link_to "Início", root_path %></li>
-<!--        <li><%#= link_to "Pousadas", guesthouses_path %></li>-->
-      </ul>
-    </nav>
-    <div>
-      <% if user_signed_in? %>
-        <p><%= current_user.email %></p>
-        <%= button_to "Sair", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <% unless current_page?(user_session_path) %>
-          <%= link_to "Entrar", new_user_session_path %>
-        <% end %>
-      <% end %>
-    </div>
-  </header>
-
   <body>
-    <%= yield %>
+    <header>
+      <h1>Pousada App</h1>
+      <nav>
+        <ul>
+          <li><%= link_to "Início", root_path %></li>
+          <!-- <li><%#= link_to "Pousadas", guesthouses_path %></li>-->
+        </ul>
+      </nav>
+      <div>
+        <% if user_signed_in? %>
+          <p><%= current_user.email %></p>
+          <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <% unless current_page?(user_session_path) || current_page?(new_user_registration_path) %>
+            <%= link_to "Entrar", new_user_session_path %>
+          <% end %>
+        <% end %>
+      </div>
+    </header>
+    <main>
+      <p>
+        <%= flash[:alert] %>
+        <%= flash[:notice] %>
+      </p>
+      <%= yield %>
+    </main>
   </body>
 </html>
