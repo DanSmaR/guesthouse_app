@@ -21,7 +21,8 @@ describe 'User landing in the home page' do
                                     registration_code: '47032102000152',
                                     phone_number: '15983081833',
                                     email: 'contato@nascerdosol.com.br', address: address,
-                                    user: user, description: 'Pousada com vista linda para a serra',
+                                    guesthouse_owner: guesthouse_owner,
+                                    description: 'Pousada com vista linda para a serra',
                                     payment_method: 'Cartão de Crédito', pets: true,
                                     use_policy: 'Não é permitido fumar nas dependências da pousada',
                                     checkin_hour: '14:00', checkout_hour: '12:00', active: true)
