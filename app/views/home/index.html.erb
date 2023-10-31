@@ -1,0 +1,13 @@
+<section aria-label="Algumas Pousadas">
+  <% @guesthouses.each do |gh| %>
+    <dl>
+      <dt><h4><%= gh.brand_name %></h4></dt>
+      <!-- Address.states[gh.address.state] gets the value of a key-value pair of an enum datatype -->
+      <dd><%= gh.address.city %> - <%= Address.states[gh.address.state] %></dd>
+    </dl>
+  <% end %>
+
+  <% if @guesthouses.empty? %>
+    <p>Nenhuma pousada cadastrada</p>
+  <% end %>
+</section>

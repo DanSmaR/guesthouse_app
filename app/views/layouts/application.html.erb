@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
     <title>GuesthouseApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,7 +9,29 @@
     <%= stylesheet_link_tag "application" %>
   </head>
 
+  <header>
+    <h1>Pousada App</h1>
+    <nav>
+      <ul>
+        <li><%= link_to "Início", root_path %></li>
+<!--        <li><%#= link_to "Pousadas", guesthouses_path %></li>-->
+      </ul>
+    </nav>
+    <div>
+      <% if user_signed_in? %>
+        <p><%= current_user.email %></p>
+        <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <% unless current_page?(user_session_path) %>
+          <%= link_to "Entrar", new_user_session_path %>
+        <% end %>
+      <% end %>
+    </div>
+  </header>
+
   <body>
+    <h2>Sejam bem vindos(as) ao Pousada App</h2>
+    <p>Aqui você encontrará as melhores pousadas para sua acomodação!</p>
     <%= yield %>
   </body>
 </html>
