@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      guesthouse_owner: 'Proprietário de Pousada'
+    attributes:
+      guesthouse_owner:
+        name: 'Nome'
