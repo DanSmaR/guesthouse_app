@@ -1,4 +1,5 @@
 class Address < ApplicationRecord
+  validates :street, :neighborhood, :city, :state, :postal_code, presence: true
   enum state: {
     'são paulo': 'SP', 'rio de janeiro': 'RJ', 'minas gerais': 'MG', 'bahia': 'BA',
     'paraná': 'PR', 'rio grande do sul': 'RS', 'pernambuco': 'PE', 'ceará': 'CE',

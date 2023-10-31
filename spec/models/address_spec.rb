@@ -55,17 +55,10 @@ RSpec.describe Address, type: :model do
       expect(is_valid).to eq false
     end
 
-    it 'state does not accept invalid values' do
-      # Arrange
-      # invalid state to force error
-      address = Address.new(street: 'Rua das Flores, 1000', neighborhood: 'Vila Belo Horizonte' ,
-                            city: 'Itapetininga', state: 'XX', postal_code: '01001-000')
-
-      # Act
-      is_valid = address.valid?
-
-      # Assert
-      expect(is_valid).to eq false
+    it 'raises an error when passing invalid state' do
+      expect { Address.new(street: 'Rua das Flores, 1000', neighborhood: 'Vila Belo Horizonte' ,
+                            city: 'Itapetininga', state: 'XX', postal_code: '01001-000') }
+        .to raise_error(ArgumentError)
     end
 
     it 'postal_code is mandatory' do
