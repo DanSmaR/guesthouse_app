@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_01_171238) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_01_233908) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
     t.string "neighborhood", null: false
@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_171238) do
     t.string "postal_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "state"
+    t.integer "state"
   end
 
   create_table "guesthouse_owners", force: :cascade do |t|
@@ -39,8 +39,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_171238) do
     t.text "description"
     t.boolean "pets", default: false
     t.text "use_policy"
-    t.time "checkin_hour"
-    t.time "checkout_hour"
+    t.datetime "checkin_hour", default: "2023-11-01 17:00:00"
+    t.datetime "checkout_hour", default: "2023-11-01 15:00:00"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

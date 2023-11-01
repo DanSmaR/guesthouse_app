@@ -111,3 +111,9 @@ B
 db/schema.rb,2/c/2cda0c6171fa7d04989507a1dd112e34c40df46d
 [
 +app/views/devise/registrations/new.html.erb,3/f/3f5f33da115bf173e0bae0a1ac8ef10f2438c0c8
+Y
+)app/controllers/guesthouses_controller.rb,f/6/f6c8dbcff09b19e46bce32cdfee3faae8418f42d
+[
++app/controllers/registrations_controller.rb,4/f/4f7b76b1197d6fb073f77957b3b7b70d921ed7e7
+R
+"app/views/guesthouses/new.html.erb,b/0/b05a3e0caf8de76d702893dd53b291421ae54e63

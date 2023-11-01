@@ -6,7 +6,7 @@
     <dl>
       <dt><h4><%= gh.brand_name %></h4></dt>
       <!-- Address.states[gh.address.state] gets the value of a key-value pair of an enum datatype -->
-      <dd><%= gh.address.city %> - <%= Address.states[gh.address.state] %></dd>
+      <dd><%= gh.address.city %> - <%= gh.address.state %></dd>
     </dl>
   <% end %>
 
