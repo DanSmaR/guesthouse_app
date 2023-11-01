@@ -7,8 +7,7 @@ RSpec.describe Guesthouse, type: :model do
       guesthouse = Guesthouse.new(corporate_name: '', brand_name: 'Pousada Nascer do Sol',
                                   registration_code: '47032102000152', phone_number: '15983081833',
                                   email: 'contato@email.com',
-                                  description: 'Pousada com vista linda para a serra',
-                                  payment_method: 0, pets: true,
+                                  description: 'Pousada com vista linda para a serra', pets: true,
                                   use_policy: 'Não é permitido fumar nas dependências da pousada',
                                   checkin_hour: '14:00', checkout_hour: '12:00', active: true)
       # Act
@@ -24,7 +23,7 @@ RSpec.describe Guesthouse, type: :model do
                                   registration_code: '47032102000152', phone_number: '15983081833',
                                   email: 'contato@email.com',
                                   description: 'Pousada com vista linda para a serra',
-                                  payment_method: 0, pets: true,
+                                  pets: true,
                                   use_policy: 'Não é permitido fumar nas dependências da pousada',
                                   checkin_hour: '14:00', checkout_hour: '12:00', active: true)
       # Act
@@ -40,7 +39,7 @@ RSpec.describe Guesthouse, type: :model do
                                   registration_code: '', phone_number: '15983081833',
                                   email: 'contato@email.com',
                                   description: 'Pousada com vista linda para a serra',
-                                  payment_method: 0, pets: true,
+                                  pets: true,
                                   use_policy: 'Não é permitido fumar nas dependências da pousada',
                                   checkin_hour: '14:00', checkout_hour: '12:00', active: true)
       # Act
@@ -56,7 +55,7 @@ RSpec.describe Guesthouse, type: :model do
                                   registration_code: '47032102000152', phone_number: '',
                                   email: 'contato@email.com',
                                   description: 'Pousada com vista linda para a serra',
-                                  payment_method: 0, pets: true,
+                                  pets: true,
                                   use_policy: 'Não é permitido fumar nas dependências da pousada',
                                   checkin_hour: '14:00', checkout_hour: '12:00', active: true)
       # Act
@@ -72,7 +71,7 @@ RSpec.describe Guesthouse, type: :model do
                                   registration_code: '47032102000152', phone_number: '15983081833',
                                   email: '',
                                   description: 'Pousada com vista linda para a serra',
-                                  payment_method: 0, pets: true,
+                                  pets: true,
                                   use_policy: 'Não é permitido fumar nas dependências da pousada',
                                   checkin_hour: '14:00', checkout_hour: '12:00', active: true)
       # Act

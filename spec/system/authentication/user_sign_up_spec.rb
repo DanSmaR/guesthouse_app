@@ -10,7 +10,7 @@ describe 'User signs up' do
     click_on 'Registrar-se'
     fill_in 'Nome', with: 'Maria'
     fill_in 'E-mail', with: 'maria@email.com'
-    select 'Proprietário de Pousada', from: 'Role'
+    select 'Proprietário de Pousada', from: 'Tipo de Usuário'
     fill_in 'Senha', with: 'password'
     fill_in 'Confirme sua senha', with: 'password'
     click_on 'Criar conta'
