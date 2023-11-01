@@ -16,3 +16,7 @@ pt-BR:
         checkout_hour: 'Hora de Check-out'
         active: 'Ativo'
         payment_method: 'Formas de Pagamento'
+        payment_methods:
+          credit_card: 'Cartão de Crédito'
+          debit_card: 'Cartão de Débito'
+          pix: 'Pix'

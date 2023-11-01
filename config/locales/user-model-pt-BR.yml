@@ -5,6 +5,7 @@ pt-BR:
     attributes:
       user:
         name: 'Nome'
+        role: 'Tipo de Usuário'
         roles:
           guest: 'Hóspede'
           guesthouse_owner: 'Proprietário de Pousada'
