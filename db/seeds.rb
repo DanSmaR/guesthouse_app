@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# populate payment_methods table
+['credit_card', 'debit_card', 'pix'].each do |method|
+  PaymentMethod.find_or_create_by!(method: method)
+end
