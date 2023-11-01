@@ -16,9 +16,6 @@ describe 'User landing in the home page' do
 
   it 'should see some guesthouses' do
     # Arrange
-    credit_card = 0
-    debit_card = 1
-    pix = 2
     user = User.create!(name: 'João', email: 'joao@email.com', password: 'password')
     guesthouse_owner = GuesthouseOwner.create!(user: user)
     address = Address.create!(street: 'Rua das Flores, 1000', neighborhood: 'Vila Belo Horizonte' ,
@@ -33,9 +30,9 @@ describe 'User landing in the home page' do
                                     pets: true,
                                     use_policy: 'Não é permitido fumar nas dependências da pousada',
                                     checkin_hour: '14:00', checkout_hour: '12:00', active: true)
-    PaymentMethod.create!(method: credit_card)
-    PaymentMethod.create!(method: debit_card)
-    PaymentMethod.create!(method: pix)
+    PaymentMethod.create!(method: 'credit_card')
+    PaymentMethod.create!(method: 'debit_card')
+    PaymentMethod.create!(method: 'pix')
 
     guesthouse.payment_methods = PaymentMethod.all
     guesthouse.save!
