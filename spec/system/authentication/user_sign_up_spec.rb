@@ -21,5 +21,6 @@ describe 'User signs up' do
     expect(page).to have_button('Sair')
     expect(User.last.name).to eq('Maria')
     expect(page).to have_content('Nova Pousada')
+    expect(current_path).to eq(new_guesthouse_path)
   end
 end
