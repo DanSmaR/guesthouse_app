@@ -13,6 +13,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :role %>
+    <%= f.select :role, User.roles.keys.map { |role| [t("activerecord.attributes.user.roles.#{role}"), role] } %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
