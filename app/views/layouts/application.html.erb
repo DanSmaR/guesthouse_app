@@ -19,8 +19,9 @@
         </ul>
       </nav>
       <div>
-        <% if current_user&.guesthouse_owner %>
-          <%= link_to 'Minha Pousada', guesthouse_path(current_user.guesthouse_owner.guesthouse) %>
+        <% if current_user&.guesthouse_owner&.guesthouse %>
+          <% id = current_user&.guesthouse_owner&.guesthouse&.id || 1 %>
+          <%= link_to 'Minha Pousada', guesthouse_path(id) %>
         <% end %>
         <% if user_signed_in? %>
           <p><%= current_user.email %></p>
