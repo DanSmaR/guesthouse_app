@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+<section>
+    <h2>Rooms</h2>
+
+    <div id="rooms">
+      <% @rooms.each do |room| %>
+        <%= render room %>
+        <p>
+          <%= link_to "Show this room", room %>
+        </p>
+      <% end %>
+    </div>
+
+    <%= link_to "Cadastrar Quartos", new_guesthouse_room_path(@guesthouse) %>
+</section>

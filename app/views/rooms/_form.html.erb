@@ -1,0 +1,81 @@
+<%= form_with(model: [guesthouse, room]) do |form| %>
+  <% if room.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(room.errors.count, "error") %> impediram esse quarto de ser salvo:</h2>
+
+      <ul>
+        <% room.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :size %><br>
+    <%= form.number_field :size %>
+  </p>
+
+  <p>
+    <%= form.label :max_people %><br>
+    <%= form.number_field :max_people %>
+
+  <p>
+    <%= form.label :daily_rate %><br>
+    <%= form.number_field :daily_rate %>
+  </p>
+
+  <p>
+    <%= form.label :bathroom %>
+    <%= form.check_box :bathroom %>
+  </p>
+
+  <p>
+    <%= form.label :balcony %>
+    <%= form.check_box :balcony %>
+  </p>
+
+  <p>
+    <%= form.label :air_conditioning %>
+    <%= form.check_box :air_conditioning %>
+  </p>
+
+  <p>
+    <%= form.label :tv %>
+    <%= form.check_box :tv %>
+  </p>
+
+  <p>
+    <%= form.label :wardrobe %>
+    <%= form.check_box :wardrobe %>
+  </p>
+
+  <p>
+    <%= form.label :safe %>
+    <%= form.check_box :safe %>
+  </p>
+
+  <p>
+    <%= form.label :accessible %>
+    <%= form.check_box :accessible %>
+  </p>
+
+  <p>
+    <%= form.label :available %>
+    <%= form.check_box :available %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

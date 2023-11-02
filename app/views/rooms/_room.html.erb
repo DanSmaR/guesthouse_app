@@ -1,0 +1,29 @@
+<div id="<%= dom_id room %>">
+<h3><%= room.name %></h3>
+  <dl>
+    <dt>Descrição:</dt>
+    <dd><%= room.description %></dd>
+    <dt>Tamanho:</dt>
+    <dd><%= room.size %> m<sup>2</sup></dd>
+    <dt>Acomodação Máxima:</dt>
+    <dd><%= room.max_people %></dd>
+    <dt>Valor da Diária:</dt>
+    <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
+    <dt>Banheiro:</dt>
+    <dd><%= room.bathroom? ? 'Sim' : 'Não' %></dd>
+    <dt>Varanda:</dt>
+    <dd><%= room.balcony? ? 'Sim' : 'Não' %></dd>
+    <dt>Ar Condicionado:</dt>
+    <dd><%= room.air_conditioning? ? 'Sim' : 'Não' %></dd>
+    <dt>TV:</dt>
+    <dd><%= room.tv? ? 'Sim' : 'Não' %></dd>
+    <dt>Guarda-roupa:</dt>
+    <dd><%= room.wardrobe? ? 'Sim' : 'Não' %></dd>
+    <dt>Cofre:</dt>
+    <dd><%= room.safe? ? 'Sim' : 'Não' %></dd>
+    <dt>Acessível para PCDs:</dt>
+    <dd><%= room.accessible? ? 'Sim' : 'Não' %></dd>
+    <dt>Disponibilidade:</dt>
+    <dd><%= room.available? ? 'Sim' : 'Não' %></dd>
+  </dl>
+</div>

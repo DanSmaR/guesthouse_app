@@ -1,0 +1,12 @@
+<section>
+  <h2>Detalhes</h2>
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @room %>
+
+  <div>
+    <%#= link_to "Edit this room", edit_room_path(@room) %>
+    <%= link_to "Back to rooms", guesthouse_rooms_path(@guesthouse) %>
+  </div>
+
+</section>

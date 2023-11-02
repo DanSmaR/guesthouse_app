@@ -1,0 +1,10 @@
+<section>
+  <h2>Novo Quarto</h2>
+
+  <%= render "form", room: @room, guesthouse: @guesthouse %>
+
+  <p>
+    <%= link_to "Voltar para Quartos", guesthouse_rooms_path(@guesthouse) %>
+  </p>
+
+</section>
