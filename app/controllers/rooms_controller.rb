@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class RoomsController < ApplicationController
-  before_action :set_guesthouse, only: %i[index new create show]
+  before_action :set_guesthouse, only: %i[index new create show edit update]
+  before_action :set_room, only: %i[show edit update]
 
   def index
     if current_user&.guesthouse_owner&.guesthouse == @guesthouse
@@ -26,13 +27,25 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
+  #
+  end
+
+  def edit
+  #
+  end
+
+  def update
+  #
   end
 
   private
 
   def set_guesthouse
     @guesthouse = Guesthouse.find(params[:guesthouse_id])
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
   end
 
   def room_params

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :guesthouses, only: %i[new create show edit update] do
-    resources :rooms, only: %i[index new create show]
+    resources :rooms, only: %i[index new create show edit update]
   end
 end

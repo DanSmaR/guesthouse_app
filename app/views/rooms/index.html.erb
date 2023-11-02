@@ -16,6 +16,8 @@
           <dd><%= room.max_people %></dd>
           <dt>Valor da Diária:</dt>
           <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
+          <dt>Disponibilidade:</dt>
+          <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
         </dl>
       <% end %>
     </div>

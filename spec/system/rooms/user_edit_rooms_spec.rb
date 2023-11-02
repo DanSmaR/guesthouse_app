@@ -47,7 +47,7 @@ describe 'Room update' do
     expect(page).to have_field('Descrição', with: 'Quarto com vista para a serra')
     expect(page).to have_field('Tamanho', with: 30)
     expect(page).to have_field('Acomodação máxima', with: 2)
-    expect(page).to have_field('Valor da diária', with: 100)
+    expect(page).to have_field('Valor da diária', with: 100.0)
     expect(page).to have_field('Banheiro', checked: true)
     expect(page).to have_field('Varanda', checked: true)
     expect(page).to have_field('Ar condicionado', checked: true)

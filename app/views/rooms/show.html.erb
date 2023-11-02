@@ -2,10 +2,10 @@
   <h2>Detalhes</h2>
   <p style="color: green"><%= notice %></p>
 
-  <%= render @room %>
+  <%= render 'room', room: @room, guesthouse: @guesthouse  %>
 
   <div>
-    <%#= link_to "Edit this room", edit_room_path(@room) %>
+    <%= link_to 'Editar Quarto', edit_guesthouse_room_path(@guesthouse, @room) %>
     <%= link_to "Voltar", guesthouse_rooms_path(@guesthouse) %>
   </div>
 
