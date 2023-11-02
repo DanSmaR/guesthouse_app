@@ -1,20 +1,7 @@
 require 'rails_helper'
 
-describe 'User landing in the home page' do
-  it 'should see the app name' do
-    # Arrange
-    # Act
-    visit('/')
-
-    # Assert
-    within 'header' do
-      expect(page).to have_content('Pousada App')
-      expect(page).to have_content('Entrar')
-    end
-    expect(page).to have_content('Sejam bem vindos(as) ao Pousada App')
-  end
-
-  it 'should see some guesthouses' do
+describe 'User registers room' do
+  it 'successfully' do
     # Arrange
     user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', role: 1)
     guesthouse_owner = user.build_guesthouse_owner
@@ -36,24 +23,42 @@ describe 'User landing in the home page' do
 
     guesthouse.payment_methods = PaymentMethod.all
     guesthouse.save!
-    # Act
-    visit('/')
-    # Assert
-    expect(page).to_not have_content('Nenhuma pousada cadastrada')
-    expect(page).to have_content('Pousada Nascer do Sol')
-    expect(page).to have_content('Itapetininga - SP')
-  end
-
-  it 'should not exist registered guesthouses' do
-    # Arrange
-    # rails already cleaned the database by default
 
     # Act
-    visit('/')
+    login_as(user)
+    visit root_path
+    click_on 'Pousada Nascer do Sol'
+    click_on 'Quartos'
+    click_on 'Cadastrar Quarto'
+
+    fill_in 'Nome', with: 'Quarto 1'
+    fill_in 'Descrição', with: 'Quarto com vista para a serra'
+    fill_in 'Tamanho', with: 30
+    fill_in 'Quantidade máxima de hóspedes', with: 2
+    fill_in 'Diária', with: 100
+    check 'Banheiro'
+    check 'Varanda'
+    check 'Ar condicionado'
+    check 'TV'
+    check 'Guarda-roupa'
+    check 'Cofre'
+    check 'Accessível para PCDs'
+
+    click_on 'Criar Quarto'
 
     # Assert
-    expect(page).to have_content('Nenhuma pousada cadastrada')
+    expect(current_path).to eq(guesthouse_rooms_path(guesthouse))
+    expect(page).to have_content('Quarto 1')
+    expect(page).to have_content('Quarto com vista para a serra')
+    expect(page).to have_content('30 m²')
+    expect(page).to have_content('2 pessoas')
+    expect(page).to have_content('R$ 100,00')
+    expect(page).to have_content('Banheiro')
+    expect(page).to have_content('Varanda')
+    expect(page).to have_content('Ar condicionado')
+    expect(page).to have_content('TV')
+    expect(page).to have_content('Guarda-roupa')
+    expect(page).to have_content('Cofre')
+    expect(page).to have_content('Accessível para PCDs')
   end
-
-#   TODO - Tests for non active guesthouses
 end
