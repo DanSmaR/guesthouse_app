@@ -55,8 +55,8 @@ describe 'User views rooms' do
       expect(page).to have_content('Acessível para PCDs: Sim')
       expect(page).to have_content('Disponibilidade: Sim')
 
-      expect(page).to_not have_content('Quarto Verão')
-      expect(page).to_not have_content('Quarto com vista para o mar')
+      expect(page).to have_content('Quarto Verão')
+      expect(page).to have_content('Quarto com vista para o mar')
     end
   end
 

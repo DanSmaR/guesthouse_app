@@ -1,15 +1,22 @@
 <p style="color: green"><%= notice %></p>
 <section>
     <h2>Rooms</h2>
-
+  <% if @guesthouse.guesthouse_owner.user == current_user %>
+    <%= link_to "Cadastrar Quartos", new_guesthouse_room_path(@guesthouse) %>
+  <% end %>
     <div id="rooms">
       <% @rooms.each do |room| %>
-        <%= render room %>
-        <p>
-          <%= link_to "Show this room", guesthouse_room_path(@guesthouse, room) %>
-        </p>
+        <h3><%= link_to room.name, guesthouse_room_path(@guesthouse, room) %></h3>
+        <dl>
+          <dt>Descrição:</dt>
+          <dd><%= room.description %></dd>
+          <dt>Tamanho:</dt>
+          <dd><%= room.size %> m<sup>2</sup></dd>
+          <dt>Acomodação Máxima:</dt>
+          <dd><%= room.max_people %></dd>
+          <dt>Valor da Diária:</dt>
+          <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
+        </dl>
       <% end %>
     </div>
-
-    <%= link_to "Cadastrar Quartos", new_guesthouse_room_path(@guesthouse) %>
 </section>
