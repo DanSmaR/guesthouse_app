@@ -48,9 +48,9 @@ describe 'User edit guesthouse' do
     expect(page).to have_select('guesthouse_checkin_hour_5i', with_options: ['00'])
     expect(page).to have_select('guesthouse_checkout_hour_4i', with_options: ['12'])
     expect(page).to have_select('guesthouse_checkout_hour_5i', with_options: ['00'])
-    expect(page).to have_field('Cartão de crédito', type: 'checkbox', checked: false)
-    expect(page).to have_field('Cartão de débito', type: 'checkbox', checked: false)
-    expect(page).to have_field('Pix', type: 'checkbox', checked: false)
+    expect(page).to have_field('Cartão de crédito', type: 'checkbox')
+    expect(page).to have_field('Cartão de débito', type: 'checkbox')
+    expect(page).to have_field('Pix', type: 'checkbox')
   end
 
   it 'successfully edits a guesthouse' do

@@ -47,4 +47,26 @@ describe 'Guesthouse owner registers Guesthouse' do
     expect(page).to have_content('Cartão de débito')
     expect(page).to have_content('Pix')
   end
+
+  it 'and must fill in all fields' do
+    # Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password', role: 1)
+    user.create_guesthouse_owner!
+    PaymentMethod.create!(method: 'credit_card')
+    PaymentMethod.create!(method: 'debit_card')
+    PaymentMethod.create!(method: 'pix')
+
+    # Act
+    login_as user
+    visit root_path
+
+    fill_in 'Razão Social', with: ''
+    fill_in 'Nome Fantasia', with: ''
+
+    click_on 'Criar Pousada'
+
+    # Assert
+    expect(current_path).to eq(guesthouses_path)
+    expect(page).to have_content('Pousada não cadastrada. Preencha todos os campos.')
+  end
 end

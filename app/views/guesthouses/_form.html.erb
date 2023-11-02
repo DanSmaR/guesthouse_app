@@ -85,14 +85,13 @@
   <fieldset>
     <legend>Select Payment Methods</legend>
 
-    <%= check_box_tag 'payment_methods[]', 'credit_card', id: 'payment_methods_credit_card' %>
-    <%= label_tag 'payment_methods_credit_card', 'Cartão de crédito' %>
-
-    <%= check_box_tag 'payment_methods[]', 'pix', id: 'payment_methods_pix' %>
-    <%= label_tag 'payment_methods_pix', 'Pix' %>
-
-    <%= check_box_tag 'payment_methods[]', 'debit_card', id: 'payment_methods_debit_card' %>
-    <%= label_tag 'payment_methods_debit_card', 'Cartão de débito' %>
+    <% PaymentMethod.all.each do |payment_method| %>
+      <%= check_box_tag 'guesthouse[payment_method_ids][]', payment_method.id,
+                        guesthouse.payment_method_ids.include?(payment_method.id),
+                        id: "payment_method_#{payment_method.id}" %>
+      <%= label_tag "payment_method_#{payment_method.id}",
+                    t("payment_methods.#{payment_method.method}") %>
+    <% end %>
   </fieldset>
 
   <p>
