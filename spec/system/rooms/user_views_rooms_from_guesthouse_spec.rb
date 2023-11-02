@@ -24,11 +24,11 @@ describe 'User views rooms' do
 
       guesthouse.payment_methods = PaymentMethod.all
       guesthouse.rooms.build([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
-                                maximum_occupancy: 2, daily_rate: 100, bathroom: true, balcony: true,
+                                max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: true },
                               { name: 'Quarto Verão', description: 'Quarto com vista para o mar', size: 30,
-                                maximum_occupancy: 2, daily_rate: 100, bathroom: true, balcony: true,
+                                max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
 
@@ -94,11 +94,11 @@ describe 'User views rooms' do
 
       guesthouse.payment_methods = PaymentMethod.all
       guesthouse.rooms.build([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
-                                maximum_occupancy: 2, daily_rate: 100, bathroom: true, balcony: true,
+                                max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: true },
                               { name: 'Quarto Verão', description: 'Quarto com vista para o mar', size: 30,
-                                maximum_occupancy: 2, daily_rate: 100, bathroom: true, balcony: true,
+                                max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
 
@@ -155,11 +155,11 @@ describe 'User views rooms' do
       guesthouse.payment_methods = PaymentMethod.all
 
       guesthouse.rooms.build([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
-                                maximum_occupancy: 2, daily_rate: 100, bathroom: true, balcony: true,
+                                max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: true },
                               { name: 'Quarto Verão', description: 'Quarto com vista para o mar', size: 30,
-                                maximum_occupancy: 2, daily_rate: 100, bathroom: true, balcony: true,
+                                max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
       guesthouse.save!
