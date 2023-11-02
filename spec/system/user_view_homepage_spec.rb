@@ -54,4 +54,6 @@ describe 'User landing in the home page' do
     # Assert
     expect(page).to have_content('Nenhuma pousada cadastrada')
   end
+
+#   TODO - TEsts for non active guesthouses
 end

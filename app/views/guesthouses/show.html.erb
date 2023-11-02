@@ -22,6 +22,8 @@
   </dl>
 
   <p>
-    <%= link_to 'Editar Pousada', edit_guesthouse_path(@guesthouse.id) %>
+    <% if @guesthouse.guesthouse_owner.user == current_user %>
+      <%= link_to 'Editar Pousada', edit_guesthouse_path(@guesthouse.id) %>
+    <% end %>
   </p>
 </article>

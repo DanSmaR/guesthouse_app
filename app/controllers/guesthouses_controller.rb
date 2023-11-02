@@ -1,5 +1,6 @@
 class GuesthousesController < ApplicationController
   before_action :set_guesthouse, only: [:show, :edit, :update]
+  before_action :authorize_owner, only: [:edit, :update]
   def new
     @guest_owner = current_user.guesthouse_owner
     @guesthouse = @guest_owner.build_guesthouse
@@ -59,5 +60,10 @@ class GuesthousesController < ApplicationController
 
   def set_guesthouse
     @guesthouse = Guesthouse.find(params[:id])
+  end
+  def authorize_owner
+    unless @guesthouse.guesthouse_owner.user == current_user
+      redirect_to @guesthouse, alert: 'Você não tem autorização para editar essa pousada'
+    end
   end
 end
