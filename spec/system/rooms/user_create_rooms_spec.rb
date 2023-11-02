@@ -60,6 +60,7 @@ describe 'User registers room' do
     expect(page).to have_content('Guarda-roupa: Sim')
     expect(page).to have_content('Cofre: Sim')
     expect(page).to have_content('Acessível para PCDs: Sim')
+    expect(page).to have_content('Disponibilidade: Sim')
   end
 
   it 'and must fill in all fields' do

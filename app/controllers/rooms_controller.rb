@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   before_action :set_guesthouse, only: %i[index new create show]
 
   def index
-    @rooms = @guesthouse.rooms
+    @rooms = @guesthouse.rooms.filter(&:available)
   end
   def new
     @room = Room.new

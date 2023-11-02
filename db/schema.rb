@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_02_140411) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_02_213312) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
     t.string "neighborhood", null: false
@@ -65,14 +65,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_02_140411) do
     t.integer "size", null: false
     t.integer "max_people", null: false
     t.decimal "daily_rate", null: false
-    t.boolean "bathroom", default: false, null: false
-    t.boolean "balcony", default: false, null: false
-    t.boolean "air_conditioning", default: false, null: false
-    t.boolean "tv", default: false, null: false
-    t.boolean "wardrobe", default: false, null: false
-    t.boolean "safe", default: false, null: false
-    t.boolean "accessible", default: false, null: false
-    t.boolean "available", default: true, null: false
+    t.boolean "bathroom", default: false
+    t.boolean "balcony", default: false
+    t.boolean "air_conditioning", default: false
+    t.boolean "tv", default: false
+    t.boolean "wardrobe", default: false
+    t.boolean "safe", default: false
+    t.boolean "accessible", default: false
+    t.boolean "available", default: true
     t.integer "guesthouse_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

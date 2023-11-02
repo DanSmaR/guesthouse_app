@@ -1,7 +1,5 @@
 class Room < ApplicationRecord
-  validates :name, :description, :size, :max_people, :daily_rate,
-            :bathroom, :balcony, :air_conditioning, :tv, :wardrobe,
-            :safe, :accessible, :available, presence: true
+  validates :name, :description, :size, :max_people, :daily_rate, presence: true
   validates :size, :max_people, numericality: { greater_than: 0 }
   validates :daily_rate, numericality: { greater_than: 0, less_than: 100_000 }
   validates :bathroom, :balcony, :air_conditioning, :tv, :wardrobe, :safe,

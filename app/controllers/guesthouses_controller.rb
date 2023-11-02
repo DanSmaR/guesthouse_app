@@ -50,9 +50,6 @@ class GuesthousesController < ApplicationController
   private
 
   def guesthouse_params
-    puts '-' * 50
-    puts params
-    puts '-' * 50
     params.require(:guesthouse).permit(:corporate_name, :brand_name, :description,
                                        :registration_code, :phone_number,
                                        :email, :description,

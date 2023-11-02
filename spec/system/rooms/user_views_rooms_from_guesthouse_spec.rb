@@ -23,7 +23,8 @@ describe 'User views rooms' do
       PaymentMethod.create!(method: 'pix')
 
       guesthouse.payment_methods = PaymentMethod.all
-      guesthouse.rooms.build([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
+      guesthouse.save!
+      guesthouse.rooms.create!([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
                                 max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: true },
@@ -32,7 +33,6 @@ describe 'User views rooms' do
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
 
-      guesthouse.save!
 
       # Act
       login_as(user)
@@ -43,31 +43,20 @@ describe 'User views rooms' do
       # Assert
       expect(page).to have_content('Quarto Primavera')
       expect(page).to have_content('Quarto com vista para a serra')
-      expect(page).to have_content('30 m²')
-      expect(page).to have_content('2 pessoas')
-      expect(page).to have_content('R$ 100,00')
-      expect(page).to have_content('Banheiro')
-      expect(page).to have_content('Varanda')
-      expect(page).to have_content('Ar condicionado')
-      expect(page).to have_content('TV')
-      expect(page).to have_content('Guarda-roupa')
-      expect(page).to have_content('Cofre')
-      expect(page).to have_content('Accessível para PCDs')
-      expect(page).to have_content('Disponível')
+      expect(page).to have_content('Tamanho: 30 m')
+      expect(page).to have_content('Acomodação Máxima: 2')
+      expect(page).to have_content('Valor da Diária: R$ 100,00')
+      expect(page).to have_content('Banheiro: Sim')
+      expect(page).to have_content('Varanda: Sim')
+      expect(page).to have_content('Ar Condicionado: Sim')
+      expect(page).to have_content('TV: Sim')
+      expect(page).to have_content('Guarda-roupa: Sim')
+      expect(page).to have_content('Cofre: Sim')
+      expect(page).to have_content('Acessível para PCDs: Sim')
+      expect(page).to have_content('Disponibilidade: Sim')
 
-      expect(page).to have_content('Quarto Verão')
-      expect(page).to have_content('Quarto com vista para o mar')
-      expect(page).to have_content('30 m²')
-      expect(page).to have_content('2 pessoas')
-      expect(page).to have_content('R$ 100,00')
-      expect(page).to have_content('Banheiro')
-      expect(page).to have_content('Varanda')
-      expect(page).to have_content('Ar condicionado')
-      expect(page).to have_content('TV')
-      expect(page).to have_content('Guarda-roupa')
-      expect(page).to have_content('Cofre')
-      expect(page).to have_content('Accessível para PCDs')
-      expect(page).to have_content('Indisponível')
+      expect(page).to_not have_content('Quarto Verão')
+      expect(page).to_not have_content('Quarto com vista para o mar')
     end
   end
 
@@ -93,7 +82,8 @@ describe 'User views rooms' do
       PaymentMethod.create!(method: 'pix')
 
       guesthouse.payment_methods = PaymentMethod.all
-      guesthouse.rooms.build([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
+      guesthouse.save!
+      guesthouse.rooms.create!([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
                                 max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: true },
@@ -102,7 +92,6 @@ describe 'User views rooms' do
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
 
-      guesthouse.save!
 
       # Act
       visit root_path
@@ -112,21 +101,20 @@ describe 'User views rooms' do
       # Assert
       expect(page).to have_content('Quarto Primavera')
       expect(page).to have_content('Quarto com vista para a serra')
-      expect(page).to have_content('30 m²')
-      expect(page).to have_content('2 pessoas')
-      expect(page).to have_content('R$ 100,00')
-      expect(page).to have_content('Banheiro')
-      expect(page).to have_content('Varanda')
-      expect(page).to have_content('Ar condicionado')
-      expect(page).to have_content('TV')
-      expect(page).to have_content('Guarda-roupa')
-      expect(page).to have_content('Cofre')
-      expect(page).to have_content('Accessível para PCDs')
-      expect(page).to have_content('Disponível')
+      expect(page).to have_content('Tamanho: 30 m')
+      expect(page).to have_content('Acomodação Máxima: 2')
+      expect(page).to have_content('Valor da Diária: R$ 100,00')
+      expect(page).to have_content('Banheiro: Sim')
+      expect(page).to have_content('Varanda: Sim')
+      expect(page).to have_content('Ar Condicionado: Sim')
+      expect(page).to have_content('TV: Sim')
+      expect(page).to have_content('Guarda-roupa: Sim')
+      expect(page).to have_content('Cofre: Sim')
+      expect(page).to have_content('Acessível para PCDs: Sim')
+      expect(page).to have_content('Disponibilidade: Sim')
 
       expect(page).to_not have_content('Quarto Verão')
       expect(page).to_not have_content('Quarto com vista para o mar')
-      expect(page).to_not have_content('Indisponível')
     end
   end
 
@@ -153,8 +141,9 @@ describe 'User views rooms' do
       PaymentMethod.create!(method: 'pix')
 
       guesthouse.payment_methods = PaymentMethod.all
+      guesthouse.save!
 
-      guesthouse.rooms.build([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
+      guesthouse.rooms.create!([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
                                 max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: true },
@@ -162,7 +151,6 @@ describe 'User views rooms' do
                                 max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
-      guesthouse.save!
 
       # User 2
       user2 = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password', role: 1)
@@ -193,21 +181,20 @@ describe 'User views rooms' do
       # Assert
       expect(page).to have_content('Quarto Primavera')
       expect(page).to have_content('Quarto com vista para a serra')
-      expect(page).to have_content('30 m²')
-      expect(page).to have_content('2 pessoas')
-      expect(page).to have_content('R$ 100,00')
-      expect(page).to have_content('Banheiro')
-      expect(page).to have_content('Varanda')
-      expect(page).to have_content('Ar condicionado')
-      expect(page).to have_content('TV')
-      expect(page).to have_content('Guarda-roupa')
-      expect(page).to have_content('Cofre')
-      expect(page).to have_content('Accessível para PCDs')
-      expect(page).to have_content('Disponível')
+      expect(page).to have_content('Tamanho: 30 m')
+      expect(page).to have_content('Acomodação Máxima: 2')
+      expect(page).to have_content('Valor da Diária: R$ 100,00')
+      expect(page).to have_content('Banheiro: Sim')
+      expect(page).to have_content('Varanda: Sim')
+      expect(page).to have_content('Ar Condicionado: Sim')
+      expect(page).to have_content('TV: Sim')
+      expect(page).to have_content('Guarda-roupa: Sim')
+      expect(page).to have_content('Cofre: Sim')
+      expect(page).to have_content('Acessível para PCDs: Sim')
+      expect(page).to have_content('Disponibilidade: Sim')
 
       expect(page).to_not have_content('Quarto Verão')
       expect(page).to_not have_content('Quarto com vista para o mar')
-      expect(page).to_not have_content('Indisponível')
     end
   end
 end

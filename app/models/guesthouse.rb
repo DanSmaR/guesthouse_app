@@ -5,7 +5,7 @@ class Guesthouse < ApplicationRecord
   belongs_to :address, dependent: :destroy, inverse_of: :guesthouse
   belongs_to :guesthouse_owner
   has_and_belongs_to_many :payment_methods
-  has_many :rooms, dependent: :destroy
+  has_many :rooms, dependent: :destroy, inverse_of: :guesthouse
   accepts_nested_attributes_for :address
 
   validate :at_least_one_payment_method

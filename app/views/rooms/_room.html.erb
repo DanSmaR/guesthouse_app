@@ -10,20 +10,20 @@
     <dt>Valor da Diária:</dt>
     <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
     <dt>Banheiro:</dt>
-    <dd><%= room.bathroom? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.bathroom? == true ? 'Sim' : 'Não' %></dd>
     <dt>Varanda:</dt>
-    <dd><%= room.balcony? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.balcony? == true ? 'Sim' : 'Não' %></dd>
     <dt>Ar Condicionado:</dt>
-    <dd><%= room.air_conditioning? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.air_conditioning == true ? 'Sim' : 'Não' %></dd>
     <dt>TV:</dt>
-    <dd><%= room.tv? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.tv == true ? 'Sim' : 'Não' %></dd>
     <dt>Guarda-roupa:</dt>
-    <dd><%= room.wardrobe? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.wardrobe == true ? 'Sim' : 'Não' %></dd>
     <dt>Cofre:</dt>
-    <dd><%= room.safe? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.safe == true ? 'Sim' : 'Não' %></dd>
     <dt>Acessível para PCDs:</dt>
-    <dd><%= room.accessible? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.accessible == true ? 'Sim' : 'Não' %></dd>
     <dt>Disponibilidade:</dt>
-    <dd><%= room.available? ? 'Sim' : 'Não' %></dd>
+    <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
   </dl>
 </div>

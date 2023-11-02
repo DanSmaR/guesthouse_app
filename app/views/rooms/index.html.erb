@@ -6,7 +6,7 @@
       <% @rooms.each do |room| %>
         <%= render room %>
         <p>
-          <%= link_to "Show this room", room %>
+          <%= link_to "Show this room", guesthouse_room_path(@guesthouse, room) %>
         </p>
       <% end %>
     </div>

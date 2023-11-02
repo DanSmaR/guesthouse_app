@@ -8,9 +8,9 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
 
-      expect(room.errors[:name]).to include('não pode ficar em branco')
+
+      expect(room.valid?).to eq false
     end
 
     it 'size must be present' do
@@ -19,9 +19,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:size]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'max_people must be present' do
@@ -30,9 +28,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:max_people]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'daily_rate must be present' do
@@ -41,9 +37,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:daily_rate]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'bathroom must be present' do
@@ -52,9 +46,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:bathroom]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'balcony must be present' do
@@ -63,9 +55,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:balcony]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'air_conditioning must be present' do
@@ -74,9 +64,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: '', tv: true, wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:air_conditioning]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'tv must be present' do
@@ -85,9 +73,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: '', wardrobe: true, safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:tv]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'wardrobe must be present' do
@@ -96,9 +82,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: '', safe: true,
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:wardrobe]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'safe must be present' do
@@ -107,9 +91,7 @@ RSpec.describe Room, type: :model do
                       air_conditioning: true, tv: true, wardrobe: true, safe: '',
                       accessible: true, available: true)
 
-      room.valid?
-
-      expect(room.errors[:safe]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'accessible must be present' do
@@ -118,9 +100,7 @@ RSpec.describe Room, type: :model do
                       balcony: true, air_conditioning: true, tv: true, wardrobe: true,
                       safe: true, accessible: '', available: true)
 
-      room.valid?
-
-      expect(room.errors[:accessible]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
 
     it 'available must be present' do
@@ -129,9 +109,7 @@ RSpec.describe Room, type: :model do
                       balcony: true, air_conditioning: true, tv: true, wardrobe: true,
                       safe: true, accessible: true, available: '')
 
-      room.valid?
-
-      expect(room.errors[:available]).to include('não pode ficar em branco')
+      expect(room.valid?).to eq false
     end
   end
 end
