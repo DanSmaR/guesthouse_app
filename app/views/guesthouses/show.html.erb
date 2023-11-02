@@ -10,9 +10,9 @@
     <dt>Política de uso:</dt>
     <dd><%= @guesthouse.use_policy %></dd>
     <dt>Check-in:</dt>
-    <dd><%= @guesthouse.checkin_hour %></dd>
+    <dd><%= @guesthouse.checkin_hour.strftime("%H:%M") %></dd>
     <dt>Check-out:</dt>
-    <dd><%= @guesthouse.checkout_hour %></dd>
+    <dd><%= @guesthouse.checkout_hour.strftime("%H:%M") %></dd>
     <dt>Pets:</dt>
     <dd><%= @guesthouse.pets ? 'Permitido' : 'Proibido'  %></dd>
     <dt>Formas de Pagamento:</dt>

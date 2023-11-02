@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_01_233908) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_02_140411) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
     t.string "neighborhood", null: false
@@ -59,6 +59,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_233908) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "size", null: false
+    t.integer "max_people", null: false
+    t.decimal "daily_rate", null: false
+    t.boolean "bathroom", default: false, null: false
+    t.boolean "balcony", default: false, null: false
+    t.boolean "air_conditioning", default: false, null: false
+    t.boolean "tv", default: false, null: false
+    t.boolean "wardrobe", default: false, null: false
+    t.boolean "safe", default: false, null: false
+    t.boolean "accessible", default: false, null: false
+    t.boolean "available", default: true, null: false
+    t.integer "guesthouse_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guesthouse_id"], name: "index_rooms_on_guesthouse_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -76,4 +96,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_233908) do
   add_foreign_key "guesthouse_owners", "users"
   add_foreign_key "guesthouses", "addresses"
   add_foreign_key "guesthouses", "guesthouse_owners"
+  add_foreign_key "rooms", "guesthouses"
 end

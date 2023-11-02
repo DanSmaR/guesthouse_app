@@ -43,7 +43,7 @@
     <p>
       <%= address_form.label :state %>
       <%= address_form.select :state, options_for_select(Address.states.keys
-                                                                .map { |state| [state, state] }) %>
+          .map { |state| [state, state] }, address_form.object.state) %>
     </p>
 
     <p>
