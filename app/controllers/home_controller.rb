@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @guesthouses = Guesthouse.first(3)
+    @guesthouses = Guesthouse.all
   end
 end

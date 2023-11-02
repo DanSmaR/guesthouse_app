@@ -1,5 +1,5 @@
 class GuesthousesController < ApplicationController
-  before_action :set_guesthouse, only: [:show]
+  before_action :set_guesthouse, only: [:show, :edit, :update]
   def new
     @guest_owner = current_user.guesthouse_owner
     @guesthouse = @guest_owner.build_guesthouse
@@ -20,6 +20,20 @@ class GuesthousesController < ApplicationController
 
   def show
   #
+  end
+
+  def edit
+  #
+  end
+
+  def update
+    if @guesthouse.update(guesthouse_params)
+      flash[:notice] = 'Pousada atualizada com sucesso'
+      redirect_to @guesthouse
+    else
+      flash.now[:alert] = 'Pousada não atualizada. Preencha todos os campos.'
+      render :edit
+    end
   end
 
   private

@@ -1,0 +1,101 @@
+<%= form_with model: guesthouse do |f| %>
+  <p>
+    <%= f.label :corporate_name %>
+    <%= f.text_field :corporate_name %>
+  </p>
+
+  <p>
+    <%= f.label :brand_name %>
+    <%= f.text_field :brand_name %>
+  </p>
+
+  <p>
+    <%= f.label :registration_code %>
+    <%= f.text_field :registration_code %>
+  </p>
+
+  <p>
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <%= f.fields_for :address do |address_form| %>
+    <p>
+      <%= address_form.label :street %>
+      <%= address_form.text_field :street %>
+    </p>
+
+    <p>
+      <%= address_form.label :neighborhood %>
+      <%= address_form.text_field :neighborhood %>
+    </p>
+
+    <p>
+      <%= address_form.label :city %>
+      <%= address_form.text_field :city %>
+    </p>
+
+    <p>
+      <%= address_form.label :state %>
+      <%= address_form.select :state, options_for_select(Address.states.keys
+                                                                .map { |state| [state, state] }) %>
+    </p>
+
+    <p>
+      <%= address_form.label :postal_code %>
+      <%= address_form.text_field :postal_code %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :pets %>
+    <%= f.check_box :pets %>
+  </p>
+
+  <p>
+    <%= f.label :use_policy %>
+    <%= f.text_area :use_policy %>
+  </p>
+
+  <p>
+    <%= f.label :checkin_hour %>
+    <%= f.time_select :checkin_hour %>
+  </p>
+
+  <p>
+    <%= f.label :checkout_hour %>
+    <%= f.time_select :checkout_hour %>
+  </p>
+
+  <p>
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </p>
+
+  <fieldset>
+    <legend>Select Payment Methods</legend>
+
+    <%= check_box_tag 'payment_methods[]', 'credit_card', id: 'payment_methods_credit_card' %>
+    <%= label_tag 'payment_methods_credit_card', 'Cartão de crédito' %>
+
+    <%= check_box_tag 'payment_methods[]', 'pix', id: 'payment_methods_pix' %>
+    <%= label_tag 'payment_methods_pix', 'Pix' %>
+
+    <%= check_box_tag 'payment_methods[]', 'debit_card', id: 'payment_methods_debit_card' %>
+    <%= label_tag 'payment_methods_debit_card', 'Cartão de débito' %>
+  </fieldset>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

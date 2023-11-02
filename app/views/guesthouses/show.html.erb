@@ -20,4 +20,8 @@
       <dd><%= t("payment_methods.#{payment_method.method}") %></dd>
     <% end %>
   </dl>
+
+  <p>
+    <%= link_to 'Editar Pousada', edit_guesthouse_path(@guesthouse.id) %>
+  </p>
 </article>

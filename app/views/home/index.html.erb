@@ -4,8 +4,7 @@
 <section aria-label="Algumas Pousadas">
   <% @guesthouses.each do |gh| %>
     <dl>
-      <dt><h4><%= gh.brand_name %></h4></dt>
-      <!-- Address.states[gh.address.state] gets the value of a key-value pair of an enum datatype -->
+      <dt><h4><%= link_to gh.brand_name, guesthouse_path(gh) %></h4></dt>
       <dd><%= gh.address.city %> - <%= gh.address.state %></dd>
     </dl>
   <% end %>
