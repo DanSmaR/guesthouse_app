@@ -1,20 +1,8 @@
 require 'rails_helper'
 
-describe 'User landing in the home page' do
-  it 'should see the app name' do
+describe 'User edit guesthouse' do
+  it 'shows the forms edit page' do
     # Arrange
-    # Act
-    visit('/')
-
-    # Assert
-    within 'header' do
-      expect(page).to have_content('Pousada App')
-      expect(page).to have_content('Entrar')
-    end
-    expect(page).to have_content('Sejam bem vindos(as) ao Pousada App')
-  end
-
-  it 'should see some guesthouses' do
     # Arrange
     user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', role: 1)
     guesthouse_owner = user.build_guesthouse_owner
@@ -37,21 +25,12 @@ describe 'User landing in the home page' do
     guesthouse.payment_methods = PaymentMethod.all
     guesthouse.save!
     # Act
-    visit('/')
-    # Assert
-    expect(page).to_not have_content('Nenhuma pousada cadastrada')
-    expect(page).to have_content('Pousada Nascer do Sol')
-    expect(page).to have_content('Itapetininga - SP')
-  end
-
-  it 'should not exist registered guesthouses' do
-    # Arrange
-    # rails already cleaned the database by default
-
-    # Act
-    visit('/')
+    login_as(user)
+    visit root_path
+    click_on 'Pousada Nascer do Sol'
+    click_on 'Editar'
 
     # Assert
-    expect(page).to have_content('Nenhuma pousada cadastrada')
+    expect(page).to have_content('Editar Pousada')
   end
 end
