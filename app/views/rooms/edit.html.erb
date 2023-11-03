@@ -3,10 +3,8 @@
 
   <%= render "form", room: @room, guesthouse: @guesthouse %>
 
-  <div>
     <p>
       <%= link_to "Mostre esse Quarto", guesthouse_room_path(@guesthouse, @room) %> |
       <%= link_to "Voltar para Quartos", guesthouse_rooms_path(@guesthouse) %>
     </p>
-  </div>
 </section>

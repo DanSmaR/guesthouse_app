@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RoomsController < ApplicationController
   before_action :set_guesthouse, only: %i[index new create show edit update]
   before_action :set_room, only: %i[show edit update]
@@ -35,7 +33,13 @@ class RoomsController < ApplicationController
   end
 
   def update
-  #
+    if @room.update(room_params)
+      flash[:notice] = 'Quarto atualizado com sucesso'
+      redirect_to guesthouse_room_path(@room.guesthouse, @room)
+    else
+      flash.now[:alert] = 'Não foi possível atualizar o quarto'
+      render :edit
+    end
   end
 
   private
