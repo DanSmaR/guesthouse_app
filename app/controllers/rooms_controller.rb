@@ -1,8 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_guesthouse, only: %i[index new create show edit update]
   before_action :set_room, only: %i[show edit update]
-  before_action :authorize_room_creation, only: %i[new create]
-  before_action :authorize_room_edit, only: %i[edit update]
+  before_action :authorize_owner, only: %i[new create edit update]
 
   def index
     if current_user&.guesthouse_owner&.guesthouse == @guesthouse
@@ -70,15 +69,4 @@ class RoomsController < ApplicationController
   end
 
   # TODO - Refactor the content of this method
-  def authorize_room_creation
-    unless current_user&.guesthouse_owner&.guesthouse == @guesthouse
-      redirect_to guesthouse_rooms_path(@guesthouse), alert: 'Você não tem permissão para cadastrar quartos'
-    end
-  end
-
-  def authorize_room_edit
-    unless current_user&.guesthouse_owner&.guesthouse == @guesthouse
-      redirect_to guesthouse_rooms_path(@guesthouse), alert: 'Você não tem permissão para editar esse quarto'
-    end
-  end
 end

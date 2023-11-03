@@ -72,9 +72,4 @@ class GuesthousesController < ApplicationController
   def set_guesthouse
     @guesthouse = Guesthouse.find(params[:id])
   end
-  def authorize_owner
-    unless @guesthouse.guesthouse_owner.user == current_user
-      redirect_to @guesthouse, alert: 'Você não tem autorização para editar essa pousada'
-    end
-  end
 end
