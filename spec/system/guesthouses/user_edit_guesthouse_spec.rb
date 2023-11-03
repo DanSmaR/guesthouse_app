@@ -182,4 +182,6 @@ describe 'User edit guesthouse' do
     # Assert
     expect(page).to have_content('Pousada não atualizada. Preencha todos os campos.')
   end
+
+  #   TODO - create a test which a user cannot access the guesthouse edition by typing the url, edit and update actions
 end

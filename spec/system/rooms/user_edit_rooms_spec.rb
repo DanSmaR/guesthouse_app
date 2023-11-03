@@ -112,4 +112,6 @@ describe 'Room update' do
     expect(page).to have_content('Varanda: Não')
     expect(page).to have_content('Quarto atualizado com sucesso')
   end
+
+  # TODO - create a test which a user cannot access the room edition by typing the url, edit and update actions
 end

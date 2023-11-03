@@ -102,4 +102,6 @@ describe 'User registers room' do
     # Assert
     expect(page).to have_content('Não foi possível cadastrar o quarto')
   end
+
+  # TODO - create a test which a user cannot access the room creation by typing the url, new and create actions
 end

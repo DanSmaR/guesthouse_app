@@ -69,4 +69,6 @@ describe 'Guesthouse owner registers Guesthouse' do
     expect(current_path).to eq(guesthouses_path)
     expect(page).to have_content('Pousada não cadastrada. Preencha todos os campos.')
   end
+
+#   TODO - create a test which a user cannot access the guesthouse creation by typing the url, new and create actions
 end

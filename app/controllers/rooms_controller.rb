@@ -67,6 +67,7 @@ class RoomsController < ApplicationController
                                  :accessible, :available)
   end
 
+  # TODO - Refactor the content of this method
   def authorize_room_creation
     unless current_user&.guesthouse_owner&.guesthouse == @guesthouse
       redirect_to guesthouse_rooms_path(@guesthouse), alert: 'Você não tem permissão para cadastrar quartos'
