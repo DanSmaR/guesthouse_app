@@ -1,9 +1,9 @@
-<p style="color: green"><%= notice %></p>
-<section>
-    <h2>Rooms</h2>
+<article>
+  <h2>Quartos</h2>
   <% if @guesthouse.guesthouse_owner.user == current_user %>
     <%= link_to "Cadastrar Quartos", new_guesthouse_room_path(@guesthouse) %>
   <% end %>
+  <%= link_to "Voltar", guesthouse_path(@guesthouse) %>
     <div id="rooms">
       <% @rooms.each do |room| %>
         <h3><%= link_to room.name, guesthouse_room_path(@guesthouse, room) %></h3>
@@ -21,4 +21,4 @@
         </dl>
       <% end %>
     </div>
-</section>
+</article>

@@ -1,16 +1,20 @@
 <article>
   <h2>Detalhes</h2>
+  <%= link_to "Voltar", guesthouse_rooms_path(@guesthouse) %>
 
   <%= render 'room', room: @room, guesthouse: @guesthouse  %>
-  <div>
-    <%= link_to 'Editar Quarto', edit_guesthouse_room_path(@guesthouse, @room) %>
-    <%= link_to "Voltar", guesthouse_rooms_path(@guesthouse) %>
-  </div>
+  <p>
+    <% if @guesthouse.guesthouse_owner.user == current_user %>
+      <%= link_to 'Editar Quarto', edit_guesthouse_room_path(@guesthouse, @room) %>
+    <% end %>
+  </p>
 
   <section>
     <h3>Diárias por Período</h3>
     <p>
-      <%= link_to "Criar Diária por Período", new_guesthouse_room_room_rate_path(@guesthouse, @room) %>
+      <% if @guesthouse.guesthouse_owner.user == current_user %>
+        <%= link_to "Criar Diária por Período", new_guesthouse_room_room_rate_path(@guesthouse, @room) %>
+      <% end %>
     </p>
     <div id="room_rates">
       <% @room.room_rates.each do |room_rate| %>
