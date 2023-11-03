@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_guesthouse, only: %i[index new create show edit update]
   before_action :set_room, only: %i[show edit update]
-  before_action :authorize_owner, only: %i[new create edit update]
+  before_action :authenticate_user!, only: %i[new create edit update]
 
   def index
     if current_user&.guesthouse_owner&.guesthouse == @guesthouse

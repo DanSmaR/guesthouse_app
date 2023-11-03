@@ -29,13 +29,4 @@ class ApplicationController < ActionController::Base
     # permit the name attribute for the sign_up action
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :role])
   end
-
-  def authorize_owner
-    unless current_user
-      redirect_to new_user_session_path, alert: 'Você precisa estar autenticado para acessar essa página' and return
-    end
-    unless @guesthouse.guesthouse_owner.user == current_user
-      redirect_to @guesthouse, alert: 'Você não tem permissão para editar outras pousadas'
-    end
-  end
 end

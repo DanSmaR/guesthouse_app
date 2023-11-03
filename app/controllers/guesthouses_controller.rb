@@ -1,17 +1,13 @@
 class GuesthousesController < ApplicationController
   before_action :set_guesthouse, only: [:show, :edit, :update]
-  before_action :authorize_owner, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   def new
-    if current_user
-      @guesthouse_owner = current_user.guesthouse_owner || current_user.create_guesthouse_owner
-      if @guesthouse_owner.guesthouse.present?
-        redirect_to @guesthouse_owner.guesthouse, alert: 'Você já possui uma Pousada.'
-      else
-        @guesthouse = @guesthouse_owner.build_guesthouse
-        @guesthouse.build_address
-      end
+    @guesthouse_owner = current_user.guesthouse_owner || current_user.create_guesthouse_owner
+    if @guesthouse_owner.guesthouse.present?
+      redirect_to @guesthouse_owner.guesthouse, alert: 'Você já possui uma Pousada.'
     else
-      redirect_to new_user_session_path, alert: 'Você precisa estar logado para cadastrar uma pousada'
+      @guesthouse = @guesthouse_owner.build_guesthouse
+      @guesthouse.build_address
     end
   end
 

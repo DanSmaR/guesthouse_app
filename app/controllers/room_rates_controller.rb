@@ -1,6 +1,6 @@
 class RoomRatesController < ApplicationController
   before_action :set_guesthouse_and_room, only: %i[new create edit update]
-  before_action :authorize_owner, only: %i[new create edit update]
+  before_action :authenticate_user!, only: %i[new create edit update]
   def new
     if current_user&.guesthouse_owner&.guesthouse&.rooms&.exists?(@room.id)
       @room_rate = @room.room_rates.new
