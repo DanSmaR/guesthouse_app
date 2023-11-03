@@ -1,8 +1,6 @@
 <%= form_with(model: [guesthouse, room, room_rate]) do |form| %>
   <% if room_rate.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(room_rate.errors.count, "error") %> prohibited this room_rate from being saved:</h2>
-
       <ul>
         <% room_rate.errors.each do |error| %>
           <li><%= error.full_message %></li>
