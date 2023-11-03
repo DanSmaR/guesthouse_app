@@ -1,0 +1,9 @@
+<article>
+  <h2>Nova Diária por Período</h2>
+
+  <%= render "form", room_rate: @room_rate, room: @room, guesthouse: @guesthouse %>
+
+  <p>
+    <%= link_to "Voltar para o Quarto", guesthouse_room_path(@guesthouse, @room) %>
+  </p>
+</article>

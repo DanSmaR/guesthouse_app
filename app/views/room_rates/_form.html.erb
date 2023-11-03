@@ -1,0 +1,32 @@
+<%= form_with(model: [guesthouse, room, room_rate]) do |form| %>
+  <% if room_rate.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(room_rate.errors.count, "error") %> prohibited this room_rate from being saved:</h2>
+
+      <ul>
+        <% room_rate.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <p>
+      <%= form.label :daily_rate %><br>
+      <%= form.number_field :daily_rate %>
+    </p>
+
+    <p>
+      <%= form.label :start_date %><br>
+      <%= form.date_field :start_date %>
+    </p>
+
+    <p>
+      <%= form.label :end_date %><br>
+      <%= form.date_field :end_date %>
+    </p>
+
+    <%= form.submit %>
+  </div>
+<% end %>
