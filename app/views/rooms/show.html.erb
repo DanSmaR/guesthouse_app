@@ -1,11 +1,24 @@
-<section>
+<article>
   <h2>Detalhes</h2>
 
   <%= render 'room', room: @room, guesthouse: @guesthouse  %>
-
   <div>
     <%= link_to 'Editar Quarto', edit_guesthouse_room_path(@guesthouse, @room) %>
     <%= link_to "Voltar", guesthouse_rooms_path(@guesthouse) %>
   </div>
 
-</section>
+  <section>
+    <h3>Diárias por Período</h3>
+    <p>
+      <%= link_to "Criar Diária por Período", new_guesthouse_room_room_rate_path(@guesthouse, @room) %>
+    </p>
+    <div id="room_rates">
+      <% @room.room_rates.each do |room_rate| %>
+        <%= render 'room_rates/room_rate', room: @room, guesthouse: @guesthouse, room_rate: room_rate %>
+    <% end %>
+    <% if @room.room_rates.empty? %>
+      <p>Não há diárias cadastradas para este quarto.</p>
+    <% end %>
+    </div>
+  </section>
+</article>

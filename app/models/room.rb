@@ -5,4 +5,5 @@ class Room < ApplicationRecord
   validates :bathroom, :balcony, :air_conditioning, :tv, :wardrobe, :safe,
             :accessible, :available, inclusion: { in: [true, false] }
   belongs_to :guesthouse
+  has_many :room_rates, dependent: :destroy, inverse_of: :room
 end

@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      room_rate: 'Diária por Período'
+    attributes:
+      room_rate:
+        daily_rate: 'Valor da diária'
+        start_date: 'Data de início'
+        end_date: 'Data de término'
