@@ -1,8 +1,8 @@
 <div id="<%= dom_id room_rate %>">
   <dl>
-    <dt>Valor</dt>
-    <dd><%= number_to_currency(room_rate.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.')%></dd>
     <dt>Período</dt>
     <dd><%= room_rate.start_date.strftime('%d/%m/%Y') %> - <%= room_rate.end_date.strftime('%d/%m/%Y') %></dd>
+    <dt>Valor</dt>
+    <dd><%= number_to_currency(room_rate.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.')%></dd>
   </dl>
 </div>

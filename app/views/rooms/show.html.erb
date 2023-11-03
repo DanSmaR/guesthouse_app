@@ -15,6 +15,7 @@
     <div id="room_rates">
       <% @room.room_rates.each do |room_rate| %>
         <%= render 'room_rates/room_rate', room: @room, guesthouse: @guesthouse, room_rate: room_rate %>
+        <%= link_to 'Editar essa Diária', edit_guesthouse_room_room_rate_path(@guesthouse, @room, room_rate) %>
     <% end %>
     <% if @room.room_rates.empty? %>
       <p>Não há diárias cadastradas para este quarto.</p>

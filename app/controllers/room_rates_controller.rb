@@ -1,7 +1,6 @@
 class RoomRatesController < ApplicationController
-  before_action :set_guesthouse_and_room, only: %i[new create]
-  before_action :authorize_room_rate_creation, only: %i[new create]
-  # TODO - add link to edit room rate in room show page
+  before_action :set_guesthouse_and_room, only: %i[new create edit update]
+  before_action :authorize_owner, only: %i[new create edit update]
   def new
     if current_user&.guesthouse_owner&.guesthouse&.rooms&.exists?(@room.id)
       @room_rate = @room.room_rates.new
@@ -21,6 +20,21 @@ class RoomRatesController < ApplicationController
     end
   end
 
+  def edit
+    @room_rate = @room.room_rates.find(params[:id])
+  end
+
+  def update
+    @room_rate = @room.room_rates.find(params[:id])
+    if @room_rate.update(room_rate_params)
+      flash[:notice] = 'Diária atualizada com sucesso'
+      redirect_to guesthouse_room_path(@room.guesthouse, @room)
+    else
+      flash.now[:alert] = 'Não foi possível atualizar a diária'
+      render :edit
+    end
+  end
+
   private
 
   def set_guesthouse_and_room
@@ -30,12 +44,5 @@ class RoomRatesController < ApplicationController
 
   def room_rate_params
     params.require(:room_rate).permit(:daily_rate, :start_date, :end_date)
-  end
-
-  def authorize_room_rate_creation
-    unless current_user&.guesthouse_owner&.guesthouse&.rooms&.exists?(@room.id)
-      redirect_to guesthouse_rooms_path(@guesthouse),
-                  alert: 'Você não tem permissão para cadastrar diárias'
-    end
   end
 end
