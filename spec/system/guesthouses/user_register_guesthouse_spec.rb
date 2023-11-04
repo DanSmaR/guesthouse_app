@@ -71,4 +71,6 @@ describe 'Guesthouse owner registers Guesthouse' do
   end
 
 #   TODO - create a test which a user cannot access the guesthouse creation by typing the url, new and create actions
+# TODO - user cannot create a guesthouse if he already has one
+# TODO - user cannot create a guesthouse if he is not a guesthouse owner
 end

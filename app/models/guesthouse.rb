@@ -9,10 +9,19 @@ class Guesthouse < ApplicationRecord
   accepts_nested_attributes_for :address
 
   validate :at_least_one_payment_method
+  before_create :only_one_guesthouse_per_owner
 
   private
 
   def at_least_one_payment_method
     errors.add(:payment_methods, "at least one payment method must be present") if payment_methods.empty?
+  end
+
+
+  def only_one_guesthouse_per_owner
+    if Guesthouse.where(guesthouse_owner_id: guesthouse_owner_id).exists?
+      errors.add(:base, 'Each owner can only have one guesthouse')
+      throw(:abort)
+    end
   end
 end
