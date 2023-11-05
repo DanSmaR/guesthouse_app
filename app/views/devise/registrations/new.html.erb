@@ -2,37 +2,40 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+  <fieldset>
+    <legend>Informações de acesso</legend>
+    <p class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+    <p class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email" %>
+    </p>
 
-  <div class="field">
-    <%= f.label :role %>
-    <%= f.select :role, User.roles.keys.map { |role| [t("activerecord.attributes.user.roles.#{role}"), role] } %>
-  </div>
+    <p class="field">
+      <%= f.label :role %><br />
+      <%= f.select :role, User.roles.keys.map { |role| [t("activerecord.attributes.user.roles.#{role}"), role] } %>
+    </p>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <p class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em><%= I18n.t("devise.shared.minimum_password_length",
+                     count: @minimum_password_length) %></em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </p>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
+    <p class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </p>
+  </fieldset>
+  <p class="actions">
     <%= f.submit "Criar conta" %>
-  </div>
+  </p>
 <% end %>
 
 <%= render "devise/shared/links" %>

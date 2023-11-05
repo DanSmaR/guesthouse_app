@@ -1,4 +1,13 @@
 <%= form_with model: guesthouse do |f| %>
+  <% if guesthouse.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% guesthouse.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <fieldset>
     <legend>Informações Básicas</legend>
