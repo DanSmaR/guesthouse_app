@@ -1,24 +1,54 @@
-# README
+# Pousada App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+This project is a web application for managing guesthouses. It allows guesthouse owners to register their guesthouses, manage rooms, and handle bookings. It also allows users to search for guesthouses, book rooms, and make payments.
+It's a project from the treinaDev Bootcamp from [Campus Code school](https://www.campuscode.com.br/inicio).
 
-* Ruby version
+## Features
 
-* System dependencies
+- User registration and authentication
+- Guesthouse registration
+- Room management
+- Booking system
+- Payment system
 
-* Configuration
+## Technologies Used
 
-* Database creation
+- Ruby on Rails
+- Devise for authentication
+- SQLite3 for database
 
-* Database initialization
+## Setup
 
-* How to run the test suite
+To run this project locally, follow these steps:
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Clone the repository: `git clone https://github.com/username/projectname.git`
+2. Navigate to the project directory: `cd projectname`
+3. Install dependencies: `bundle install`
+5. Start the server: `rails server`
 
-* Deployment instructions
+## Login
 
-* ...
+The database is seeded with a default user with the following credentials:
+
+**User 1**
+- name: João
+- email: joao@email.com
+- password: password
+
+**User 2**
+- name: Maria
+- email: maria@email.com
+- password: password
+
+The user João already has a complete profile, with a guesthouse, rooms and rooms_rates.
+The user Maria has only guesthouse and rooms.
+
+## Contributing
+
+Contributions are welcome. Please open a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License.
