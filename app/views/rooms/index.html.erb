@@ -1,7 +1,7 @@
 <article>
   <h2>Quartos</h2>
   <% if @guesthouse.guesthouse_owner.user == current_user %>
-    <%= link_to "Cadastrar Quartos", new_guesthouse_room_path(@guesthouse) %>
+    <%= link_to "Cadastrar Quartos", new_guesthouse_room_path(@guesthouse) %> |
   <% end %>
   <%= link_to "Voltar", guesthouse_path(@guesthouse) %>
     <div id="rooms">

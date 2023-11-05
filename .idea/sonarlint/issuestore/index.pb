@@ -224,3 +224,7 @@ R
 "app/views/room_rates/edit.html.erb,1/b/1b54a838c2a660926944545556a6a06fe1d6c39d
 c
 3spec/system/room_rates/user_edit_room_rates_spec.rb,8/1/81d42fbca4897ab0e6e07a8cc202c801924c41a7
+C
+config/database.yml,2/c/2c912561029efc03ffae15b01b7337417d7a99bd
+>
+config/boot.rb,2/8/282801721e4662b894f31333db756b2db291eee9
