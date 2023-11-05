@@ -117,7 +117,7 @@
                         guesthouse.payment_method_ids.include?(payment_method.id),
                         id: "payment_method_#{payment_method.id}" %>
       <%= label_tag "payment_method_#{payment_method.id}",
-                    t("payment_methods.#{payment_method.method}") %>
+                    t("#{payment_method.method}") %>
     <% end %>
   </fieldset>
 

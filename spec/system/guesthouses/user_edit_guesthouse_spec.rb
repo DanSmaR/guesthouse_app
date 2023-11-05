@@ -129,10 +129,6 @@ describe 'User edit guesthouse' do
     guesthouse2.build_address(street: 'Rua da Sucata, 1000', neighborhood: 'Vila Minas Gerais' ,
                              city: 'Itapevi', state: 'SP', postal_code: '01001-000')
 
-    PaymentMethod.create!(method: 'credit_card')
-    PaymentMethod.create!(method: 'debit_card')
-    PaymentMethod.create!(method: 'pix')
-
     guesthouse2.payment_methods = PaymentMethod.all
 
     guesthouse.save!

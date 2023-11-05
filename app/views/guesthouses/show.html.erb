@@ -17,7 +17,7 @@
     <dd><%= @guesthouse.pets ? 'Permitido' : 'Proibido'  %></dd>
     <dt>Formas de Pagamento:</dt>
     <% @guesthouse.payment_methods.each do |payment_method| %>
-      <dd><%= t("payment_methods.#{payment_method.method}") %></dd>
+      <dd><%= t("#{payment_method.method}") %></dd>
     <% end %>
   </dl>
 
