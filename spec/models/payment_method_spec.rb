@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe PaymentMethod, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it 'must be unique' do
+      PaymentMethod.create!(method: 'credit_card')
+      payment_method = PaymentMethod.new(method: 'credit_card')
+      payment_method.valid?
+      expect(payment_method.errors[:method]).to include('já está em uso')
+    end
+  end
 end
