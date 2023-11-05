@@ -1,6 +1,6 @@
 pt-BR:
   payment_methods:
-    credit_card: 'Cartão de crédito'
-    debit_card: 'Cartão de débito'
-    pix: 'Pix'
+    credit_card: "Cartão de crédito"
+    debit_card: "Cartão de débito"
+    pix: "Pix"
     # Add other payment methods here

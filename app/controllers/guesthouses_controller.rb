@@ -56,15 +56,6 @@ class GuesthousesController < ApplicationController
                                                              :city, :state, :postal_code])
   end
 
-  def create_payment_methods(resource = @guesthouse)
-    params[:payment_methods]&.each do |payment_method|
-      pm = PaymentMethod.find_by(method: payment_method)
-      unless resource.payment_methods.exists?(pm)
-        resource.payment_methods << pm
-      end
-    end
-  end
-
   def set_guesthouse
     @guesthouse = Guesthouse.find(params[:id])
   end

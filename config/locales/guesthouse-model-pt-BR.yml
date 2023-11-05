@@ -15,8 +15,5 @@ pt-BR:
         checkin_hour: 'Hora de Check-in'
         checkout_hour: 'Hora de Check-out'
         active: 'Pousada Ativa'
-        payment_method: 'Formas de Pagamento'
-        payment_methods:
-          credit_card: 'Cartão de Crédito'
-          debit_card: 'Cartão de Débito'
-          pix: 'Pix'
+        address: 'Endereço'
+        payment_methods: 'Formas de Pagamento'
