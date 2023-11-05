@@ -1,6 +1,6 @@
 <%= form_with model: guesthouse do |f| %>
   <% if guesthouse.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" style="color: red">
       <ul>
         <% guesthouse.errors.full_messages.each do |message| %>
           <li><%= message %></li>
