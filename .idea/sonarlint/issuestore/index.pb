@@ -228,3 +228,5 @@ C
 config/database.yml,2/c/2c912561029efc03ffae15b01b7337417d7a99bd
 >
 config/boot.rb,2/8/282801721e4662b894f31333db756b2db291eee9
+E
+config/environment.rb,3/2/32cf963bc694248c5a463e17894503af06f93fdd
