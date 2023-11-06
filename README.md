@@ -23,7 +23,7 @@ It's a project from the treinaDev Bootcamp from [Campus Code school](https://www
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/username/projectname.git`
+1. Clone the repository: `git clone git@github.com:DanSmaR/guesthouse_app.git`
 2. Navigate to the project directory: `cd projectname`
 3. Install dependencies: `bundle install`
 5. Start the server: `rails server`
