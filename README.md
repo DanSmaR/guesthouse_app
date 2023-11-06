@@ -15,9 +15,12 @@ It's a project from the treinaDev Bootcamp from [Campus Code school](https://www
 
 ## Technologies Used
 
-- Ruby on Rails
+- Ruby version 3.0.0
+- Ruby on Rails version 7.1.1
 - Devise for authentication
 - SQLite3 for database
+- RSpec for testing
+- Capybara for testing
 
 ## Setup
 
@@ -27,9 +30,13 @@ To run this project locally, follow these steps:
 2. Navigate to the project directory: `cd projectname`
 3. Install dependencies: `bundle install`
 4. Drop the database: `rails db:drop`
-4. Setup the database: `rails db:create db:migrate`
-5. Seed the database: `rails db:seed`
-5. Start the server: `rails server`
+5. Set up the database: `rails db:create db:migrate`
+6. Seed the database: `rails db:seed`
+7. Start the server: `rails server`
+
+## Testing
+
+To run the tests, run `rspec` in the project directory.
 
 ## Login
 
