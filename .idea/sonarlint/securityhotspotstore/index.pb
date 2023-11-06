@@ -133,8 +133,6 @@ G.idea/sonarlint/issuestore/f/6/f6c8dbcff09b19e46bce32cdfee3faae8418f42d,f/3/f3
 Q.idea/sonarlint/securityhotspotstore/4/f/4f7b76b1197d6fb073f77957b3b7b70d921ed7e7,1/f/1f46ee073f813ee0d24d731019e73ed50c78ef4d
 r
 Bdb/migrate/20231101170157_remove_payment_method_from_guesthouse.rb,6/2/6213dfd0632390b7224274233bb1508f29af1e57
-c
-3db/migrate/20231101164743_create_payment_methods.rb,d/c/dce0030911ee2345dbc777e0bf27fac2c30d7445
 x
 Hdb/migrate/20231101171238_create_join_table_guesthouse_payment_method.rb,a/2/a284022014bfc46d04c39fecd3f21f93174cf607
 9

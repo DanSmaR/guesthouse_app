@@ -139,8 +139,6 @@ N
 spec/support/devise_methods.rb,4/3/43a0d5e2dde7f9e178aa4f7df65ed5af49b44be1
 _
 /spec/system/authentication/user_sign_in_spec.rb,9/c/9c533f7ae5ae262ac8c2076f03daacf304be2a82
-c
-3db/migrate/20231101164743_create_payment_methods.rb,d/c/dce0030911ee2345dbc777e0bf27fac2c30d7445
 r
 Bdb/migrate/20231101170157_remove_payment_method_from_guesthouse.rb,6/2/6213dfd0632390b7224274233bb1508f29af1e57
 x
