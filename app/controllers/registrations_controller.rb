@@ -19,28 +19,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  protected
-
-  def after_sign_up_path_for(resource)
-    if resource.role == 'guesthouse_owner'
-      new_guesthouse_path
-    else
-      super
-    end
-  end
-
-  def after_sign_in_path_for(resource)
-    if resource.role == 'guesthouse_owner'
-      new_guesthouse_path
-    else
-      super
-    end
-  end
-
-  # def after_inactive_sign_up_path_for(resource)
-  #   root_path
-  # end
-
   private
 
   def save_guesthouse_owner_transaction

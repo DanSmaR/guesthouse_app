@@ -29,4 +29,22 @@ class ApplicationController < ActionController::Base
     # permit the name attribute for the sign_up action
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :role])
   end
+
+  protected
+
+  def after_sign_up_path_for(resource)
+    if resource.role == 'guesthouse_owner'
+      new_guesthouse_path
+    else
+      super
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    if resource.role == 'guesthouse_owner'
+      new_guesthouse_path
+    else
+      super
+    end
+  end
 end

@@ -11,7 +11,7 @@ class Guesthouse < ApplicationRecord
   validate :at_least_one_payment_method
 
   before_create :only_one_guesthouse_per_owner
-  # before_update :only_one_guesthouse_per_owner
+  before_update :only_one_guesthouse_per_owner
 
   private
 
