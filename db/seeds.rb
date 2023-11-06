@@ -13,7 +13,13 @@
   PaymentMethod.find_or_create_by!(method: method)
 end
 
-user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', role: 1)
+user = User.create!(
+  name: 'Joao',
+  email: 'joao@email.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 1
+  )
 guesthouse_owner = user.build_guesthouse_owner
 guesthouse = guesthouse_owner.build_guesthouse(corporate_name: 'Pousada Nascer do Sol LTDA.',
                                                brand_name: 'Pousada Nascer do Sol',
@@ -39,7 +45,14 @@ guesthouse.rooms.create!([{ name: 'Quarto Primavera', description: 'Quarto com v
 guesthouse.rooms.first&.room_rates&.create!([{ start_date: '2021-01-01', end_date: '2021-01-31', daily_rate: 100 },
                                              { start_date: '2021-02-01', end_date: '2021-02-28', daily_rate: 200 }])
 
-user2 = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password', role: 1)
+
+user2 = User.create!(
+  name: 'Maria',
+  email: 'maria@email.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: 1
+)
 guesthouse_owner2 = user2.build_guesthouse_owner
 guesthouse2 = guesthouse_owner2.build_guesthouse(corporate_name: 'Casa do Saber LTDA.',
                                                  brand_name: 'Casa do Saber',

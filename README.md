@@ -26,7 +26,9 @@ To run this project locally, follow these steps:
 1. Clone the repository: `git clone git@github.com:DanSmaR/guesthouse_app.git`
 2. Navigate to the project directory: `cd projectname`
 3. Install dependencies: `bundle install`
+4. Drop the database: `rails db:drop`
 4. Setup the database: `rails db:create db:migrate`
+5. Seed the database: `rails db:seed`
 5. Start the server: `rails server`
 
 ## Login
