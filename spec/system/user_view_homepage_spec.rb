@@ -43,7 +43,7 @@ describe 'User landing in the home page' do
       expect(page).to have_content('Nenhuma pousada cadastrada')
     end
   end
-  #   TODO - Tests for non active guesthouses
+
   context 'as a user not logged in' do
     it 'should see the app name' do
       # Arrange
@@ -127,7 +127,7 @@ describe 'User landing in the home page' do
       # Assert
       expect(page).to_not have_content('Nenhuma pousada cadastrada')
       # last 3 active guesthouses
-      within 'div#last_guesthouses' do
+      within 'section#last3_guesthouses' do
         expect(page).to have_content('Pousada Vista Linda')
         expect(page).to have_content('Santa Catarina')
         expect(page).to have_content('Pousada Alto do Mirante')
@@ -139,7 +139,7 @@ describe 'User landing in the home page' do
         expect(page).to_not have_content('Pousada Nascer do Sol')
       end
       # show the remaining active guesthouses out of the div#last_guesthouses
-      within 'div#remaining_guesthouses' do
+      within 'section#remaining_guesthouses' do
         expect(page).to have_content('Pousada Lua Cheia')
         expect(page).to have_content('Sorocaba')
         expect(page).to have_content('Pousada Nascer do Sol')

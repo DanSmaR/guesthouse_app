@@ -1,15 +1,26 @@
 <h2>Sejam bem vindos(as) ao Pousada App</h2>
 <p>Aqui você encontrará as melhores pousadas para sua acomodação!</p>
 
-<section aria-label="Algumas Pousadas">
-  <% @guesthouses.each do |gh| %>
+<% if @guesthouses_last_three.empty? %>
+  <p style="color: red">Nenhuma pousada cadastrada</p>
+<% end %>
+
+<section id="last3_guesthouses">
+  <h3>Últimas pousadas cadastradas</h3>
+  <% @guesthouses_last_three.each do |gh| %>
     <dl>
       <dt><h4><%= link_to gh.brand_name, guesthouse_path(gh) %></h4></dt>
       <dd><%= gh.address.city %> - <%= gh.address.state %></dd>
     </dl>
   <% end %>
+</section>
 
-  <% if @guesthouses.empty? %>
-    <p>Nenhuma pousada cadastrada</p>
+<section id="remaining_guesthouses">
+  <h3>Demais Pousadas</h3>
+  <% @guesthouses_remaining.each do |gh| %>
+    <dl>
+      <dt><h4><%= link_to gh.brand_name, guesthouse_path(gh) %></h4></dt>
+      <dd><%= gh.address.city %> - <%= gh.address.state %></dd>
+    </dl>
   <% end %>
 </section>
