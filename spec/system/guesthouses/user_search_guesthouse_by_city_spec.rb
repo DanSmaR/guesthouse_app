@@ -57,9 +57,12 @@ describe 'User search guesthouse by city' do
       expect(current_path).to eq(by_city_guesthouses_path)
       expect(page).to have_content('Resultados da Busca por: Sorocaba')
       expect(page).to have_content('2 pousadas encontradas')
-      expect(page).to have_content('Pousada Lua Cheia')
-      expect(page).to_not have_content('Pousada Vista Linda')
-
+      # Assert the guesthouses are sorted by brand_name
+      %w[Estrela\ Cadente Lua\ Cheia].each_with_index do |guesthouse, index|
+        expect(page).to have_selector(
+                          "dl:nth-child(#{index + 3}) > dt > h4 > a",
+                          text: "Pousada #{guesthouse}")
+      end
     end
 
     it 'and does not get any results' do

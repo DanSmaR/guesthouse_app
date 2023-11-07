@@ -49,7 +49,9 @@ class GuesthousesController < ApplicationController
       flash[:alert] = 'Escolha uma cidade para buscar'
       redirect_back(fallback_location: root_path)
     else
-      @guesthouses_by_city = Guesthouse.joins(:address).where(active: true, addresses: { city: @city })
+      @guesthouses_by_city = Guesthouse.joins(:address)
+                                       .where(active: true, addresses: { city: @city })
+                                       .sort_by(&:brand_name)
     end
   end
 
