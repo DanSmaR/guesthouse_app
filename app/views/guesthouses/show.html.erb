@@ -1,21 +1,30 @@
 <article>
   <h2><%= @guesthouse.brand_name %></h2>
-  <p>Conheça a pousada</p>
+  <p>Conheça a <%= Guesthouse.model_name.human %></p>
 
   <dl>
-    <dt>Local:</dt>
-    <dd><%= @guesthouse.address.city %> - <%= @guesthouse.address.state %></dd>
-    <dt>Descrição:</dt>
+    <dt><%= Guesthouse.human_attribute_name(:description) %>:</dt>
     <dd><%= @guesthouse.description %></dd>
-    <dt>Política de uso:</dt>
+    <dt>Endereço:</dt>
+    <dd>
+      <%= @guesthouse.address.street %>, <%= @guesthouse.address.neighborhood %>,
+      <%= @guesthouse.address.city %> - <%= @guesthouse.address.state %>,
+      <%= @guesthouse.address.postal_code %>
+    </dd>
+    <dt><%= Guesthouse.human_attribute_name(:phone_number) %>:</dt>
+    <dd><%= @guesthouse.phone_number %></dd>
+    <dt><%= Guesthouse.human_attribute_name(:email) %>:</dt>
+    <dd><%= @guesthouse.email %></dd>
+
+    <dt><%= Guesthouse.human_attribute_name(:use_policy) %>:</dt>
     <dd><%= @guesthouse.use_policy %></dd>
-    <dt>Check-in:</dt>
+    <dt><%= Guesthouse.human_attribute_name(:checkin_hour) %>:</dt>
     <dd><%= @guesthouse.checkin_hour.strftime("%H:%M") %></dd>
-    <dt>Check-out:</dt>
+    <dt><%= Guesthouse.human_attribute_name(:checkout_hour) %>:</dt>
     <dd><%= @guesthouse.checkout_hour.strftime("%H:%M") %></dd>
-    <dt>Pets:</dt>
+    <dt><%= Guesthouse.human_attribute_name(:pets) %>:</dt>
     <dd><%= @guesthouse.pets ? 'Permitido' : 'Proibido'  %></dd>
-    <dt>Formas de Pagamento:</dt>
+    <dt><%= Guesthouse.human_attribute_name(:payment_methods) %>:</dt>
     <% @guesthouse.payment_methods.each do |payment_method| %>
       <dd><%= t("#{payment_method.method}") %></dd>
     <% end %>

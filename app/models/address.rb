@@ -6,4 +6,5 @@ class Address < ApplicationRecord
   }
   has_one :guesthouse, inverse_of: :address
   validates :street, :neighborhood, :city, :state, :postal_code, presence: true
+#   TODO: add number field to address
 end

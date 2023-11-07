@@ -16,7 +16,7 @@ describe 'User signs up' do
     click_on 'Criar conta'
 
     # Assert
-    expect(page).to have_content('Boas vindas! Você realizou seu registro com sucesso.')
+    expect(page).to have_content('Você precisa cadastrar uma pousada para continuar')
     expect(page).to have_content('maria@email.com')
     expect(page).to have_button('Sair')
     expect(User.last.name).to eq('Maria')

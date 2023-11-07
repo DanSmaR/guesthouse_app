@@ -60,7 +60,6 @@ describe 'User landing in the home page' do
 
     it 'should see some guesthouses' do
       # Arrange
-
       cities = %w[Itapetininga Sorocaba São\ Paulo Rio\ de\ Janeiro Belo\ Horizonte Santa\ Catarina]
       states = %w[SP SP SP RJ MG SC]
       guesthouses_names =

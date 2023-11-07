@@ -230,3 +230,5 @@ E
 config/environment.rb,3/2/32cf963bc694248c5a463e17894503af06f93fdd
 c
 3db/migrate/20231031163502_create_payment_methods.rb,c/b/cbba07950d9b39aa74ade2bd52a63e554c11d317
+d
+4spec/system/guesthouses/user_show_guesthouse_spec.rb,6/2/623c54e91fb364423995b1c451a8792ab76aef51
