@@ -60,8 +60,8 @@ describe 'User landing in the home page' do
 
     it 'should see some guesthouses' do
       # Arrange
-      cities = %w[Itapetininga Sorocaba São\ Paulo Rio\ de\ Janeiro Belo\ Horizonte Santa\ Catarina]
-      states = %w[SP SP SP RJ MG SC]
+      cities = %w[Itapetininga Sorocaba São\ Paulo Rio\ de\ Janeiro Belo\ Horizonte Sorocaba]
+      states = %w[SP SP SP RJ MG SP]
       guesthouses_names =
         %w[Nascer\ do\ Sol Lua\ Cheia Estrela\ Cadente Lago\ Verde Alto\ do\ Mirante Vista\ Linda]
       user_names = %w[Joao Maria Jose Pedro Ana Paulo]
@@ -128,7 +128,7 @@ describe 'User landing in the home page' do
       # last 3 active guesthouses
       within 'section#last3_guesthouses' do
         expect(page).to have_content('Pousada Vista Linda')
-        expect(page).to have_content('Santa Catarina')
+        expect(page).to have_content('Sorocaba')
         expect(page).to have_content('Pousada Alto do Mirante')
         expect(page).to have_content('Belo Horizonte')
         expect(page).to have_content('Pousada Lago Verde')

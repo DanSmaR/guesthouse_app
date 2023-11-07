@@ -37,7 +37,7 @@ describe 'User search guesthouse by city' do
                                                 pets: true,
                                                 use_policy: 'Não é permitido fumar nas dependências da pousada',
                                                 checkin_hour: '14:00', checkout_hour: '12:00',
-                                                active: index == 2 ? false : true)
+                                                active: true)
 
         guesthouse[index].build_address(street: "Avenida #{index}, #{index}000",
                                         neighborhood: "Bairro #{index}" ,
@@ -56,8 +56,10 @@ describe 'User search guesthouse by city' do
       # Assert
       expect(current_path).to eq(by_city_guesthouses_path)
       expect(page).to have_content('Resultados da Busca por: Sorocaba')
-      expect(page).to have_content('1 pousada encontrada')
+      expect(page).to have_content('2 pousadas encontradas')
       expect(page).to have_content('Pousada Lua Cheia')
+      expect(page).to_not have_content('Pousada Vista Linda')
+
     end
 
     it 'and does not get any results' do

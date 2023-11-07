@@ -1,7 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      guesthouse: 'Pousada'
+      guesthouse:
+        one: 'Pousada'
+        other: 'Pousadas'
     attributes:
       guesthouse:
         corporate_name: 'Razão Social'
