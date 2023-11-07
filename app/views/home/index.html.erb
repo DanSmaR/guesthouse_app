@@ -8,19 +8,13 @@
 <section id="last3_guesthouses">
   <h3>Últimas pousadas cadastradas</h3>
   <% @guesthouses_last_three.each do |gh| %>
-    <dl>
-      <dt><h4><%= link_to gh.brand_name, guesthouse_path(gh) %></h4></dt>
-      <dd><%= gh.address.city %> - <%= gh.address.state %></dd>
-    </dl>
+    <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
   <% end %>
 </section>
 
 <section id="remaining_guesthouses">
   <h3>Demais Pousadas</h3>
   <% @guesthouses_remaining.each do |gh| %>
-    <dl>
-      <dt><h4><%= link_to gh.brand_name, guesthouse_path(gh) %></h4></dt>
-      <dd><%= gh.address.city %> - <%= gh.address.state %></dd>
-    </dl>
+    <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
   <% end %>
 </section>

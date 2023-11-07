@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User not logged in'
+describe 'User not logged in' do
   context 'when clicking on one of guesthouse last 3 section' do
     it 'sees the guesthouse details' do
       # Arrange
@@ -139,27 +139,6 @@ describe 'User not logged in'
 
         guesthouse[index].payment_methods = PaymentMethod.all
         guesthouse[index].save!
-
-        guesthouse[index].rooms.create!([{ name: 'Quarto Primavera',
-                                           description: 'Quarto com vista para a serra',
-                                           size: 30, max_people: 2, daily_rate: 100,
-                                           bathroom: true, balcony: true,
-                                           air_conditioning: true, tv: true, wardrobe: true,
-                                           safe: true, accessible: true,
-                                           available: index.odd? ? true : false },
-                                         { name: 'Quarto Verão',
-                                           description: 'Quarto com vista para o mar',
-                                           size: 30, max_people: 2, daily_rate: 100,
-                                           bathroom: true, balcony: true,
-                                           air_conditioning: true, tv: true, wardrobe: true,
-                                           safe: true, accessible: true,
-                                           available: index.even? ? true : false }])
-        guesthouse[index].rooms.first&.room_rates&.create!([{ start_date: '2021-01-01',
-                                                              end_date: '2021-01-31',
-                                                              daily_rate: (index + 2) * 100 },
-                                                            { start_date: '2021-02-01',
-                                                              end_date: '2021-02-28',
-                                                              daily_rate: (index + 1) * 100 }])
       end
 
       # Act
@@ -185,4 +164,5 @@ describe 'User not logged in'
       expect(page).to have_content('Cartão de débito')
       expect(page).to have_content('Pix')
     end
+  end
 end

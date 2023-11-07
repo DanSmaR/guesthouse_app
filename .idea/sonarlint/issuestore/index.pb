@@ -232,3 +232,21 @@ c
 3db/migrate/20231031163502_create_payment_methods.rb,c/b/cbba07950d9b39aa74ade2bd52a63e554c11d317
 d
 4spec/system/guesthouses/user_show_guesthouse_spec.rb,6/2/623c54e91fb364423995b1c451a8792ab76aef51
+n
+>spec/system/guesthouses/user_search_guesthouse_by_city_spec.br,e/a/ea9f6920ba9ce62fad810ba3a956fd2598ab562b
+n
+>spec/system/guesthouses/user_search_guesthouse_by_city_spec.rb,0/1/0131fab9c8065978ae741fc6fd4d07ef0f1e8263
+R
+"app/views/layouts/_header.html.erb,1/2/12e0ffa73350b6f8b572afab727eeab71ee1df63
+O
+app/views/home/_header.html.erb,b/3/b3e3fd4e0affb49f7f2b15dfe19e163f2ceddd36
+J
+app/helpers/home_helper.rb,7/f/7fd6e678f85fc75a23bb4b633aa3e300e0d53d65
+Q
+!app/views/shared/_header.html.erb,7/6/76d1a11ee1e940c5ee3f38422c24188edb0fe433
+V
+&app/views/guesthouses/by_city.html.erb,3/c/3cdc206d16bebc6934618b0663516fd7eec07d8d
+`
+0app/views/shared/_guesthouse_basic_info.html.erb,7/4/748d226d9e02dc334d867155de652221c1dfc06e
+H
+config/locales/pt-BR.yml,6/e/6ef52c7b95d88b82583d538d8fcd164b511a1e14

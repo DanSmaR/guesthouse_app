@@ -39,7 +39,7 @@ describe 'User gets authenticated' do
     click_on 'Entrar'
     fill_in 'E-mail', with: 'joao@email.com'
     fill_in 'Senha', with: 'password'
-    within 'form' do
+    within 'form#new_user' do
       click_on 'Entrar'
     end
     click_on 'Sair'

@@ -43,6 +43,16 @@ class GuesthousesController < ApplicationController
     end
   end
 
+  def by_city
+    @city = params[:city]
+    if @city == ''
+      flash[:alert] = 'Escolha uma cidade para buscar'
+      redirect_back(fallback_location: root_path)
+    else
+      @guesthouses_by_city = Guesthouse.joins(:address).where(active: true, addresses: { city: @city })
+    end
+  end
+
   private
 
   def guesthouse_params

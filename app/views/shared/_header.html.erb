@@ -1,0 +1,30 @@
+<header>
+  <h1>Pousada App</h1>
+  <nav>
+    <ul>
+      <li><%= link_to "Início", root_path %></li>
+      <!-- <li><%#= link_to "Pousadas", guesthouses_path %></li>-->
+    </ul>
+  </nav>
+  <div>
+    <% if current_user&.guesthouse_owner&.guesthouse %>
+      <% id = current_user&.guesthouse_owner&.guesthouse&.id || 1 %>
+      <%= link_to 'Minha Pousada', guesthouse_path(id) %>
+    <% end %>
+    <% if user_signed_in? %>
+      <p><%= current_user.email %></p>
+      <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <% unless current_page?(user_session_path) || current_page?(new_user_registration_path) %>
+        <p><%= link_to "Entrar", new_user_session_path %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= form_tag by_city_guesthouses_path, method: :get, id: 'search_form' do %>
+    <%= label_tag :city, "Buscar por Cidade:" %>
+    <%= select_tag :city, options_for_select(@cities.map { |city| [city, city] },
+                                             params[:city]), prompt: "Selecione uma Cidade" %>
+    <%= submit_tag "Buscar" %>
+  <% end %>
+</header>
