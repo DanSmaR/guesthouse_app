@@ -1,20 +1,31 @@
-<h2>Sejam bem vindos(as) ao Pousada App</h2>
-<p>Aqui você encontrará as melhores pousadas para sua acomodação!</p>
-
-<% if @guesthouses_last_three.empty? %>
-  <p style="color: red">Nenhuma pousada cadastrada</p>
-<% end %>
-
-<section id="last3_guesthouses">
-  <h3>Últimas pousadas cadastradas</h3>
-  <% @guesthouses_last_three.each do |gh| %>
-    <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
+<aside>
+  <%= form_tag by_city_guesthouses_path, method: :get, id: 'search_form' do %>
+    <%= label_tag :city, "Buscar por Cidade:" %>
+    <%= select_tag :city, options_for_select(@cities.map { |city| [city, city] },
+                                             params[:city]), prompt: "Selecione uma Cidade" %>
+    <%= submit_tag "Buscar" %>
   <% end %>
-</section>
+</aside>
+<hr>
+<article>
+  <h2>Sejam bem vindos(as) ao Pousada App</h2>
+  <p>Aqui você encontrará as melhores pousadas para sua acomodação!</p>
 
-<section id="remaining_guesthouses">
-  <h3>Demais Pousadas</h3>
-  <% @guesthouses_remaining.each do |gh| %>
-    <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
+  <% if @guesthouses_last_three.empty? %>
+    <p style="color: red">Nenhuma pousada cadastrada</p>
   <% end %>
-</section>
+
+  <section id="last3_guesthouses">
+    <h3>Últimas pousadas cadastradas</h3>
+    <% @guesthouses_last_three.each do |gh| %>
+      <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
+    <% end %>
+  </section>
+  <hr>
+  <section id="remaining_guesthouses">
+    <h3>Demais Pousadas</h3>
+    <% @guesthouses_remaining.each do |gh| %>
+      <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
+    <% end %>
+  </section>
+</article>

@@ -197,10 +197,8 @@ describe 'User landing in the home page' do
       visit(root_path)
 
       # Assert
-      within 'header' do
-        expect(page).to have_select('city', with_options: %w[Selecione\ uma\ Cidade Itapetininga Sorocaba])
-        expect(page).to have_button('Buscar')
-      end
+      expect(page).to have_select('city', with_options: %w[Selecione\ uma\ Cidade Itapetininga Sorocaba])
+      expect(page).to have_button('Buscar')
     end
   end
 end

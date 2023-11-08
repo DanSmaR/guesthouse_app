@@ -20,11 +20,4 @@
       <% end %>
     <% end %>
   </div>
-
-  <%= form_tag by_city_guesthouses_path, method: :get, id: 'search_form' do %>
-    <%= label_tag :city, "Buscar por Cidade:" %>
-    <%= select_tag :city, options_for_select(@cities.map { |city| [city, city] },
-                                             params[:city]), prompt: "Selecione uma Cidade" %>
-    <%= submit_tag "Buscar" %>
-  <% end %>
 </header>

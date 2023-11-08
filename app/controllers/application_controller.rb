@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # if the controller that the action is coming from is a devise_controller
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :redirect_guesthouse_owner
-  before_action :set_cities
 
   private
 
@@ -22,10 +21,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-  end
-
-  def set_cities
-    @cities = Guesthouse.all.map(&:address).map(&:city).uniq
   end
 
   protected

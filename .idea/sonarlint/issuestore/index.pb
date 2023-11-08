@@ -55,3 +55,7 @@ Y
 )app/controllers/guesthouses_controller.rb,f/6/f6c8dbcff09b19e46bce32cdfee3faae8418f42d
 V
 &spec/system/user_view_homepage_spec.rb,6/1/6153cac314b7850ce11d80cb063f1fe9f1d75b4b
+Q
+!app/views/shared/_header.html.erb,7/6/76d1a11ee1e940c5ee3f38422c24188edb0fe433
+V
+&app/assets/stylesheets/application.css,5/6/565e1651e502b72ad76ed27e8f0a562fea115987
