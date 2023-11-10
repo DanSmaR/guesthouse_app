@@ -20,4 +20,12 @@
       <% end %>
     <% end %>
   </div>
+
+  <div id="search_bar">
+    <%= form_tag search_guesthouses_path, method: :get do %>
+      <%= label_tag :query, 'Pesquisar Pousadas' %>
+      <%= text_field_tag :query, params[:query], placeholder: "Nome, Bairro ou Cidade" %>
+      <%= submit_tag "Pesquisar" %>
+    <% end %>
+  </div>
 </header>
