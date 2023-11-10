@@ -272,7 +272,7 @@ describe 'User searches for a guesthouse' do
                                                 active: index == 2 ? false : true)
 
         guesthouse[index].build_address(street: "Avenida #{index}, #{index}000",
-                                        neighborhood: "Bairro #{index}" ,
+                                        neighborhood: index.even? ? "Bairro #{index}" : "Vila #{index}" ,
                                         city: cities[index], state: states[index],
                                         postal_code: "#{index}1001-000")
 
@@ -288,9 +288,9 @@ describe 'User searches for a guesthouse' do
       # Assert
       expect(current_path).to eq(search_guesthouses_path)
       expect(page).to have_content('Resultados da Busca por: Bairro')
-      expect(page).to have_content('3 pousadas encontradas')
+      expect(page).to have_content('2 pousadas encontradas')
       # Assert the guesthouses are sorted by brand_name
-      %w[Lua\ Cheia Nascer\ do\ Sol Raio\ de\ Sol].each_with_index do |guesthouse, index|
+      %w[Lua\ Cheia Nascer\ do\ Sol].each_with_index do |guesthouse, index|
         expect(page).to have_selector(
                           "dl:nth-child(#{index + 3}) > dt > h4 > a",
                           text: "Pousada #{guesthouse}")
