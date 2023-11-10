@@ -54,7 +54,7 @@ describe 'User search guesthouse by city' do
       click_on 'Buscar'
 
       # Assert
-      expect(current_path).to eq(search_guesthouses_path)
+      expect(current_path).to eq(search_by_city_guesthouses_path)
       expect(page).to have_content('Resultados da Busca por: Sorocaba')
       expect(page).to have_content('2 pousadas encontradas')
       # Assert the guesthouses are sorted by brand_name
@@ -117,7 +117,7 @@ describe 'User search guesthouse by city' do
 
       # Assert
       expect(current_path).to eq(root_path)
-      expect(page).to have_content('Termo para busca está vazio')
+      expect(page).to have_content('Selecione uma cidade para busca')
     end
   end
 end

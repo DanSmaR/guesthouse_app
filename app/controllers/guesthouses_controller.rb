@@ -43,24 +43,25 @@ class GuesthousesController < ApplicationController
     end
   end
 
-  def search
-    has_city_param = params[:city].present?
-    @query = has_city_param ? params[:city] : params[:query]
-    return redirect_back(fallback_location: root_path,
-                         alert: 'Termo para busca está vazio') if @query.blank?
+  # TODO: Refactor this method, splitting it into two actions
+  #      One for search by city and another for general search
+  #      rendering the same view
 
-    @guesthouses = has_city_param ? search_by_city : search_general
+  def search_by_city
+    @query = params[:city]
+    return redirect_back(fallback_location: root_path,
+                         alert: 'Selecione uma cidade para busca') if @query.blank?
+    @guesthouses = Guesthouse.search_by_city(@query)
+    render :search
+  end
+  def search
+    @query = params[:query]
+    return redirect_back(fallback_location: root_path,
+                         alert: 'Termo para pesquisa está vazio') if @query.blank?
+    @guesthouses = Guesthouse.search_general(@query)
   end
 
   private
-
-  def search_by_city
-    Guesthouse.search_by_city(@query)
-  end
-
-  def search_general
-    Guesthouse.search_general(@query)
-  end
 
   def guesthouse_params
     params.require(:guesthouse).permit(:corporate_name, :brand_name, :description,

@@ -369,7 +369,7 @@ describe 'User searches for a guesthouse' do
 
       # Assert
       expect(current_path).to eq(root_path)
-      expect(page).to have_content('Termo para busca está vazio')
+      expect(page).to have_content('Termo para pesquisa está vazio')
     end
   end
 end
