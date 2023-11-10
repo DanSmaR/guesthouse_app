@@ -59,3 +59,15 @@ Q
 !app/views/shared/_header.html.erb,7/6/76d1a11ee1e940c5ee3f38422c24188edb0fe433
 V
 &app/assets/stylesheets/application.css,5/6/565e1651e502b72ad76ed27e8f0a562fea115987
+[
++app/controllers/registrations_controller.rb,4/f/4f7b76b1197d6fb073f77957b3b7b70d921ed7e7
+n
+>spec/system/guesthouses/user_search_guesthouse_by_city_spec.rb,0/1/0131fab9c8065978ae741fc6fd4d07ef0f1e8263
+f
+6spec/system/guesthouses/user_search_guesthouse_spec.rb,4/3/439ffbce60b5216d22e822beb11024e31b81361f
+h
+8spec/system/guesthouses/user_register_guesthouse_spec.rb,7/3/73f843a4f3f2b030a85dc8240f61f6061e995e59
+S
+#app/controllers/rooms_controller.rb,f/5/f561c1ec159c34781588fc308bab8f4e9236561c
+X
+(app/controllers/room_rates_controller.rb,0/1/01ceee550d3d645e52b0870639ae00d5de299d00
