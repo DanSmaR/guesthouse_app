@@ -43,19 +43,24 @@ class GuesthousesController < ApplicationController
     end
   end
 
-  def by_city
-    @city = params[:city]
-    if @city == ''
-      flash[:alert] = 'Escolha uma cidade para buscar'
-      redirect_back(fallback_location: root_path)
-    else
-      @guesthouses_by_city = Guesthouse.joins(:address)
-                                       .where(active: true, addresses: { city: @city })
-                                       .sort_by(&:brand_name)
-    end
+  def search
+    has_city_param = params[:city].present?
+    @query = has_city_param ? params[:city] : params[:query]
+    return redirect_back(fallback_location: root_path,
+                         alert: 'Termo para busca está vazio') if @query.blank?
+
+    @guesthouses = has_city_param ? search_by_city : search_general
   end
 
   private
+
+  def search_by_city
+    Guesthouse.search_by_city(@query)
+  end
+
+  def search_general
+    Guesthouse.search_general(@query)
+  end
 
   def guesthouse_params
     params.require(:guesthouse).permit(:corporate_name, :brand_name, :description,

@@ -71,3 +71,11 @@ S
 #app/controllers/rooms_controller.rb,f/5/f561c1ec159c34781588fc308bab8f4e9236561c
 X
 (app/controllers/room_rates_controller.rb,0/1/01ceee550d3d645e52b0870639ae00d5de299d00
+H
+app/models/guesthouse.rb,4/a/4a9605fbd0737b1c4865ab259ab8c7a7eb7ad9dd
+V
+&app/views/guesthouses/by_city.html.erb,3/c/3cdc206d16bebc6934618b0663516fd7eec07d8d
+U
+%app/views/guesthouses/search.html.erb,4/a/4aa5726c95d15ede28e9b1a4f8ddf8902bd17c0b
+`
+0app/views/shared/_guesthouse_basic_info.html.erb,7/4/748d226d9e02dc334d867155de652221c1dfc06e

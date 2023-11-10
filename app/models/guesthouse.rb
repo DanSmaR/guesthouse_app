@@ -13,6 +13,16 @@ class Guesthouse < ApplicationRecord
   before_create :only_one_guesthouse_per_owner
   before_update :only_one_guesthouse_per_owner
 
+  def self.search_general(query)
+    guesthouses = joins(:address).where('brand_name LIKE ? OR neighborhood LIKE ? OR city LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
+    guesthouses.order(:brand_name)
+  end
+
+  def self.search_by_city(query)
+    joins(:address)
+      .where(active: true, addresses: { city: query })
+      .order(:brand_name)
+  end
   private
 
   def at_least_one_payment_method

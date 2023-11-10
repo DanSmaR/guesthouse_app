@@ -359,5 +359,17 @@ describe 'User searches for a guesthouse' do
                           text: "Pousada #{guesthouse}")
       end
     end
+
+    it 'unsuccessfully' do
+      # Arrange
+      # Act
+      visit(root_path)
+      fill_in 'Pesquisar Pousadas', with: ''
+      click_on 'Pesquisar'
+
+      # Assert
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content('Termo para busca está vazio')
+    end
   end
 end

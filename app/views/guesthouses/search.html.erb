@@ -1,0 +1,12 @@
+<article>
+  <h2>Resultados da Busca por: <%= @query %></h2>
+
+  <p>
+    <%= @guesthouses.count %> <%= Guesthouse.model_name.human(count: @guesthouses.count).downcase %>
+    <%= t(:found, count: @guesthouses.count) %>
+  </p>
+
+  <% @guesthouses.each do |gh| %>
+    <%= render 'shared/guesthouse_basic_info', guesthouse: gh %>
+  <% end %>
+</article>
