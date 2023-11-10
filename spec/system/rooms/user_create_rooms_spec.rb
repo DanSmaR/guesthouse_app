@@ -28,7 +28,6 @@ describe 'User registers room' do
     login_as(user)
     visit root_path
     click_on 'Pousada Nascer do Sol'
-    click_on 'Quartos'
     click_on 'Cadastrar Quarto'
 
     fill_in 'Nome', with: 'Quarto 1'
@@ -90,7 +89,6 @@ describe 'User registers room' do
     login_as(user)
     visit root_path
     click_on 'Pousada Nascer do Sol'
-    click_on 'Quartos'
     click_on 'Cadastrar Quarto'
 
     fill_in 'Nome', with: ''

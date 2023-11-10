@@ -37,7 +37,7 @@ describe 'User edit room rates' do
     # Act
     login_as user
     visit guesthouse_room_path(guesthouse, guesthouse.rooms.first)
-    within 'div#room_rates' do
+    within 'section#room_rates' do
       click_on 'Editar essa Diária', match: :first
     end
     fill_in 'Valor', with: 150
@@ -47,9 +47,9 @@ describe 'User edit room rates' do
     click_on 'Atualizar Diária por Período'
 
     # Assert
-    within 'div#room_rates' do
+    within 'section#room_rates' do
       expect(page).to have_content('Valor', count: 2)
-      expect(page).to have_content('Período', count: 2)
+      expect(page).to have_content('Período', count: 4)
       expect(page).to have_content('R$ 150,00')
       expect(page).to have_content('01/01/2022 - 31/01/2022')
       expect(page).to have_content('R$ 200,00')

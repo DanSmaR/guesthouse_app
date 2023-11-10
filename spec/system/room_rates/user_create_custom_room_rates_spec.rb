@@ -43,9 +43,9 @@ describe 'User create custom room rates' do
 
     # Assert
     expect(page).to have_content('Diárias por Período')
-    within 'div#room_rates' do
+    within 'section#room_rates' do
       expect(page).to have_content('Valor', count: 1)
-      expect(page).to have_content('Período', count: 1)
+      expect(page).to have_content('Período', count: 3)
       expect(page).to have_content('R$ 100,00')
       expect(page).to have_content('01/01/2021 - 31/01/2021')
     end

@@ -3,17 +3,20 @@
   <nav>
     <ul>
       <li><%= link_to "Início", root_path %></li>
-      <!-- <li><%#= link_to "Pousadas", guesthouses_path %></li>-->
     </ul>
   </nav>
   <div>
     <% if current_user&.guesthouse_owner&.guesthouse %>
       <% id = current_user&.guesthouse_owner&.guesthouse&.id || 1 %>
-      <%= link_to 'Minha Pousada', guesthouse_path(id) %>
+      <p>
+        <%= link_to 'Minha Pousada', guesthouse_path(id) %>
+      </p>
     <% end %>
     <% if user_signed_in? %>
       <p><%= current_user.email %></p>
-      <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+      <p>
+        <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+      </p>
     <% else %>
       <% unless current_page?(user_session_path) || current_page?(new_user_registration_path) %>
         <p><%= link_to "Entrar", new_user_session_path %></p>

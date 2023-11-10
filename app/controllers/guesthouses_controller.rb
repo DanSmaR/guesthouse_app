@@ -25,7 +25,11 @@ class GuesthousesController < ApplicationController
   end
 
   def show
-  #
+    if current_user&.guesthouse_owner&.guesthouse == @guesthouse
+      @rooms = @guesthouse.rooms
+    else
+      @rooms = @guesthouse.rooms.filter(&:available)
+    end
   end
 
   def edit

@@ -37,7 +37,6 @@ describe 'Room update' do
     login_as(user)
     visit root_path
     click_on 'Pousada Nascer do Sol'
-    click_on 'Quartos'
     click_on 'Quarto Primavera'
     click_on 'Editar Quarto'
 
@@ -95,7 +94,6 @@ describe 'Room update' do
     login_as(user)
     visit root_path
     click_on 'Pousada Nascer do Sol'
-    click_on 'Quartos'
     click_on 'Quarto Primavera'
     click_on 'Editar Quarto'
     fill_in 'Nome', with: 'Quarto Outono'

@@ -38,7 +38,6 @@ describe 'User views rooms' do
       login_as(user)
       visit root_path
       click_on 'Pousada Nascer do Sol'
-      click_on 'Quartos'
 
       # Assert
       expect(page).to have_content('Quarto Primavera')
@@ -47,7 +46,6 @@ describe 'User views rooms' do
       expect(page).to have_content('Acomodação Máxima: 2')
       expect(page).to have_content('Valor da Diária: R$ 100,00')
       expect(page).to have_content('Disponibilidade: Sim')
-
       expect(page).to have_content('Quarto Verão')
       expect(page).to have_content('Quarto com vista para o mar')
     end
@@ -89,7 +87,6 @@ describe 'User views rooms' do
       # Act
       visit root_path
       click_on 'Pousada Nascer do Sol'
-      click_on 'Quartos'
 
       # Assert
       expect(page).to have_content('Quarto Primavera')
@@ -97,8 +94,7 @@ describe 'User views rooms' do
       expect(page).to have_content('Tamanho: 30 m')
       expect(page).to have_content('Acomodação Máxima: 2')
       expect(page).to have_content('Valor da Diária: R$ 100,00')
-      expect(page).to have_content('Disponibilidade: Sim')
-
+      expect(page).to_not have_content('Disponibilidade: Sim')
       expect(page).to_not have_content('Quarto Verão')
       expect(page).to_not have_content('Quarto com vista para o mar')
     end
@@ -160,7 +156,6 @@ describe 'User views rooms' do
       login_as(user2)
       visit root_path
       click_on 'Pousada Nascer do Sol'
-      click_on 'Quartos'
 
       # Assert
       expect(page).to have_content('Quarto Primavera')
@@ -168,8 +163,7 @@ describe 'User views rooms' do
       expect(page).to have_content('Tamanho: 30 m')
       expect(page).to have_content('Acomodação Máxima: 2')
       expect(page).to have_content('Valor da Diária: R$ 100,00')
-      expect(page).to have_content('Disponibilidade: Sim')
-
+      expect(page).to_not have_content('Disponibilidade: Sim')
       expect(page).to_not have_content('Quarto Verão')
       expect(page).to_not have_content('Quarto com vista para o mar')
     end

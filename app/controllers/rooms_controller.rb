@@ -1,15 +1,8 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update]
-  before_action :set_guesthouse, only: %i[index new create show edit update]
+  before_action :set_guesthouse, only: %i[new create show edit update]
   before_action :set_room, only: %i[show edit update]
 
-  def index
-    if current_user&.guesthouse_owner&.guesthouse == @guesthouse
-      @rooms = @guesthouse.rooms
-    else
-      @rooms = @guesthouse.rooms.filter(&:available)
-    end
-  end
   def new
     if current_user&.guesthouse_owner&.guesthouse == @guesthouse
       @room = Room.new
@@ -31,7 +24,6 @@ class RoomsController < ApplicationController
 
   def show
     @room_rates = @room.room_rates
-  #
   end
 
   def edit

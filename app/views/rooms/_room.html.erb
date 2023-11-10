@@ -23,7 +23,9 @@
     <dd><%= room.safe == true ? 'Sim' : 'Não' %></dd>
     <dt>Acessível para PCDs:</dt>
     <dd><%= room.accessible == true ? 'Sim' : 'Não' %></dd>
-    <dt>Disponibilidade:</dt>
-    <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
+    <% if guesthouse.guesthouse_owner.user == current_user %>
+      <dt>Disponibilidade:</dt>
+      <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
+    <% end %>
   </dl>
 </div>

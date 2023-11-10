@@ -1,7 +1,11 @@
 <article>
   <h2><%= @guesthouse.brand_name %></h2>
   <p>Conheça a <%= Guesthouse.model_name.human %></p>
-
+  <p>
+    <% if @guesthouse.guesthouse_owner.user == current_user %>
+      <%= link_to 'Editar Pousada', edit_guesthouse_path(@guesthouse.id) %>
+    <% end %>
+  </p>
   <dl>
     <dt><%= Guesthouse.human_attribute_name(:description) %>:</dt>
     <dd><%= @guesthouse.description %></dd>
@@ -30,13 +34,5 @@
     <% end %>
   </dl>
 
-  <p>
-    <%= link_to 'Quartos', guesthouse_rooms_path(@guesthouse.id) %>
-  </p>
-
-  <p>
-    <% if @guesthouse.guesthouse_owner.user == current_user %>
-      <%= link_to 'Editar Pousada', edit_guesthouse_path(@guesthouse.id) %>
-    <% end %>
-  </p>
+  <%= render "rooms/basic_room", guesthouse: @guesthouse, rooms: @rooms %>
 </article>
