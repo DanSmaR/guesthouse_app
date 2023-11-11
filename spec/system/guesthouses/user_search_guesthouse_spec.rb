@@ -223,11 +223,11 @@ describe 'User searches for a guesthouse' do
       click_on 'Pesquisar'
 
       # Assert
-      expect(current_path).to eq(search_guesthouses_path)
+      expect(current_path).to eq(guesthouses_general_searches_path)
       expect(page).to have_content('Resultados da Busca por: Sol')
-      expect(page).to have_content('2 pousadas encontradas')
+      expect(page).to have_content('1 pousada encontrada')
       # Assert the guesthouses are sorted by brand_name
-      %w[Nascer\ do\ Sol Raio\ de\ Sol].each_with_index do |guesthouse, index|
+      %w[Raio\ de\ Sol].each_with_index do |guesthouse, index|
         expect(page).to have_selector(
                           "dl:nth-child(#{index + 3}) > dt > h4 > a",
                           text: "Pousada #{guesthouse}")
@@ -286,11 +286,11 @@ describe 'User searches for a guesthouse' do
       click_on 'Pesquisar'
 
       # Assert
-      expect(current_path).to eq(search_guesthouses_path)
+      expect(current_path).to eq(guesthouses_general_searches_path)
       expect(page).to have_content('Resultados da Busca por: Bairro')
-      expect(page).to have_content('2 pousadas encontradas')
+      expect(page).to have_content('1 pousada encontrada')
       # Assert the guesthouses are sorted by brand_name
-      %w[Lua\ Cheia Nascer\ do\ Sol].each_with_index do |guesthouse, index|
+      %w[Lua\ Cheia].each_with_index do |guesthouse, index|
         expect(page).to have_selector(
                           "dl:nth-child(#{index + 3}) > dt > h4 > a",
                           text: "Pousada #{guesthouse}")
@@ -349,11 +349,11 @@ describe 'User searches for a guesthouse' do
       click_on 'Pesquisar'
 
       # Assert
-      expect(current_path).to eq(search_guesthouses_path)
+      expect(current_path).to eq(guesthouses_general_searches_path)
       expect(page).to have_content('Resultados da Busca por: Sorocaba')
-      expect(page).to have_content('2 pousadas encontradas')
+      expect(page).to have_content('1 pousada encontrada')
       # Assert the guesthouses are sorted by brand_name
-      %w[Nascer\ do\ Sol Raio\ de\ Sol].each_with_index do |guesthouse, index|
+      %w[Raio\ de\ Sol].each_with_index do |guesthouse, index|
         expect(page).to have_selector(
                           "dl:nth-child(#{index + 3}) > dt > h4 > a",
                           text: "Pousada #{guesthouse}")

@@ -14,7 +14,30 @@ class Guesthouse < ApplicationRecord
   before_update :only_one_guesthouse_per_owner
 
   def self.search_general(query)
-    guesthouses = joins(:address).where('brand_name LIKE ? OR neighborhood LIKE ? OR city LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
+    guesthouses = joins(:address)
+                    .where(active: true)
+                    .where('brand_name LIKE ? OR neighborhood LIKE ? OR city LIKE ?',
+                                        "%#{query}%", "%#{query}%", "%#{query}%")
+    guesthouses.order(:brand_name)
+  end
+
+  def self.search_advanced(query, options)
+    guesthouses = joins(:address).joins(:rooms).where(active: true, rooms: { available: true })
+    if query.present?
+      guesthouses = guesthouses.where('brand_name LIKE ? OR neighborhood LIKE ? OR city LIKE ?',
+                                      "%#{query}%", "%#{query}%", "%#{query}%")
+    end
+
+    guesthouses = guesthouses.where(pets: options[:pets]) if options[:pets].present?
+    guesthouses = guesthouses.where(rooms: {
+      accessible: options[:accessible] }) if options[:accessible].present?
+    guesthouses = guesthouses.where(rooms: {
+      air_conditioning: options[:air_conditioning] }) if options[:air_conditioning].present?
+    guesthouses = guesthouses.where(rooms: { tv: options[:tv] }) if options[:tv].present?
+
+    # Eliminate duplicates
+    guesthouses = guesthouses.distinct
+
     guesthouses.order(:brand_name)
   end
 

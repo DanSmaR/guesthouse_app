@@ -13,58 +13,126 @@
   PaymentMethod.find_or_create_by!(method: method)
 end
 
-user = User.create!(
-  name: 'Joao',
-  email: 'joao@email.com',
-  password: 'password',
-  password_confirmation: 'password',
-  role: 1
-  )
-guesthouse_owner = user.build_guesthouse_owner
-guesthouse = guesthouse_owner.build_guesthouse(corporate_name: 'Pousada Nascer do Sol LTDA.',
-                                               brand_name: 'Pousada Nascer do Sol',
-                                               registration_code: '47032102000152',
-                                               phone_number: '15983081833',
-                                               email: 'contato@nascerdosol.com.br',
-                                               description: 'Pousada com vista linda para a serra',
-                                               pets: true,
-                                               use_policy: 'Não é permitido fumar nas dependências da pousada',
-                                               checkin_hour: '14:00', checkout_hour: '12:00', active: true)
-guesthouse.build_address(street: 'Rua das Flores, 1000', neighborhood: 'Vila Belo Horizonte' ,
-                         city: 'Itapetininga', state: 'SP', postal_code: '01001-000')
-guesthouse.payment_methods = PaymentMethod.all
-guesthouse.save!
-guesthouse.rooms.create!([{ name: 'Quarto Primavera', description: 'Quarto com vista para a serra', size: 30,
-                            max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
-                            air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
-                            available: true },
-                          { name: 'Quarto Verão', description: 'Quarto com vista para o mar', size: 30,
-                            max_people: 2, daily_rate: 100, bathroom: true, balcony: true,
-                            air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
-                            available: false }])
-guesthouse.rooms.first&.room_rates&.create!([{ start_date: '2021-01-01', end_date: '2021-01-31', daily_rate: 100 },
-                                             { start_date: '2021-02-01', end_date: '2021-02-28', daily_rate: 200 }])
+# Arrange
+cities = %w[Itapetininga Sorocaba São\ Paulo Rio\ de\ Janeiro Belo\ Horizonte Sorocaba]
+states = %w[SP SP SP RJ MG SP]
+guesthouses_names =
+  %w[Nascer\ do\ Sol Lua\ Cheia Estrela\ Cadente Lago\ Verde Raio\ de\ Sol Vista\ Linda]
+user_names = %w[Joao Maria Jose Pedro Ana Paulo]
+guesthouse =  {
+  0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
+}
+user = {
+  0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
+}
+guesthouse_owner = {
+  0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
+}
 
+guesthouses_names.each_with_index do |name, index|
+  user[index] = User.create!(name: user_names[index], email: "#{user_names[index].downcase}@email.com",
+                             password: 'password', password_confirmation: 'password', role: 1)
+  guesthouse_owner[index] = user[index].build_guesthouse_owner
+  guesthouse[index] = guesthouse_owner[index].build_guesthouse(corporate_name: "#{name} LTDA.",
+                                                               brand_name: "Pousada #{name}",
+                                                               registration_code: "#{index}47032102000152",
+                                                               phone_number: "#{index}1598308183",
+                                                               email: "contato@#{name.downcase.gsub(" ", "")}.com.br",
+                                                               description: "Descrição da Pousada #{name}",
+                                                               pets: index.odd? ? true : false,
+                                                               use_policy: 'Não é permitido fumar nas dependências da pousada',
+                                                               checkin_hour: '14:00', checkout_hour: '12:00',
+                                                               active: index == 2 ? false : true)
 
-user2 = User.create!(
-  name: 'Maria',
-  email: 'maria@email.com',
-  password: 'password',
-  password_confirmation: 'password',
-  role: 1
-)
-guesthouse_owner2 = user2.build_guesthouse_owner
-guesthouse2 = guesthouse_owner2.build_guesthouse(corporate_name: 'Casa do Saber LTDA.',
-                                                 brand_name: 'Casa do Saber',
-                                                 registration_code: '47032102000152',
-                                                 phone_number: '15983081833',
-                                                 email: 'contato@casadosaber.com.br',
-                                                 description: 'Pousada com muito conhecimeto',
-                                                 pets: true,
-                                                 use_policy: 'Não é permitido fumar nas dependências da pousada',
-                                                 checkin_hour: '14:00', checkout_hour: '12:00', active: true)
-guesthouse2.build_address(street: 'Rua da Sucata, 1000', neighborhood: 'Vila Minas Gerais' ,
-                          city: 'Itapevi', state: 'SP', postal_code: '01001-000')
+  guesthouse[index].build_address(street: index.odd? ? "Rua #{index},  #{index}000" : "Avenida #{index}, #{index}000",
+                                  neighborhood: index.even? ? "Bairro #{index}" : "Centro #{index}",
+                                  city: cities[index], state: states[index], postal_code: "#{index}1001-000")
 
-guesthouse2.payment_methods = PaymentMethod.all
-guesthouse2.save!
+  guesthouse[index].payment_methods = PaymentMethod.all
+  guesthouse[index].save!
+
+  guesthouse[index].rooms.create!([{ name: "Quarto Primavera #{index}",
+                                     description: 'Quarto com vista para a serra',
+                                     size: 30, max_people: 2, daily_rate: 100,
+                                     bathroom: true, balcony: true,
+                                     air_conditioning: index.even? ? true : false,
+                                     tv: index.odd? ? true : false, wardrobe: true,
+                                     safe: true, accessible: index.even? ? true : false,
+                                     available: true },
+                                   { name: "Quarto Verão #{index}",
+                                     description: 'Quarto com vista para o mar',
+                                     size: 30, max_people: 2, daily_rate: 100,
+                                     bathroom: true, balcony: true,
+                                     air_conditioning: index == 1 ? false : true,
+                                     tv: index == 1 ? false : true, wardrobe: true,
+                                     safe: true, accessible: index == 0 ? false : true,
+                                     available: index.odd? ? true : false }])
+  guesthouse[index].rooms.first&.room_rates&.create!([{ start_date: '2021-01-01',
+                                                        end_date: '2021-01-31',
+                                                        daily_rate: (index + 2) * 100 },
+                                                      { start_date: '2021-02-01',
+                                                        end_date: '2021-02-28',
+                                                        daily_rate: (index + 1) * 100 }])
+end
+
+# Arrange
+cities2 = %w[Ouro\ Preto Camboriu]
+states2 = %w[MG SC]
+guesthouses_names2 =
+  %w[Serrana Praiana]
+user_names2 = %w[Cesar Simone]
+guesthouse2 =  {
+  0 => '', 1 => ''
+}
+user2 = {
+  0 => '', 1 => ''
+}
+guesthouse_owner2 = {
+  0 => '', 1 => ''
+}
+
+guesthouses_names2.each_with_index do |name, index|
+  user2[index] = User.create!(name: user_names2[index], email: "#{user_names2[index].downcase}@email.com",
+                              password: 'password', password_confirmation: 'password', role: 1)
+  guesthouse_owner2[index] = user2[index].build_guesthouse_owner
+  guesthouse2[index] = guesthouse_owner2[index].build_guesthouse(corporate_name: "#{name} LTDA.",
+                                                                 brand_name: "Pousada #{name}",
+                                                                 registration_code: "#{index}47032102000152",
+                                                                 phone_number: "#{index}1598308183",
+                                                                 email: "contato@#{name.downcase.gsub(" ", "")}.com.br",
+                                                                 description: "Descrição da Pousada #{name}",
+                                                                 pets: index.odd? ? true : false,
+                                                                 use_policy: 'Não é permitido fumar nas dependências da pousada',
+                                                                 checkin_hour: '14:00', checkout_hour: '12:00',
+                                                                 active: true)
+
+  guesthouse2[index].build_address(street: index.odd? ? "Rua #{index},  #{index}000" : "Avenida #{index}, #{index}000",
+                                   neighborhood: index.even? ? "Bairro #{index}" : "Centro #{index}",
+                                   city: cities2[index], state: states2[index], postal_code: "#{index}1001-000")
+
+  guesthouse2[index].payment_methods = PaymentMethod.all
+  guesthouse2[index].save!
+
+  guesthouse2[index].rooms.create!([{ name: "Quarto Aquarela #{index}",
+                                      description: 'Quarto com vista para a serra',
+                                      size: 30, max_people: 2, daily_rate: 100,
+                                      bathroom: true, balcony: true,
+                                      air_conditioning: index.even? ? true : false,
+                                      tv: index.even? ? true : false, wardrobe: true,
+                                      safe: true, accessible: index.even? ? true : false,
+                                      available: true },
+                                    { name: "Quarto Oceano #{index}",
+                                      description: 'Quarto com vista para o mar',
+                                      size: 30, max_people: 2, daily_rate: 100,
+                                      bathroom: true, balcony: true,
+                                      air_conditioning: index == 0 ? false : true,
+                                      tv: index == 1 ? false : true, wardrobe: true,
+                                      safe: true, accessible: index == 0 ? false : true,
+                                      available: index.odd? ? true : false }])
+  guesthouse2[index].rooms.first&.room_rates&.create!([{ start_date: '2021-01-01',
+                                                         end_date: '2021-01-31',
+                                                         daily_rate: (index + 2) * 100 },
+                                                       { start_date: '2021-02-01',
+                                                         end_date: '2021-02-28',
+                                                         daily_rate: (index + 1) * 100 }])
+end

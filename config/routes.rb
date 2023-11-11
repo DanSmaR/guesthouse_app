@@ -11,10 +11,15 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   # TODO: Shallow the routes for guesthouses, rooms and room_rates
   resources :guesthouses, only: %i[new create show edit update] do
-    get 'search_by_city', on: :collection
-    get 'search', on: :collection
     resources :rooms, only: %i[index new create show edit update] do
       resources :room_rates, only: %i[new create show edit update]
+    end
+  end
+  resources :searches, only: %i[index] do
+    collection do
+      get :guesthouses_by_city
+      get :guesthouses_general
+      get :guesthouses_advanced
     end
   end
 end
