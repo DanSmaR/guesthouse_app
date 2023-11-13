@@ -35,5 +35,5 @@
 /config/master.key
 
 # ignore ide files
-/.idea/
+/.idea/*
 *.iml
