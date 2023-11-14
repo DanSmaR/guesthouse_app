@@ -39,8 +39,8 @@ class RoomRatesController < ApplicationController
   private
 
   def set_guesthouse_and_room
-    @guesthouse = Guesthouse.find(params[:guesthouse_id])
-    @room = @guesthouse.rooms.find(params[:room_id])
+    @room = Room.find(params[:room_id])
+    @guesthouse = @room.guesthouse
   end
 
   def room_rate_params

@@ -5,21 +5,26 @@
   <% end %>
     <div id="rooms">
       <% rooms.each do |room| %>
-        <h3><%= link_to room.name, guesthouse_room_path(guesthouse, room) %></h3>
-        <dl>
-          <dt>Descrição:</dt>
-          <dd><%= room.description %></dd>
-          <dt>Tamanho:</dt>
-          <dd><%= room.size %> m<sup>2</sup></dd>
-          <dt>Acomodação Máxima:</dt>
-          <dd><%= room.max_people %></dd>
-          <dt>Valor da Diária:</dt>
-          <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
-          <% if guesthouse.guesthouse_owner.user == current_user %>
-            <dt>Disponibilidade:</dt>
-            <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
-          <% end %>
-        </dl>
+        <section id="room">
+          <h3><%= link_to room.name, guesthouse_room_path(guesthouse, room) %></h3>
+          <dl>
+            <dt>Descrição:</dt>
+            <dd><%= room.description %></dd>
+            <dt>Tamanho:</dt>
+            <dd><%= room.size %> m<sup>2</sup></dd>
+            <dt>Acomodação Máxima:</dt>
+            <dd><%= room.max_people %></dd>
+            <dt>Valor da Diária:</dt>
+            <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
+            <% if guesthouse.guesthouse_owner.user == current_user %>
+              <dt>Disponibilidade:</dt>
+              <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
+            <% end %>
+          </dl>
+          <p>
+
+          </p>
+        </section>
       <% end %>
     </div>
 </article>

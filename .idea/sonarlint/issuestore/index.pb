@@ -115,3 +115,9 @@ G
 app/models/room_rate.rb,6/7/67665f416ce24e7c3e82664efab4a14df2189c08
 M
 spec/models/room_rate_spec.rb,3/b/3b963d18ca47fc5cd321ba32e6207de6a528392b
+S
+#app/views/room_rates/_form.html.erb,d/6/d657cc1901c3aec508b5a458d23ce7b5a60bc9b5
+Q
+!app/views/room_rates/new.html.erb,6/0/6041c960ad7c0d02e11bbd49f476d0d513b93669
+R
+"app/views/room_rates/edit.html.erb,1/b/1b54a838c2a660926944545556a6a06fe1d6c39d

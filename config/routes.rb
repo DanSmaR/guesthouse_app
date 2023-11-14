@@ -12,9 +12,13 @@ Rails.application.routes.draw do
   # TODO: Shallow the routes for guesthouses, rooms and room_rates
   resources :guesthouses, only: %i[new create show edit update] do
     resources :rooms, only: %i[index new create show edit update] do
-      resources :room_rates, only: %i[new create show edit update]
     end
   end
+
+  resources :rooms, only: %i[] do
+    resources :room_rates, only: %i[new create show edit update]
+  end
+
   resources :searches, only: %i[index] do
     collection do
       get :guesthouses_by_city

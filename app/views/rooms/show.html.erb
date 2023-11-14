@@ -14,12 +14,12 @@
     <section  id="room_rates">
       <h3>Diárias por Período</h3>
       <p>
-        <%= link_to "Criar Diária por Período", new_guesthouse_room_room_rate_path(@guesthouse, @room) %>
+        <%= link_to "Criar Diária por Período", new_room_room_rate_path(@room) %>
       </p>
       <% @room.room_rates.each do |room_rate| %>
         <div>
           <%= render 'room_rates/room_rate', room: @room, guesthouse: @guesthouse, room_rate: room_rate %>
-          <%= link_to 'Editar essa Diária', edit_guesthouse_room_room_rate_path(@guesthouse, @room, room_rate) %>
+          <%= link_to 'Editar essa Diária', edit_room_room_rate_path(@room, room_rate) %>
         </div>
       <% end %>
       <% if @room.room_rates.empty? %>
