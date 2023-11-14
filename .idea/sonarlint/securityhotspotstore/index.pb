@@ -121,3 +121,7 @@ Q
 !app/views/room_rates/new.html.erb,6/0/6041c960ad7c0d02e11bbd49f476d0d513b93669
 R
 "app/views/room_rates/edit.html.erb,1/b/1b54a838c2a660926944545556a6a06fe1d6c39d
+P
+ spec/system/user_booking_spec.br,a/6/a6711c1a71ed5446f1e1b928fa5e63794200ab32
+P
+ spec/system/user_booking_spec.rb,4/1/4136b7d4548e1e798fd41aab5ad1a9a995c87b56
