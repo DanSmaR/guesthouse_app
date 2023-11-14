@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      booking: 'Reserva'
+    attributes:
+      booking:
+        check_in_date: 'Data de Check-in'
+        check_out_date: 'Data de Check-out'
+        number_of_guests: 'Quantidade de Hóspedes'

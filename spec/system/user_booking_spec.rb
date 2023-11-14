@@ -32,8 +32,7 @@ describe 'User access room booking' do
     # Act
     visit root_path
     click_on 'Pousada Nascer do Sol'
-    click_on 'Quarto Primavera'
-    click_on 'Reservar'
+    click_on 'Reservar', match: :first
 
     # Assert
     expect(current_path).to eq(new_room_booking_path(Room.first))
@@ -52,7 +51,7 @@ describe 'User access room booking' do
     expect(page).to_not have_content('Disponibilidade: Sim')
     expect(page).to have_field('Data de Check-in')
     expect(page).to have_field('Data de Check-out')
-    expect(page).to have_field('Quantidade de Pessoas')
+    expect(page).to have_field('Quantidade de Hóspedes')
     expect(page).to have_button('Enviar')
   end
 

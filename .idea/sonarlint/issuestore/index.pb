@@ -125,3 +125,25 @@ P
  spec/system/user_booking_spec.br,a/6/a6711c1a71ed5446f1e1b928fa5e63794200ab32
 P
  spec/system/user_booking_spec.rb,4/1/4136b7d4548e1e798fd41aab5ad1a9a995c87b56
+V
+&app/controllers/bookings_controller.rb,1/8/184182f3fcd56f2d51e5d40fc09ee85cd0f9cc10
+L
+app/views/rooms/new.html.erb,6/c/6c391727fb8ec8e66dd46e4a17bd3f15d0681e7d
+F
+app/views/new.html.erb,8/4/8447cdd51b8a6a650827e7640b68a6ef234014a1
+O
+app/views/bookings/new.html.erb,3/2/3261b2ed737bd659eed888d7f8b53c1fa6900d77
+O
+app/views/shared/_room.html.erb,8/8/882e3a27100a4ce6922d1638bd6c81ebaf4b7fb8
+E
+app/models/booking.rb,7/f/7ffa9daf1ff8d4f17495912977c706557585e3bc
+\
+,db/migrate/20231114200155_create_bookings.rb,3/d/3de3e90dcc52654c6868be50b843236201f257c4
+Q
+!app/views/bookings/_form.html.erb,8/4/8425baa55f56370623caaa8f54bef79859e34a25
+K
+spec/models/booking_spec.rb,f/1/f17bfd76feb7fc8e55a4a393aeb0a52c5c45ae18
+V
+&config/locales/booking-model-pt-BR.yml,8/c/8c057f0c5d0c3b7ebdc8b32ca113cf2d4f04ab04
+X
+(config/locales/room_rate-model-pt-BR.yml,5/7/5705a2e4fd96ed8a8f6e5068267145d59ad8d2cb

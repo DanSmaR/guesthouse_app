@@ -2,7 +2,7 @@
   <h2>Detalhes</h2>
   <%= link_to "Voltar", guesthouse_path(@guesthouse) %>
   <section>
-    <%= render 'room', room: @room, guesthouse: @guesthouse  %>
+    <%= render 'shared/room', room: @room, guesthouse: @guesthouse  %>
     <p>
       <% if @guesthouse.guesthouse_owner.user == current_user %>
         <%= link_to 'Editar Quarto', edit_guesthouse_room_path(@guesthouse, @room) %>

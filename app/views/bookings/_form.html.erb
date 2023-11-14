@@ -1,0 +1,30 @@
+<%= form_with(model: [room, booking]) do |f| %>
+  <% if booking.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% booking.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Entrada de Dados:</legend>
+    <p>
+      <%= f.label :check_in_date %>
+      <%= f.date_field :check_in_date %>
+    </p>
+    <p>
+      <%= f.label :check_out_date %>
+      <%= f.date_field :check_out_date %>
+    </p>
+    <p>
+      <%= f.label :number_of_guests %>
+      <%= f.number_field :number_of_guests %>
+    </p>
+  </fieldset>
+  <p>
+    <%= f.submit 'Enviar' %>
+  </p>
+<% end %>

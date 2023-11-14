@@ -1,0 +1,11 @@
+<article>
+  <h2>Nova Reserva</h2>
+  <p>
+    <%= link_to "Voltar", guesthouse_path(@guesthouse) %>
+  </p>
+  <%= render 'form', room: @room, booking: @booking %>
+  <hr>
+  <section>
+    <%= render 'shared/room', room: @room, guesthouse: @guesthouse  %>
+  </section>
+</article>

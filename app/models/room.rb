@@ -6,4 +6,5 @@ class Room < ApplicationRecord
             :accessible, :available, inclusion: { in: [true, false] }
   belongs_to :guesthouse
   has_many :room_rates, dependent: :destroy, inverse_of: :room
+  has_many :bookings, dependent: :destroy
 end

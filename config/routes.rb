@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :rooms, only: %i[] do
     resources :room_rates, only: %i[new create show edit update]
+    resources :bookings, only: %i[new create]
   end
 
   resources :searches, only: %i[index] do
