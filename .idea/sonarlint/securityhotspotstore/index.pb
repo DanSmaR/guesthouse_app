@@ -111,3 +111,7 @@ Dockerfile,6/6/6651ddff6eb82c840ced7c1dddee15c6e1913dd4
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+G
+app/models/room_rate.rb,6/7/67665f416ce24e7c3e82664efab4a14df2189c08
+M
+spec/models/room_rate_spec.rb,3/b/3b963d18ca47fc5cd321ba32e6207de6a528392b

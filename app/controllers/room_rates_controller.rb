@@ -13,6 +13,7 @@ class RoomRatesController < ApplicationController
   def create
     @room_rate = @room.room_rates.new(room_rate_params)
     if @room_rate.save
+      flash[:notice] = 'Diária cadastrada com sucesso'
       redirect_to guesthouse_room_path(@room.guesthouse, @room)
     else
       flash.now[:alert] = 'Não foi possível cadastrar a diária'
