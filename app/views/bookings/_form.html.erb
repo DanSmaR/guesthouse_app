@@ -1,4 +1,4 @@
-<%= form_with(model: [room, booking]) do |f| %>
+<%= form_with(model: [room, booking], url: room_verify_availability_path, method: :post) do |f| %>
   <% if booking.errors.any? %>
     <div style="color: red">
       <ul>
@@ -25,6 +25,6 @@
     </p>
   </fieldset>
   <p>
-    <%= f.submit 'Enviar' %>
+    <%= f.submit 'Verificar Disponibilidade' %>
   </p>
 <% end %>

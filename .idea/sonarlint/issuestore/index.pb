@@ -19,8 +19,6 @@ d
 4spec/system/guesthouses/user_edit_guesthouse_spec.rb,4/3/435d56b6c186ed877128a1db6f7770dbc6ee5683
 M
 app/views/rooms/show.html.erb,7/b/7b03716bcf46e7d01fe5a06a6ca1f49e649aabd7
-N
-app/views/rooms/_room.html.erb,9/c/9c22240deae3cfb22bf18566c01933bf86821688
 <
 db/schema.rb,2/c/2cda0c6171fa7d04989507a1dd112e34c40df46d
 ]
@@ -122,15 +120,11 @@ Q
 R
 "app/views/room_rates/edit.html.erb,1/b/1b54a838c2a660926944545556a6a06fe1d6c39d
 P
- spec/system/user_booking_spec.br,a/6/a6711c1a71ed5446f1e1b928fa5e63794200ab32
-P
  spec/system/user_booking_spec.rb,4/1/4136b7d4548e1e798fd41aab5ad1a9a995c87b56
 V
 &app/controllers/bookings_controller.rb,1/8/184182f3fcd56f2d51e5d40fc09ee85cd0f9cc10
 L
 app/views/rooms/new.html.erb,6/c/6c391727fb8ec8e66dd46e4a17bd3f15d0681e7d
-F
-app/views/new.html.erb,8/4/8447cdd51b8a6a650827e7640b68a6ef234014a1
 O
 app/views/bookings/new.html.erb,3/2/3261b2ed737bd659eed888d7f8b53c1fa6900d77
 O
@@ -147,3 +141,9 @@ V
 &config/locales/booking-model-pt-BR.yml,8/c/8c057f0c5d0c3b7ebdc8b32ca113cf2d4f04ab04
 X
 (config/locales/room_rate-model-pt-BR.yml,5/7/5705a2e4fd96ed8a8f6e5068267145d59ad8d2cb
+N
+app/models/guesthouse_owner.rb,3/2/3286357f72d01a656c399b0e43882cf3a614af8e
+N
+app/views/rooms/_form.html.erb,3/3/33ae6e138b41bf968bf901ecbd071ab383317c65
+S
+#app/views/bookings/confirm.html.erb,7/c/7c23c4a330edbc518f1a439fa41f2ff643c4d41d

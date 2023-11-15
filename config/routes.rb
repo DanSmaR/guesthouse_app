@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :rooms, only: %i[] do
+    post 'verify_availability', to: 'bookings#verify_availability'
     resources :room_rates, only: %i[new create show edit update]
-    resources :bookings, only: %i[new create]
+    resources :bookings, only: %i[new create] do
+    end
   end
 
   resources :searches, only: %i[index] do

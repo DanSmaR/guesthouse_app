@@ -1,0 +1,20 @@
+<%= form_with(model: @booking, url: room_bookings_path) do |f| %>
+    <p>
+      <%= f.label :check_in_date %>
+      <%= f.date_field :check_in_date, value: @booking.check_in_date, readonly: true %>
+    </p>
+    <p>
+      <%= f.label :check_out_date %>
+      <%= f.date_field :check_out_date, value: @booking.check_out_date, readonly: true %>
+    </p>
+    <p>
+      <%= f.label :number_of_guests %>
+      <%= f.text_field :number_of_guests, value: @booking.number_of_guests, readonly: true %>
+    </p>
+    <p>
+      Preço Total: <%= number_to_currency(@booking.total_price, unit: 'R$ ', separator: ',', delimiter: '.') %>
+    </p>
+  <p>
+    <%= f.submit 'Prosseguir com a Reserva' %>
+  </p>
+<% end %>

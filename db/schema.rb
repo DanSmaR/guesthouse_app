@@ -49,8 +49,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_200155) do
     t.text "description"
     t.boolean "pets", default: false
     t.text "use_policy"
-    t.datetime "checkin_hour", default: "2023-11-11 17:00:00"
-    t.datetime "checkout_hour", default: "2023-11-11 15:00:00"
+    t.datetime "checkin_hour", default: "2023-11-15 17:00:00"
+    t.datetime "checkout_hour", default: "2023-11-15 15:00:00"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
