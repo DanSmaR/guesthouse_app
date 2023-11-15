@@ -147,3 +147,9 @@ N
 app/views/rooms/_form.html.erb,3/3/33ae6e138b41bf968bf901ecbd071ab383317c65
 S
 #app/views/bookings/confirm.html.erb,7/c/7c23c4a330edbc518f1a439fa41f2ff643c4d41d
+Y
+)spec/system/bookings/user_booking_spec.rb,f/a/fac8c377671b093936060a3a9941f0d0b532355f
+a
+1spec/system/bookings/user_proceed_booking_spec.rb,6/3/63f7db8ff843e1b9c993fbf0294b676ff25d865a
+f
+6spec/system/bookings/user_booking_availability_spec.rb,1/4/146f401017f27d27657da80c9d47ccd4157590ae

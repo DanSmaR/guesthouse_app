@@ -93,6 +93,7 @@ describe 'User access room booking' do
     click_on 'Verificar Disponibilidade'
 
     # Assert
+    expect(current_path).to eq(confirm_room_bookings_path(Room.first))
     expect(page).to have_content('Quarto disponível!')
     expect(page).to have_field('Data de Check-in', with: 1.day.from_now.strftime('%Y-%m-%d'))
     expect(page).to have_field('Data de Check-out', with: 2.days.from_now.strftime('%Y-%m-%d'))
@@ -142,8 +143,8 @@ describe 'User access room booking' do
       click_on 'Verificar Disponibilidade'
 
       # Assert
+      expect(current_path).to eq(room_availability_path(Room.first))
       expect(page).to have_content('Não está disponível neste período')
     end
-
   end
 end
