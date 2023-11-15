@@ -5,19 +5,25 @@ class BookingsController < ApplicationController
     @guesthouse = @room.guesthouse
   end
 
-  def verify_availability
+  def availability
     @room = Room.find(params[:room_id])
     @guesthouse = @room.guesthouse
     @booking = @room.bookings.new(booking_params)
 
     if @booking.valid? && @booking.check_availability
       session[:booking] = booking_params.to_h
-      @total_price = @booking.total_price
       flash[:notice] = 'Quarto disponível!'
-      render :confirm
+      redirect_to confirm_room_bookings_path(@room)
     else
       render :new
     end
+  end
+
+  def confirm
+    @room = Room.find(params[:room_id])
+    @guesthouse = @room.guesthouse
+    @booking = @room.bookings.new(session[:booking])
+    @total_price = @booking.total_price
   end
 
   private

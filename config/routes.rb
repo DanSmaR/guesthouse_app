@@ -16,9 +16,12 @@ Rails.application.routes.draw do
   end
 
   resources :rooms, only: %i[] do
-    post 'verify_availability', to: 'bookings#verify_availability'
+    post 'availability', to: 'bookings#availability'
     resources :room_rates, only: %i[new create show edit update]
     resources :bookings, only: %i[new create] do
+      collection do
+        get :confirm
+      end
     end
   end
 

@@ -21,13 +21,13 @@ class Booking < ApplicationRecord
 
   def room_availability
     if room.bookings.where('check_in_date < ? AND check_out_date > ?', check_out_date, check_in_date).exists?
-      errors.add(:room, 'Não está disponível neste período')
+      errors.add(:base, 'Não está disponível neste período')
     end
   end
 
   def room_capacity
     if number_of_guests > room.max_people
-      errors.add(:room, 'Não comporta este número de pessoas')
+      errors.add(:base, 'Não comporta este número de pessoas')
     end
   end
 end

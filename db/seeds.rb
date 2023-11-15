@@ -73,6 +73,8 @@ guesthouses_names.each_with_index do |name, index|
                                                       { start_date: 2.months.from_now,
                                                         end_date: 3.months.from_now,
                                                         daily_rate: (index + 1) * 100 }])
+  guesthouse[index].rooms.first&.bookings.&create!(check_in_date: 2.day.from_now, check_out_date: 4.days.from_now,
+                                            number_of_guests: 2)
 end
 
 # Arrange
@@ -135,4 +137,6 @@ guesthouses_names2.each_with_index do |name, index|
                                                        { start_date: '2021-02-01',
                                                          end_date: '2021-02-28',
                                                          daily_rate: (index + 1) * 100 }])
+  guesthouse[index].rooms.first&.bookings.&create!(check_in_date: 5.day.from_now, check_out_date: 8.days.from_now,
+                                            number_of_guests: 2)
 end
