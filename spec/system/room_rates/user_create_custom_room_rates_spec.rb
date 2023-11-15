@@ -196,7 +196,7 @@ describe 'User create custom room rates' do
       click_on 'Criar Diária por Período'
       fill_in 'Valor', with: 100
       fill_in 'Data de início', with: '01/01/2021'
-      fill_in 'Data de término', with: '15/01/2021'
+      fill_in 'Data de término', with: '16/01/2021'
       click_on 'Criar Diária por Período'
 
       # Assert
