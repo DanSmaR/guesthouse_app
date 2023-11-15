@@ -94,6 +94,9 @@ describe 'User access room booking' do
 
     # Assert
     expect(page).to have_content('Quarto disponível!')
+    expect(page).to have_field('Data de Check-in', with: 1.day.from_now.strftime('%Y-%m-%d'))
+    expect(page).to have_field('Data de Check-out', with: 2.days.from_now.strftime('%Y-%m-%d'))
+    expect(page).to have_field('Quantidade de Hóspedes', with: 2)
     expect(page).to have_content('Preço Total: R$ 100,00')
     expect(page).to have_button('Prosseguir com a Reserva')
   end
