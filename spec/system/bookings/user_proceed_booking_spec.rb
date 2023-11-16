@@ -145,6 +145,17 @@ describe 'User proceed booking' do
 
         # Assert
         expect(current_path).to eq(room_final_confirmation_path(Room.last))
+        expect(page).to have_content('Quarto: Quarto Primavera')
+        expect(page).to have_field('Data de Check-in', with: 1.day.from_now.strftime('%d/%m/%Y'))
+        expect(page).to have_content('Hora do Check-In: 14:00')
+        expect(page).to have_field('Data de Check-out', with: 2.days.from_now.strftime('%d/%m/%Y'))
+        expect(page).to have_content('Hora do Check-Out: 12:00')
+        expect(page).to have_field('Quantidade de Hóspedes', with: 2)
+        expect(page).to have_content('Preço Total: R$ 100,00')
+        expect(page).to have_content('Métodos de Pagamento:')
+        expect(page).to have_content('Cartão de crédito')
+        expect(page).to have_content('Cartão de débito')
+        expect(page).to have_content('Pix')
       end
     end
   end

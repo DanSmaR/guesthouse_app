@@ -1,20 +1,39 @@
 <%= form_with(model: @booking, url: room_bookings_path(@room)) do |f| %>
     <p>
+      Quarto: <%= @room.name %>
+    </p>
+    <p>
       <%= f.label :check_in_date %>
-      <%= f.date_field :check_in_date, value: @booking.check_in_date, readonly: true %>
+      <%= f.text_field :check_in_date, value: @booking.check_in_date.strftime('%d/%m/%Y'), readonly: true %>
+    </p>
+    <p>
+      Hora do Check-In: <%= @guesthouse.checkin_hour.time.strftime("%H:%M") %>
     </p>
     <p>
       <%= f.label :check_out_date %>
-      <%= f.date_field :check_out_date, value: @booking.check_out_date, readonly: true %>
+      <%= f.text_field :check_out_date, value: @booking.check_out_date.strftime('%d/%m/%Y'), readonly: true %>
+    </p>
+    <p>
+      Hora do Check-Out: <%= @guesthouse.checkout_hour.time.strftime("%H:%M") %>
     </p>
     <p>
       <%= f.label :number_of_guests %>
       <%= f.text_field :number_of_guests, value: @booking.number_of_guests, readonly: true %>
     </p>
     <p>
-      Preço Total: <%= number_to_currency(@total_price, unit: 'R$ ', separator: ',', delimiter: '.') %>
+      Preço Total: <%= number_to_currency(@booking.total_price, unit: 'R$ ', separator: ',', delimiter: '.') %>
     </p>
+  <dl>
+    <dt>Métodos de Pagamento:</dt>
+    <dd>
+      <ul>
+        <% @guesthouse.payment_methods.each do |payment_method| %>
+          <li><%= t("#{payment_method.method}") %></li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
   <p>
-    <%= f.submit 'Prosseguir com a Reserva' %>
+    <%= f.submit 'Concluir Reserva' %>
   </p>
 <% end %>
