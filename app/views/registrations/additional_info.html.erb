@@ -1,0 +1,23 @@
+<article>
+  <h2>Dados adicionais para Cadastro do Hóspede</h2>
+  <%= form_with model: [@user, @guest], url: save_additional_info_path(@user), method: :post do |form| %>
+    <p>
+      <%= form.label :identification_register_number %>
+      <%= form.text_field :identification_register_number %>
+    </p>
+
+    <p>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </p>
+
+    <p>
+      <%= form.label :surname %>
+      <%= form.text_field :surname %>
+    </p>
+
+    <p>
+      <%= form.submit 'Salvar' %>
+    </p>
+  <% end %>
+</article>

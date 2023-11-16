@@ -119,8 +119,6 @@ Q
 !app/views/room_rates/new.html.erb,6/0/6041c960ad7c0d02e11bbd49f476d0d513b93669
 R
 "app/views/room_rates/edit.html.erb,1/b/1b54a838c2a660926944545556a6a06fe1d6c39d
-P
- spec/system/user_booking_spec.rb,4/1/4136b7d4548e1e798fd41aab5ad1a9a995c87b56
 V
 &app/controllers/bookings_controller.rb,1/8/184182f3fcd56f2d51e5d40fc09ee85cd0f9cc10
 L
@@ -147,9 +145,27 @@ N
 app/views/rooms/_form.html.erb,3/3/33ae6e138b41bf968bf901ecbd071ab383317c65
 S
 #app/views/bookings/confirm.html.erb,7/c/7c23c4a330edbc518f1a439fa41f2ff643c4d41d
-Y
-)spec/system/bookings/user_booking_spec.rb,f/a/fac8c377671b093936060a3a9941f0d0b532355f
 a
 1spec/system/bookings/user_proceed_booking_spec.rb,6/3/63f7db8ff843e1b9c993fbf0294b676ff25d865a
 f
 6spec/system/bookings/user_booking_availability_spec.rb,1/4/146f401017f27d27657da80c9d47ccd4157590ae
+R
+"app/views/guesthouses/new.html.erb,b/0/b05a3e0caf8de76d702893dd53b291421ae54e63
+T
+$app/views/guesthouses/_form.html.erb,7/2/7289f8d4e6bac21296c570c4c02768017a8211ab
+C
+app/models/guest.rb,2/a/2a643a807d7ffd83f0a69c26562552120371816c
+Z
+*db/migrate/20231115194614_create_guests.rb,c/e/ce77b560d720321687580a03f912daf960dd90a6
+I
+spec/models/guest_spec.rb,9/c/9c104d502a39b37d341e3adbb8f09d50c209f3f9
+`
+0app/views/registrations/additional_info.html.erb,8/1/813d1a35d27a4f05056b6dadf59a7ada016f6a33
+^
+.app/views/bookings/final_confirmation.html.erb,7/c/7c657fd4c74ddd48fa03d1609ddf396cd78c2526
+\
+,app/views/devise/registrations/edit.html.erb,e/f/ef09dda087d9d83c6ee88e4530bd3c6a8722109b
+b
+2db/migrate/20231116022157_add_guest_to_bookings.rb,5/e/5e4b6d78de59fa4b19d30196b4de28e2286bf10c
+T
+$config/locales/guest-model-pt-BR.yml,b/0/b0f2a59024219e2bd3b3e373e07b5a02d0f2a715

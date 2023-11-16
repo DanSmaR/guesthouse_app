@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_200155) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_16_022157) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
     t.string "neighborhood", null: false
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_200155) do
     t.integer "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "guest_id", null: false
+    t.index ["guest_id"], name: "index_bookings_on_guest_id"
     t.index ["room_id"], name: "index_bookings_on_room_id"
   end
 
@@ -61,6 +63,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_200155) do
   create_table "guesthouses_payment_methods", id: false, force: :cascade do |t|
     t.integer "guesthouse_id", null: false
     t.integer "payment_method_id", null: false
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "surname", null: false
+    t.string "identification_register_number", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -113,10 +125,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_200155) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "guests"
   add_foreign_key "bookings", "rooms"
   add_foreign_key "guesthouse_owners", "users"
   add_foreign_key "guesthouses", "addresses"
   add_foreign_key "guesthouses", "guesthouse_owners"
+  add_foreign_key "guests", "users"
   add_foreign_key "room_rates", "rooms"
   add_foreign_key "rooms", "guesthouses"
 end

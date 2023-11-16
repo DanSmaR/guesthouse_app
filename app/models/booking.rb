@@ -1,10 +1,19 @@
 class Booking < ApplicationRecord
   validates :check_in_date, :check_out_date, :number_of_guests, presence: true
   belongs_to :room
+  belongs_to :guest
 
   def check_availability
     room_availability
     room_capacity
+    errors.empty?
+  end
+
+  def required_fields
+    empty_field_error_message = "Não pode estar em branco"
+    errors.add(:check_in_date, empty_field_error_message) if check_in_date.blank?
+    errors.add(:check_out_date, empty_field_error_message) if check_out_date.blank?
+    errors.add(:number_of_guests, empty_field_error_message) if number_of_guests.blank?
     errors.empty?
   end
 

@@ -5,5 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum role: { guest: 0, guesthouse_owner: 1 }
-  has_one :guesthouse_owner
+  has_one :guesthouse_owner, dependent: :destroy
+  has_one :guest, dependent: :destroy
 end

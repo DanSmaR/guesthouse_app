@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      guest: 'Hóspede'
+    attributes:
+      guest:
+        name: 'Nome'
+        identification_register_number: 'CPF'
+        surname: 'Sobrenome'

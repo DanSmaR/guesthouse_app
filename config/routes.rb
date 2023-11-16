@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   root "home#index"
 
   devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_scope :user do
+    get 'additional_info/:id', to: 'registrations#additional_info', as: 'new_additional_info'
+    post 'save_additional_info/:id', to: 'registrations#save_additional_info', as: 'save_additional_info'
+  end
+
   # TODO: Shallow the routes for guesthouses, rooms and room_rates
   resources :guesthouses, only: %i[new create show edit update] do
     resources :rooms, only: %i[index new create show edit update] do
@@ -17,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :rooms, only: %i[] do
     post 'availability', to: 'bookings#availability'
+    post 'final_confirmation', to: 'bookings#final_confirmation'
+    get 'final_confirmation', to: 'bookings#final_confirmation'
     resources :room_rates, only: %i[new create show edit update]
     resources :bookings, only: %i[new create] do
       collection do

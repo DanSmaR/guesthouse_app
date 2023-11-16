@@ -32,17 +32,11 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_up_path_for(resource)
-    if resource.role == 'guesthouse_owner'
-      new_guesthouse_path
-    else
-      super
-    end
-  end
-
   def after_sign_in_path_for(resource)
     if resource.role == 'guesthouse_owner'
       root_path
+    elsif resource.guest? && Guest.find_by(user: resource).nil?
+      new_additional_info_path(resource)
     else
       super
     end

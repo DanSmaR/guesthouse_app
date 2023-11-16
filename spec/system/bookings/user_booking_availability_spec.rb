@@ -106,6 +106,8 @@ describe 'User access room booking' do
     it 'cannot book' do
       # Arrange
       user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', role: 1)
+      user2 = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password', role: 0)
+      guest = user2.create_guest!(name: 'Maria', surname: 'Silva', identification_register_number: '12345678910')
       guesthouse_owner = user.build_guesthouse_owner
       guesthouse = guesthouse_owner.build_guesthouse(corporate_name: 'Pousada Nascer do Sol LTDA.',
                                                      brand_name: 'Pousada Nascer do Sol',
@@ -130,7 +132,7 @@ describe 'User access room booking' do
                                   air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                   available: true }])
       guesthouse.rooms.first&.bookings&.create!(check_in_date: 2.day.from_now, check_out_date: 4.days.from_now,
-                                              number_of_guests: 2)
+                                              number_of_guests: 2, guest: guest)
 
 
       # Act
