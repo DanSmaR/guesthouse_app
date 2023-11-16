@@ -5,5 +5,13 @@ pt-BR:
     attributes:
       booking:
         check_in_date: 'Data de Check-in'
+        check_in_hour: 'Hora de Check-in'
         check_out_date: 'Data de Check-out'
+        check_out_hour: 'Hora de Check-out'
         number_of_guests: 'Quantidade de Hóspedes'
+        total_price: 'Preço Total'
+        status: 'Situação'
+        statuses:
+          pending: 'Pendente'
+          active: 'Ativa'
+          finished: 'Finalizada'

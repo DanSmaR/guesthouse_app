@@ -132,7 +132,8 @@ describe 'User access room booking' do
                                   air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                   available: true }])
       guesthouse.rooms.first&.bookings&.create!(check_in_date: 2.day.from_now, check_out_date: 4.days.from_now,
-                                              number_of_guests: 2, guest: guest)
+                                                number_of_guests: 2, guest: guest, total_price: 200, status: 0,
+                                                check_in_hour: '14:00', check_out_hour: '12:00', reservation_code: 'A123AC12')
 
 
       # Act

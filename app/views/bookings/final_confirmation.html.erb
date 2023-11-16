@@ -21,7 +21,7 @@
       <%= f.text_field :number_of_guests, value: @booking.number_of_guests, readonly: true %>
     </p>
     <p>
-      Preço Total: <%= number_to_currency(@booking.total_price, unit: 'R$ ', separator: ',', delimiter: '.') %>
+      Preço Total: <%= number_to_currency(@booking.get_total_price, unit: 'R$ ', separator: ',', delimiter: '.') %>
     </p>
   <dl>
     <dt>Métodos de Pagamento:</dt>

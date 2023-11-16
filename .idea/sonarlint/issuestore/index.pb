@@ -169,3 +169,19 @@ b
 2db/migrate/20231116022157_add_guest_to_bookings.rb,5/e/5e4b6d78de59fa4b19d30196b4de28e2286bf10c
 T
 $config/locales/guest-model-pt-BR.yml,b/0/b0f2a59024219e2bd3b3e373e07b5a02d0f2a715
+l
+<db/migrate/20231116115030_add_attributes_to_booking_model.rb,b/6/b6619b8009aeae81385a1a4bfd1754334d7e0df8
+`
+0db/migrate/20231031163503_devise_create_users.rb,6/4/64c517894fe0b430d57a4a29f1a23ab70b202c1f
+_
+/db/migrate/20231031172958_create_guesthouses.rb,e/f/ef977be2ea236ddf009dc2767460bb547d4939b9
+Y
+)db/migrate/20231102140411_create_rooms.rb,8/a/8ac344cb662d8ed192c99ad536c35dddde1496ab
+L
+app/models/payment_method.rb,f/3/f3d56786d8a6ca4da335208493185ba6a67144cf
+‡
+Wdb/migrate/20231116132137_change_registration_code_data_type_from_bookings_to_string.rb,d/b/db66c77ab9e11f5cb80fa2a8cb14e46602dbc66e
+~
+Ndb/migrate/20231116133045_change_registration_code_name_from_bookings_table.rb,3/5/35a7627901d0d34c3bc50f3cdff74b81b50b370c
+P
+ app/views/bookings/show.html.erb,a/8/a82b7031a7e772b5ed791e6b0cc5d4fa6dfcd330

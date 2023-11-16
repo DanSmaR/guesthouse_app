@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bookings, only: %i[show]
+
   resources :searches, only: %i[index] do
     collection do
       get :guesthouses_by_city

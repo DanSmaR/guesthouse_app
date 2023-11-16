@@ -11,7 +11,6 @@ class BookingsController < ApplicationController
     @guesthouse = @room.guesthouse
     @booking = @room.bookings.new(booking_params)
 
-    # TODO: Remove "guest eh obrigatório" error message nessa etapa
     if @booking.required_fields && @booking.check_availability
       session[:booking] = booking_params.to_h
       session[:booking][:room_id] = @room.id
@@ -25,7 +24,6 @@ class BookingsController < ApplicationController
   def confirm
     @room = Room.find(params[:room_id])
     @booking = @room.bookings.new(session[:booking])
-    @total_price = @booking.total_price
   end
 
   def final_confirmation
@@ -40,7 +38,24 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @room = Room.find(params[:room_id])
+    @guesthouse = @room.guesthouse
+    @booking = @room.bookings.new(session[:booking])
+    @booking.prepare_for_creation(@guesthouse, current_user.guest)
+    if @booking.save
+      session[:booking] = nil
+      flash[:notice] = 'Reserva realizada com sucesso!'
+      redirect_to booking_path(@booking)
+    else
+      flash[:alert] = 'Não foi possível realizar a reserva. Tente novamente'
+      render :new
+    end
+  end
 
+  def show
+    @booking = Booking.find(params[:id])
+    @room = @booking.room
+    @guesthouse = @room.guesthouse
   end
 
   private
