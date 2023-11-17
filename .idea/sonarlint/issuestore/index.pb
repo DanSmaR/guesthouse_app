@@ -189,3 +189,5 @@ d
 4spec/system/bookings/user_view_bookings_list_spec.rb,f/b/fbaeb9245ac722019bb5bf1b523243e8917d35c8
 Q
 !app/views/bookings/index.html.erb,7/2/72d7d74ce26d87bc3374dd86100949931327b7ad
+g
+7spec/system/bookings/user_guest_cancels_booking_spec.rb,a/b/ab7d693bfd87e049360ce8b736eaada07f51989f

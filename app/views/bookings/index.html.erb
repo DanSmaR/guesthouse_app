@@ -16,6 +16,11 @@
     </tr>
     </thead>
     <tbody>
+    <% if @bookings.empty? %>
+      <tr>
+        <td colspan="8" style="color: red">Nenhuma reserva encontrada</td>
+      </tr>
+    <% end %>
     <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.reservation_code %></td>
