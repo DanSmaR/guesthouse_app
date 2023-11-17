@@ -63,7 +63,17 @@ class BookingsController < ApplicationController
   end
 
   def cancel
-  #
+    @booking = Booking.find(params[:id])
+    if @booking.check_in_date >= Date.today + 7
+      @booking.canceled!
+      @bookings = get_bookings
+      flash.now[:notice] = 'Reserva cancelada com sucesso!'
+      render :index
+    else
+      @bookings = get_bookings
+      flash.now[:alert] = 'Não é possível cancelar a reserva com menos de 7 dias de antecedência.'
+      render :index
+    end
   end
 
   private
