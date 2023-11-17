@@ -11,6 +11,10 @@
       <p>
         <%= link_to 'Minha Pousada', guesthouse_path(id) %>
       </p>
+    <% elsif current_user&.guest&.bookings&.exists? %>
+      <p>
+        <%= link_to 'Minhas Reservas', bookings_path %>
+      </p>
     <% end %>
     <% if user_signed_in? %>
       <p><%= current_user.email %></p>

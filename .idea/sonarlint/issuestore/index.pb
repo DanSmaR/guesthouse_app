@@ -187,3 +187,5 @@ P
  app/views/bookings/show.html.erb,a/8/a82b7031a7e772b5ed791e6b0cc5d4fa6dfcd330
 d
 4spec/system/bookings/user_view_bookings_list_spec.rb,f/b/fbaeb9245ac722019bb5bf1b523243e8917d35c8
+Q
+!app/views/bookings/index.html.erb,7/2/72d7d74ce26d87bc3374dd86100949931327b7ad

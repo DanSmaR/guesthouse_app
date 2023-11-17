@@ -15,3 +15,4 @@ pt-BR:
           pending: 'Pendente'
           active: 'Ativa'
           finished: 'Finalizada'
+          canceled: 'Cancelado'

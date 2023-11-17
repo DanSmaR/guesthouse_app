@@ -8,6 +8,9 @@
     <dt><strong><%= Room.model_name.human %>:</strong></dt>
     <dd><%= @booking.room.name %></dd>
 
+    <dt><strong><%= Guesthouse.model_name.human %>:</strong></dt>
+    <dd><%= @booking.room.guesthouse.brand_name %></dd>
+
     <dt><strong><%= Booking.human_attribute_name(:check_in_date) %>:</strong></dt>
     <dd><%= @booking.check_in_date.strftime('%d/%m/%Y') %></dd>
 

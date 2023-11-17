@@ -1,0 +1,39 @@
+<article>
+  <h2>Minhas Reservas</h2>
+
+  <table>
+    <caption>Dados Básicos das Reservas</caption>
+    <thead>
+    <tr>
+      <th><%= Booking.human_attribute_name(:reservation_code) %></th>
+      <th><%= Booking.human_attribute_name(:status) %></th>
+      <th><%= Booking.human_attribute_name(:check_in_date) %></th>
+      <th><%= Booking.human_attribute_name(:check_out_date) %></th>
+      <th><%= Booking.human_attribute_name(:room) %></th>
+      <th><%= Guesthouse.model_name.human %></th>
+      <th><%= Booking.human_attribute_name(:total_price) %></th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.reservation_code %></td>
+        <td><%= t("activerecord.attributes.booking.statuses.#{booking.status}") %></td>
+        <td><%= booking.check_in_date.strftime('%d/%m/%Y') %></td>
+        <td><%= booking.check_out_date.strftime('%d/%m/%Y') %></td>
+        <td><%= booking.room.name %></td>
+        <td><%= booking.room.guesthouse.brand_name %></td>
+        <td><%= number_to_currency(booking.total_price, unit: 'R$', separator: ',', delimiter: '.') %></td>
+        <td>
+          <%= link_to 'Detalhes', booking_path(booking) %>
+          <p>
+            <%= button_to 'Cancelar', cancel_booking_path(booking), method: :patch,
+                        data: { confirm: 'Pode cancelar?' } if booking.pending? %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</article>

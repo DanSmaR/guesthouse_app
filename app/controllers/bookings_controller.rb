@@ -1,5 +1,9 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+
+  def index
+    @bookings = get_bookings
+  end
   def new
     @room = Room.find(params[:room_id])
     @booking = @room.bookings.new(session[:booking])
@@ -58,7 +62,16 @@ class BookingsController < ApplicationController
     @guesthouse = @room.guesthouse
   end
 
+  def cancel
+  #
+  end
+
   private
+
+  def get_bookings
+    current_user.guest.bookings.where.not(status: %w[canceled finished])
+  end
+
   def booking_params
     params.require(:booking).permit(:check_in_date, :check_out_date, :number_of_guests)
   end

@@ -6,7 +6,7 @@ class Booking < ApplicationRecord
   validate :check_dates
   validate :no_overlapping_bookings
 
-  enum status: { pending: 0, active: 1, finished: 2 }
+  enum status: { pending: 0, active: 1, finished: 2, canceled: 3 }
   belongs_to :room
   belongs_to :guest
 
@@ -47,7 +47,7 @@ class Booking < ApplicationRecord
   private
 
   def check_dates
-    if check_in_date >= check_out_date
+    if check_in_date && check_in_date >= check_out_date
       errors.add(:check_in_date, "deve ser antes da data de check-out")
     end
   end
@@ -71,13 +71,13 @@ class Booking < ApplicationRecord
   end
 
   def check_in_date_not_in_past
-    if check_in_date < Date.today
+    if self.check_in_date && self.check_in_date < Date.today
       errors.add(:check_in_date, "não pode ser no passado")
     end
   end
 
   def no_overlapping_bookings
-    overlapping_bookings = room.bookings.where(status: [0, 1]).where(
+    overlapping_bookings = room.bookings.where.not(id: id).where(status: [0, 1]).where(
       "NOT (check_in_date >= :end_date OR check_out_date <= :start_date)",
       start_date: check_in_date,
       end_date: check_out_date
