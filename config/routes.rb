@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bookings, only: %i[show]
+  resources :bookings, only: %i[index show]
 
   resources :searches, only: %i[index] do
     collection do

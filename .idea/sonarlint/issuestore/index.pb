@@ -185,3 +185,5 @@ Wdb/migrate/20231116132137_change_registration_code_data_type_from_bookings_to_s
 Ndb/migrate/20231116133045_change_registration_code_name_from_bookings_table.rb,3/5/35a7627901d0d34c3bc50f3cdff74b81b50b370c
 P
  app/views/bookings/show.html.erb,a/8/a82b7031a7e772b5ed791e6b0cc5d4fa6dfcd330
+d
+4spec/system/bookings/user_view_bookings_list_spec.rb,f/b/fbaeb9245ac722019bb5bf1b523243e8917d35c8

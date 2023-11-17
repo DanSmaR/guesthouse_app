@@ -219,5 +219,5 @@ describe 'User proceed booking' do
   end
 end
 
-# TODO: Add tests to user logged in but not registered as guest trying to proceed booking
+# TODO: Add tests to user logged in, but not registered as guest, trying to proceed booking
 # TODO: url access to booking pages when not logged in
