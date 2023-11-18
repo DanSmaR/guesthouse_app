@@ -43,13 +43,13 @@
           </p>
           <% if current_user&.guest? && request.path == bookings_path %>
             <p>
-              <%= button_to 'Cancelar', cancel_booking_path(booking), method: :patch,
-                          data: { confirm: 'Pode cancelar?' } if booking.pending? %>
+              <%= button_to('Cancelar', cancel_booking_path(booking), method: :patch,
+                          data: { confirm: 'Pode cancelar?' }) if booking.pending? %>
             </p>
           <% elsif current_user&.guesthouse_owner? && request.path == guesthouse_owner_bookings_path %>
             <p>
-              <%= button_to 'Cancelar', cancel_by_guesthouse_owner_booking_path(booking), method: :patch,
-                            data: { confirm: 'Pode cancelar?' } if booking.pending? %>
+              <%= button_to('Cancelar', cancel_by_guesthouse_owner_booking_path(booking), method: :patch,
+                            data: { confirm: 'Pode cancelar?' }) if booking.pending? %>
             </p>
           <% end %>
         </td>
