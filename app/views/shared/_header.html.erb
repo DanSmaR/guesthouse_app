@@ -3,19 +3,23 @@
   <nav>
     <ul>
       <li><%= link_to "Início", root_path %></li>
+      <% if current_user&.guesthouse_owner&.guesthouse %>
+        <% id = current_user&.guesthouse_owner&.guesthouse&.id || 1 %>
+        <li>
+          <%= link_to 'Minha Pousada', guesthouse_path(id) %>
+        </li>
+        <li>
+          <%= link_to 'Reservas', guesthouse_owner_bookings_bookings_path %>
+        </li>
+      <% end %>
+      <% if current_user&.guest? %>
+        <li>
+          <%= link_to 'Minhas Reservas', bookings_path %>
+        </li>
+      <% end %>
     </ul>
   </nav>
-  <div>
-    <% if current_user&.guesthouse_owner&.guesthouse %>
-      <% id = current_user&.guesthouse_owner&.guesthouse&.id || 1 %>
-      <p>
-        <%= link_to 'Minha Pousada', guesthouse_path(id) %>
-      </p>
-    <% elsif current_user&.guest&.bookings&.exists? %>
-      <p>
-        <%= link_to 'Minhas Reservas', bookings_path %>
-      </p>
-    <% end %>
+  <div class="header__buttons">
     <% if user_signed_in? %>
       <p><%= current_user.email %></p>
       <p>

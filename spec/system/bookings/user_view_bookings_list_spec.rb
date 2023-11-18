@@ -59,7 +59,7 @@ describe 'User access his bookings list' do
       expect(page).to have_selector('th', text: Booking.human_attribute_name(:total_price))
       expect(page).to have_selector('th', text: 'Ações')
       expect(current_path).to eq(bookings_path)
-      expect(page).to have_content('Minhas Reservas')
+      expect(page).to have_content('Reservas')
       expect(page).to have_content('Pousada Nascer do Sol', count: 2)
       expect(page).to have_content('Quarto Primavera', count: 2)
       expect(page).to have_content(2.day.from_now.strftime('%d/%m/%Y'))

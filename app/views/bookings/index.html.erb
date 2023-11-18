@@ -1,5 +1,5 @@
 <article>
-  <h2>Minhas Reservas</h2>
+  <h2>Reservas</h2>
 
   <table>
     <caption>Dados Básicos das Reservas</caption>
@@ -16,12 +16,12 @@
     </tr>
     </thead>
     <tbody>
-    <% if @bookings.empty? %>
+    <% if @bookings.nil? || @bookings&.empty? %>
       <tr>
         <td colspan="8" style="color: red">Nenhuma reserva encontrada</td>
       </tr>
     <% end %>
-    <% @bookings.each do |booking| %>
+    <% @bookings&.each do |booking| %>
       <tr>
         <td><%= booking.reservation_code %></td>
         <td><%= t("activerecord.attributes.booking.statuses.#{booking.status}") %></td>
@@ -31,7 +31,15 @@
         <td><%= booking.room.guesthouse.brand_name %></td>
         <td><%= number_to_currency(booking.total_price, unit: 'R$', separator: ',', delimiter: '.') %></td>
         <td>
-          <%= link_to 'Detalhes', booking_path(booking) %>
+          <% if current_user&.guesthouse_owner? %>
+            <p>
+              <%= button_to 'Check-In', check_in_booking_path(booking), method: :patch,
+                            data: { confirm: 'Pode fazer o check-in?' } if booking.pending? %>
+            </p>
+          <% end %>
+          <p>
+            <%= link_to 'Detalhes', booking_path(booking) %>
+          </p>
           <p>
             <%= button_to 'Cancelar', cancel_booking_path(booking), method: :patch,
                         data: { confirm: 'Pode cancelar?' } if booking.pending? %>

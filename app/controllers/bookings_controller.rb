@@ -1,8 +1,13 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:index, :create]
+
+  def guesthouse_owner_bookings
+    @bookings = get_guesthouse_owner_bookings if current_user&.guesthouse_owner?
+    render :index
+  end
 
   def index
-    @bookings = get_bookings
+    @bookings = get_guest_bookings if current_user&.guest?
   end
   def new
     @room = Room.find(params[:room_id])
@@ -62,15 +67,16 @@ class BookingsController < ApplicationController
     @guesthouse = @room.guesthouse
   end
 
+  # TODO: Create a table to store who canceled the booking
   def cancel
     @booking = Booking.find(params[:id])
     if @booking.check_in_date >= Date.today + 7
       @booking.canceled!
-      @bookings = get_bookings
+      @bookings = get_guest_bookings
       flash.now[:notice] = 'Reserva cancelada com sucesso!'
       render :index
     else
-      @bookings = get_bookings
+      @bookings = get_guest_bookings
       flash.now[:alert] = 'Não é possível cancelar a reserva com menos de 7 dias de antecedência.'
       render :index
     end
@@ -78,8 +84,18 @@ class BookingsController < ApplicationController
 
   private
 
-  def get_bookings
+  def get_guest_bookings
     current_user.guest.bookings.where.not(status: %w[canceled finished])
+  end
+
+  def get_guesthouse_owner_bookings
+    bookings = []
+    current_user.guesthouse_owner.guesthouse.rooms.each do |room|
+      room.bookings.where.not(status: %w[canceled finished]).each do |booking|
+        bookings << booking
+      end
+    end
+    bookings
   end
 
   def booking_params

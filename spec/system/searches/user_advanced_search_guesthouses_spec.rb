@@ -86,8 +86,7 @@ describe 'User does advanced search' do
     # Arrange
     cities2 = %w[Ouro\ Preto Camboriu]
     states2 = %w[MG SC]
-    guesthouses_names2 =
-      %w[Serrana Praiana]
+    guesthouses_names2 = %w[Serrana Praiana]
     user_names2 = %w[Cesar Simone]
     guesthouse2 =  {
       0 => '', 1 => ''

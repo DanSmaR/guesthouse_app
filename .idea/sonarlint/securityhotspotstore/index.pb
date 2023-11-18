@@ -191,3 +191,7 @@ Q
 !app/views/bookings/index.html.erb,7/2/72d7d74ce26d87bc3374dd86100949931327b7ad
 g
 7spec/system/bookings/user_guest_cancels_booking_spec.rb,a/b/ab7d693bfd87e049360ce8b736eaada07f51989f
+y
+Ispec/system/bookings/guesthouse_owner_access_guesthouses_bookings_spec.rb,d/2/d2e0d290cb053df91a0f50e795beebbd72868cf8
+d
+4spec/system/guesthouses/user_show_guesthouse_spec.rb,6/2/623c54e91fb364423995b1c451a8792ab76aef51
