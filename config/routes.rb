@@ -33,9 +33,10 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: %i[index show] do
-    get :guesthouse_owner_bookings, on: :collection
+    get :guesthouse_owner, on: :collection
     member do
       patch :cancel
+      patch :cancel_by_guesthouse_owner
       patch :check_in
     end
   end

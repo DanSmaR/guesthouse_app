@@ -30,6 +30,7 @@
         <td><%= booking.room.name %></td>
         <td><%= booking.room.guesthouse.brand_name %></td>
         <td><%= number_to_currency(booking.total_price, unit: 'R$', separator: ',', delimiter: '.') %></td>
+
         <td>
           <% if current_user&.guesthouse_owner? %>
             <p>
@@ -40,10 +41,17 @@
           <p>
             <%= link_to 'Detalhes', booking_path(booking) %>
           </p>
-          <p>
-            <%= button_to 'Cancelar', cancel_booking_path(booking), method: :patch,
-                        data: { confirm: 'Pode cancelar?' } if booking.pending? %>
-          </p>
+          <% if current_user&.guest? && request.path == bookings_path %>
+            <p>
+              <%= button_to 'Cancelar', cancel_booking_path(booking), method: :patch,
+                          data: { confirm: 'Pode cancelar?' } if booking.pending? %>
+            </p>
+          <% elsif current_user&.guesthouse_owner? && request.path == guesthouse_owner_bookings_path %>
+            <p>
+              <%= button_to 'Cancelar', cancel_by_guesthouse_owner_booking_path(booking), method: :patch,
+                            data: { confirm: 'Pode cancelar?' } if booking.pending? %>
+            </p>
+          <% end %>
         </td>
       </tr>
     <% end %>

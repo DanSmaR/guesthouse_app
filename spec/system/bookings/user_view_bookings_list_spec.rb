@@ -75,7 +75,7 @@ describe 'User access his bookings list' do
       expect(page).to have_link('Detalhes', href: booking_path(Booking.last))
     end
   context 'and has no bookings' do
-    it 'there is no Minhas Reservas link' do
+    it 'shows a alert message only' do
       # Arrange
       user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', role: 1)
       guesthouse_owner = user.build_guesthouse_owner
@@ -111,9 +111,10 @@ describe 'User access his bookings list' do
       # Act
       login_as user2, scope: :user
       visit root_path
+      click_on 'Minhas Reservas'
 
       # Assert
-      expect(page).not_to have_link('Minhas Reservas')
+      expect(page).to have_content('Nenhuma reserva encontrada')
     end
   end
   end

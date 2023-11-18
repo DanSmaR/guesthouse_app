@@ -87,7 +87,7 @@ describe 'Guesthouse owner access his bookings list' do
     expect(page).to have_selector('th', text: Guesthouse.model_name.human)
     expect(page).to have_selector('th', text: Booking.human_attribute_name(:total_price))
     expect(page).to have_selector('th', text: 'Ações')
-    expect(current_path).to eq(guesthouse_owner_bookings_bookings_path)
+    expect(current_path).to eq(guesthouse_owner_bookings_path)
     expect(page).to have_content('Reservas')
     expect(page).to have_content('Pousada Nascer do Sol', count: 2)
     expect(page).to have_content('Quarto Aquarela 0', count: 2)

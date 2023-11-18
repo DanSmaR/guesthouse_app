@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   validates :check_in_date, :check_out_date, :number_of_guests, presence: true
   validates :number_of_guests, numericality: { greater_than: 0 }
   validates :reservation_code, uniqueness: true, length: { is: 8 }
-  validate :check_in_date_not_in_past
+  validate :check_in_date_not_in_past, on: :create
   validate :check_dates
   validate :no_overlapping_bookings
 

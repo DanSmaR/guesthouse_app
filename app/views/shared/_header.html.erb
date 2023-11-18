@@ -9,7 +9,7 @@
           <%= link_to 'Minha Pousada', guesthouse_path(id) %>
         </li>
         <li>
-          <%= link_to 'Reservas', guesthouse_owner_bookings_bookings_path %>
+          <%= link_to 'Reservas', guesthouse_owner_bookings_path %>
         </li>
       <% end %>
       <% if current_user&.guest? %>

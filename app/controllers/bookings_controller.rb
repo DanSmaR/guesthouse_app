@@ -1,13 +1,15 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
-
-  def guesthouse_owner_bookings
-    @bookings = get_guesthouse_owner_bookings if current_user&.guesthouse_owner?
-    render :index
-  end
+  before_action :authenticate_user!,
+                only:
+                  [:index, :create, :show, :cancel, :cancel_by_guesthouse_owner, :guesthouse_owner]
 
   def index
     @bookings = get_guest_bookings if current_user&.guest?
+  end
+
+  def guesthouse_owner
+    @bookings = get_guesthouse_owner_bookings if current_user&.guesthouse_owner?
+    render :index
   end
   def new
     @room = Room.find(params[:room_id])
@@ -20,12 +22,13 @@ class BookingsController < ApplicationController
     @guesthouse = @room.guesthouse
     @booking = @room.bookings.new(booking_params)
 
-    if @booking.required_fields && @booking.check_availability
+    if @booking&.required_fields && @booking.check_availability
       session[:booking] = booking_params.to_h
       session[:booking][:room_id] = @room.id
       flash[:notice] = 'Quarto disponível!'
       redirect_to confirm_room_bookings_path(@room)
     else
+      flash.now[:alert] = 'Quarto não disponível neste período. Tente novamente'
       render :new
     end
   end
@@ -50,39 +53,60 @@ class BookingsController < ApplicationController
     @room = Room.find(params[:room_id])
     @guesthouse = @room.guesthouse
     @booking = @room.bookings.new(session[:booking])
-    @booking.prepare_for_creation(@guesthouse, current_user.guest)
-    if @booking.save
+    @booking&.prepare_for_creation(@guesthouse, current_user.guest)
+    if @booking&.save
       session[:booking] = nil
       flash[:notice] = 'Reserva realizada com sucesso!'
       redirect_to booking_path(@booking)
     else
-      flash[:alert] = 'Não foi possível realizar a reserva. Tente novamente'
+      flash.now[:alert] = 'Não foi possível realizar a reserva. Tente novamente'
       render :new
     end
   end
 
   def show
-    @booking = Booking.find(params[:id])
-    @room = @booking.room
+    @booking = current_user.guest.bookings.find(params[:id])
+    @room = @booking&.room
     @guesthouse = @room.guesthouse
   end
 
   # TODO: Create a table to store who canceled the booking
   def cancel
-    @booking = Booking.find(params[:id])
-    if @booking.check_in_date >= Date.today + 7
-      @booking.canceled!
+    @booking = current_user.guest.bookings.find(params[:id])
+    if @booking&.check_in_date >= Date.today + 7
+      @booking&.canceled!
       @bookings = get_guest_bookings
-      flash.now[:notice] = 'Reserva cancelada com sucesso!'
-      render :index
+      flash[:notice] = 'Reserva cancelada com sucesso!'
+      redirect_to bookings_path
     else
       @bookings = get_guest_bookings
-      flash.now[:alert] = 'Não é possível cancelar a reserva com menos de 7 dias de antecedência.'
-      render :index
+      flash[:alert] = 'Não é possível cancelar a reserva com menos de 7 dias de antecedência.'
+      redirect_to bookings_path
+    end
+  end
+
+  def cancel_by_guesthouse_owner
+    @booking = nil
+    current_user.guesthouse_owner.guesthouse.rooms.each do |room|
+      @booking = room.bookings.find(params[:id]) if room.bookings.exists?(params[:id])
+    end
+    if validate_cancel_conditions
+      @booking&.canceled!
+      @bookings = get_guesthouse_owner_bookings
+      flash[:notice] = 'Reserva cancelada com sucesso!'
+      redirect_to guesthouse_owner_bookings_path
+    else
+      @bookings = get_guesthouse_owner_bookings
+      flash[:alert] = 'Não é possível cancelar a reserva com menos de 2 dias de atraso.'
+      redirect_to guesthouse_owner_bookings_path
     end
   end
 
   private
+
+  def validate_cancel_conditions
+    !@booking.nil? && @booking&.pending? && @booking&.check_in_date + 2.days <= Date.today
+  end
 
   def get_guest_bookings
     current_user.guest.bookings.where.not(status: %w[canceled finished])
