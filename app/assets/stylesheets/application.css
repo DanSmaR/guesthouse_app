@@ -18,3 +18,13 @@
     display: inline;
     color: red;
 }
+
+table {
+    border-style: solid;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    border-style: solid;
+    border-color: #2E2F30;
+}
