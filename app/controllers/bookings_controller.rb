@@ -65,9 +65,14 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = current_user.guest.bookings.find(params[:id])
-    @room = @booking&.room
-    @guesthouse = @room.guesthouse
+    if current_user&.guest? && current_user.guest.bookings.exists?(params[:id])
+      @booking = current_user.guest.bookings.find(params[:id])
+    elsif current_user&.guesthouse_owner?
+      @booking = nil
+      current_user.guesthouse_owner.guesthouse.rooms.each do |room|
+        @booking = room.bookings.find(params[:id]) if room.bookings.exists?(params[:id])
+      end
+    end
   end
 
   # TODO: Create a table to store who canceled the booking

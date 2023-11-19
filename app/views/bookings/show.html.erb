@@ -1,38 +1,38 @@
 <article>
-  <h2>Detalhes da <%= Booking.model_name.human %> <%= @booking.reservation_code %></h2>
+  <h2>Detalhes da <%= Booking.model_name.human %> <%= @booking&.reservation_code %></h2>
 
   <dl>
     <dt><strong><%= Booking.human_attribute_name(:status) %>:</strong></dt>
-    <dd><%= t("activerecord.attributes.booking.statuses.#{@booking.status}") %></dd>
+    <dd><%= t("activerecord.attributes.booking.statuses.#{@booking&.status}") %></dd>
 
     <dt><strong><%= Room.model_name.human %>:</strong></dt>
-    <dd><%= @booking.room.name %></dd>
+    <dd><%= @booking&.room&.name %></dd>
 
     <dt><strong><%= Guesthouse.model_name.human %>:</strong></dt>
-    <dd><%= @booking.room.guesthouse.brand_name %></dd>
+    <dd><%= @booking&.room&.guesthouse&.brand_name %></dd>
 
     <dt><strong><%= Booking.human_attribute_name(:check_in_date) %>:</strong></dt>
-    <dd><%= @booking.check_in_date.strftime('%d/%m/%Y') %></dd>
+    <dd><%= @booking&.check_in_date&.strftime('%d/%m/%Y') %></dd>
 
     <dt><strong><%= Booking.human_attribute_name(:check_in_hour) %>:</strong></dt>
-    <dd><%= @booking.check_in_hour.strftime('%H:%M') %></dd>
+    <dd><%= @booking&.check_in_hour&.strftime('%H:%M') %></dd>
 
     <dt><strong><%= Booking.human_attribute_name(:check_out_date) %>:</strong></dt>
-    <dd><%= @booking.check_out_date.strftime('%d/%m/%Y') %></dd>
+    <dd><%= @booking&.check_out_date&.strftime('%d/%m/%Y') %></dd>
 
     <dt><strong><%= Booking.human_attribute_name(:check_out_hour) %>:</strong></dt>
-    <dd><%= @booking.check_out_hour.strftime('%H:%M') %></dd>
+    <dd><%= @booking&.check_out_hour&.strftime('%H:%M') %></dd>
 
     <dt><strong><%= Booking.human_attribute_name(:number_of_guests) %>:</strong></dt>
-    <dd><%= @booking.number_of_guests %></dd>
+    <dd><%= @booking&.number_of_guests %></dd>
 
     <dt><strong><%= Booking.human_attribute_name(:total_price) %>:</strong></dt>
-    <dd><%= number_to_currency(@booking.total_price, unit: 'R$', separator: ',', delimiter: '.') %></dd>
+    <dd><%= number_to_currency(@booking&.total_price, unit: 'R$', separator: ',', delimiter: '.') %></dd>
 
     <dt><strong><%= PaymentMethod.model_name.human %>:</strong></dt>
     <dd>
       <ul>
-        <% @booking.room.guesthouse.payment_methods.each do |payment_method| %>
+        <% @booking&.room&.guesthouse&.payment_methods&.each do |payment_method| %>
           <li><%= t("#{payment_method.method}") %></li>
         <% end %>
       </ul>

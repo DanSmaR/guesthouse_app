@@ -114,5 +114,3 @@ describe 'Guesthouse owner access his bookings list' do
 
   end
 end
-
-# TODO: sees a booking details

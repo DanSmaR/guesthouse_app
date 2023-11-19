@@ -197,3 +197,5 @@ d
 4spec/system/guesthouses/user_show_guesthouse_spec.rb,6/2/623c54e91fb364423995b1c451a8792ab76aef51
 x
 Hspec/system/bookings/guesthouse_owner_cancels_guesthouse_booking_spec.rb,d/e/deda7cf960e65dc5bf9a411213269b80b61a70e5
+{
+Kspec/system/bookings/guesthouse_owner_detailed_guesthouses_bookings_spec.rb,8/c/8c14f8583bf557b6b27d80ae2e5e67f3c81326b4
