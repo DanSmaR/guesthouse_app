@@ -130,13 +130,13 @@ class BookingsController < ApplicationController
   end
 
   def get_guest_bookings
-    current_user.guest.bookings.where.not(status: %w[canceled finished])
+    current_user.guest.bookings.where(status: :pending)
   end
 
   def get_guesthouse_owner_bookings
     bookings = []
     current_user.guesthouse_owner.guesthouse.rooms.each do |room|
-      room.bookings.where.not(status: %w[canceled finished]).each do |booking|
+      room.bookings.where(status: :pending).each do |booking|
         bookings << booking
       end
     end

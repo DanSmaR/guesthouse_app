@@ -50,7 +50,7 @@ class Booking < ApplicationRecord
       errors.add(:base, 'A reserva não está pendente')
     end
     unless check_in_date <= Date.today
-      errors.add(:base, 'Data de check-in ainda não chegou')
+      errors.add(:base, 'Não é possível realizar o check-in antes da data da reserva')
     end
     unless check_out_date > Date.today
       errors.add(:base, 'Reserva expirada. Favor cancelar')

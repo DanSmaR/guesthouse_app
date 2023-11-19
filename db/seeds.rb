@@ -29,6 +29,9 @@ guesthouse_owner = {
   0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
 }
 
+user_guest = User.create!(name: 'Marcia', email: 'marcia@email.com', password: 'password', role: 0)
+guest = user_guest.create_guest!(name: 'Marcia', surname: 'Silva', identification_register_number: '12345678910')
+
 guesthouses_names.each_with_index do |name, index|
   user[index] = User.create!(name: user_names[index], email: "#{user_names[index].downcase}@email.com",
                              password: 'password', password_confirmation: 'password', role: 1)
@@ -73,8 +76,14 @@ guesthouses_names.each_with_index do |name, index|
                                                       { start_date: 2.months.from_now,
                                                         end_date: 3.months.from_now,
                                                         daily_rate: (index + 1) * 100 }])
-  guesthouse[index].rooms.first&.bookings.&create!(check_in_date: 2.day.from_now, check_out_date: 4.days.from_now,
-                                            number_of_guests: 2)
+  guesthouse[index].rooms.first&.bookings&.create!([{check_in_date: 0.days.from_now, check_out_date: 2.days.from_now,
+                                                     number_of_guests: 2, guest: guest, total_price: 200, status: 0,
+                                                     check_in_hour: '14:00', check_out_hour: '12:00',
+                                                     reservation_code: "#{index}A123AC1"},
+                                                    {check_in_date: 4.days.from_now, check_out_date: 5.days.from_now,
+                                                     number_of_guests: 2, guest: guest, total_price: 100, status: 0,
+                                                     check_in_hour: '14:00', check_out_hour: '12:00',
+                                                     reservation_code: "#{index}B123AC1"}])
 end
 
 # Arrange
@@ -137,6 +146,12 @@ guesthouses_names2.each_with_index do |name, index|
                                                        { start_date: '2021-02-01',
                                                          end_date: '2021-02-28',
                                                          daily_rate: (index + 1) * 100 }])
-  guesthouse[index].rooms.first&.bookings.&create!(check_in_date: 5.day.from_now, check_out_date: 8.days.from_now,
-                                            number_of_guests: 2)
+  guesthouse2[index].rooms.first&.bookings&.create!([{check_in_date: 0.days.from_now, check_out_date: 2.days.from_now,
+                                                     number_of_guests: 2, guest: guest, total_price: 200, status: 0,
+                                                     check_in_hour: '14:00', check_out_hour: '12:00',
+                                                     reservation_code: "#{index}C123AC1"},
+                                                    {check_in_date: 4.days.from_now, check_out_date: 5.days.from_now,
+                                                     number_of_guests: 2, guest: guest, total_price: 100, status: 0,
+                                                     check_in_hour: '14:00', check_out_hour: '12:00',
+                                                     reservation_code: "#{index}D123AC1"}])
 end
