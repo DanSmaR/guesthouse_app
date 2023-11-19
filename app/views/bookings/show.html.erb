@@ -38,4 +38,15 @@
       </ul>
     </dd>
   </dl>
+  <% unless @booking&.check_in_confirmed_date.nil? %>
+    <hr>
+    <h3>Dados do Check-in efetivado</h3>
+    <dl>
+      <dt><strong><%= Booking.human_attribute_name(:check_in_confirmed_date) %>:</strong></dt>
+      <dd><%= @booking&.check_in_confirmed_date&.strftime('%d/%m/%Y') %></dd>
+
+      <dt><strong><%= Booking.human_attribute_name(:check_in_confirmed_hour) %>:</strong></dt>
+      <dd><%= @booking&.check_in_confirmed_hour&.strftime('%H:%M') %></dd>
+    </dl>
+  <% end %>
 </article>

@@ -62,7 +62,7 @@ describe 'Guesthouse owner check in booking' do
                                           tv: index == 1 ? false : true, wardrobe: true,
                                           safe: true, accessible: index == 0 ? false : true,
                                           available: index.odd? ? true : false }])
-      guesthouse[index].rooms.first&.bookings&.create!([{check_in_date: 2.days.from_now, check_out_date: 4.days.from_now,
+      guesthouse[index].rooms.first&.bookings&.create!([{check_in_date: 0.days.from_now, check_out_date: 2.days.from_now,
                                                      number_of_guests: 2, guest: guest, total_price: 200, status: 0,
                                                      check_in_hour: '14:00', check_out_hour: '12:00',
                                                      reservation_code: "#{index}A123AC1"},
@@ -72,18 +72,24 @@ describe 'Guesthouse owner check in booking' do
                                                      reservation_code: "#{index}B123AC1"}])
     end
 
-
     # Act
     login_as user[0], scope: :user
     visit guesthouse_owner_bookings_path
-    click_on 'Check-In', match: :first
+    travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 1.days.from_now.day, 14, 0, 0) do
+      click_on 'Check-In', match: :first
 
-    # Assert
-    expect(current_path).to eq(booking_path(guesthouse[0].rooms.first&.bookings&.first))
-    expect(page).to have_content('Check-in realizado com sucesso')
-    expect(page).to have_content('Situação: ativa')
-    expect(page).to have_content('Dados de confirmação do check-in')
-    expect(page).to have_content('Data de check-in confirmada: ' + guesthouse[0].rooms.first&.bookings&.first.check_in_confirmation_date.strftime('%d/%m/%Y'))
-    expect(page).to have_content('Hora de check-in confirmada: ' + guesthouse[0].rooms.first&.bookings&.first.check_in_confirmation_hour.strftime('%H:%M'))
+      # Assert
+      expect(current_path).to eq(booking_path(guesthouse[0].rooms.first&.bookings&.first))
+      expect(page).to have_content('Check-in realizado com sucesso')
+      expect(page).to have_content('Situação: Ativa')
+      expect(page).to have_content('Dados do Check-in efetivado')
+      expect(page).to have_content('Data de Confirmação do Check-in: ' +
+                                     guesthouse[0].rooms.first&.bookings&.first
+                                       &.check_in_confirmed_date.strftime('%d/%m/%Y'))
+      expect(page).to have_content('Hora de Confirmação do Check-in: ' +
+                                     guesthouse[0].rooms.first&.bookings&.first
+                                       &.check_in_confirmed_hour.strftime('%H:%M'))
+
+    end
   end
 end

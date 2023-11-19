@@ -107,6 +107,22 @@ class BookingsController < ApplicationController
     end
   end
 
+  def check_in
+    @booking = nil
+    current_user.guesthouse_owner.guesthouse.rooms.each do |room|
+      @booking = room.bookings.find(params[:id]) if room.bookings.exists?(params[:id])
+    end
+    if @booking&.can_check_in
+      @booking&.active!
+      @booking&.update(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+      flash[:notice] = 'Check-in realizado com sucesso!'
+      redirect_to booking_path(@booking)
+    else
+      flash[:alert] = @booking&.errors&.full_messages&.join('.\n ')
+      redirect_to guesthouse_owner_bookings_path
+    end
+  end
+
   private
 
   def validate_cancel_conditions

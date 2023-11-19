@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  # TODO: change the dates and hours to be datetime in one field
   validates :check_in_date, :check_out_date, :number_of_guests, presence: true
   validates :number_of_guests, numericality: { greater_than: 0 }
   validates :reservation_code, uniqueness: true, length: { is: 8 }
@@ -42,6 +43,22 @@ class Booking < ApplicationRecord
       total += rate ? rate.daily_rate : room.daily_rate
     end
     total
+  end
+
+  def can_check_in
+    unless pending?
+      errors.add(:base, 'A reserva não está pendente')
+    end
+    unless check_in_date <= Date.today
+      errors.add(:base, 'Data de check-in ainda não chegou')
+    end
+    unless check_out_date > Date.today
+      errors.add(:base, 'Reserva expirada. Favor cancelar')
+    end
+    unless check_in_hour <= Time.now
+      errors.add(:check_in_hour, 'é antes da hora de check-in padrão da pousada')
+    end
+    errors.empty?
   end
 
   private

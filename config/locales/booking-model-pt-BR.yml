@@ -10,6 +10,8 @@ pt-BR:
         check_out_hour: 'Hora de Check-out'
         number_of_guests: 'Quantidade de Hóspedes'
         total_price: 'Preço Total'
+        check_in_confirmed_date: 'Data de Confirmação do Check-in'
+        check_in_confirmed_hour: 'Hora de Confirmação do Check-in'
         status: 'Situação'
         statuses:
           pending: 'Pendente'

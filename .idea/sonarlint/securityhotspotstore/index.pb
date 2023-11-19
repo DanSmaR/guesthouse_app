@@ -203,3 +203,15 @@ y
 Ispec/system/bookings/guesthouse_owner_check_in_guesthouse_booking_spec.rb,8/c/8c6b40a97cb398d32f74469d116e6697f730731a
 f
 6db/migrate/20231119140443_add_attributes_to_booking.rb,7/2/72ec79a519808fbdd97bf55ad8ab5c370cdbbe91
+E
+config/application.rb,7/f/7ff7049c1c8745b54f0a9ef78996f60b38f36268
+N
+spec/models/guesthouse_spec.rb,3/1/31c7974f81c2cbf4ab36dbfda34edb11e62d4ea0
+H
+spec/models/room_spec.rb,0/9/09bb769c9f1d9da5fa7c66ba5ab61e639ad4eab8
+c
+3db/migrate/20231031163502_create_payment_methods.rb,c/b/cbba07950d9b39aa74ade2bd52a63e554c11d317
+e
+5db/migrate/20231031164630_create_guesthouse_owners.rb,0/b/0bb54ee0465210a572675a43746db4721a309359
+h
+8db/migrate/20231031172842_add_state_column_to_address.rb,d/6/d6903096d57fa8999bcaaf02f8df6b3428c4a185
