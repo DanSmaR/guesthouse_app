@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Guesthouse owner access his bookings list' do
-  it 'successfully' do
+  it 'successfully and only sees his bookings' do
     # Arrange
     cities = %w[Itapetininga Camboriú]
     states = %w[SP SC]
@@ -103,5 +103,16 @@ describe 'Guesthouse owner access his bookings list' do
     expect(page).to have_button('Cancelar', count: 2)
     expect(page).to have_link('Detalhes', href: booking_path(guesthouse[0].rooms.first&.bookings&.first))
     expect(page).to have_link('Detalhes', href: booking_path(guesthouse[0].rooms.first&.bookings&.last))
+
+    expect(page).not_to have_content('Pousada Praiana')
+    expect(page).not_to have_content('Quarto Aquarela 1')
+    expect(page).not_to have_content('Quarto Oceano 1')
+    expect(page).to_not have_content('1A123AC1')
+    expect(page).to_not have_content('1B123AC1')
+    expect(page).to_not have_link('Detalhes', href: booking_path(guesthouse[1].rooms.first&.bookings&.first))
+    expect(page).to_not have_link('Detalhes', href: booking_path(guesthouse[1].rooms.first&.bookings&.last))
+
   end
 end
+
+# TODO: sees a booking details
