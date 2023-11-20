@@ -122,7 +122,7 @@ class BookingsController < ApplicationController
       flash[:notice] = 'Check-in realizado com sucesso!'
       redirect_to booking_path(@booking)
     else
-      flash[:alert] = @booking&.errors&.full_messages&.join('.\n ')
+      flash[:alert] ="Reserva #{@booking&.reservation_code} #{@booking&.errors&.full_messages&.join('. ')}"
       redirect_to guesthouse_owner_bookings_path
     end
   end
