@@ -28,3 +28,13 @@ th, td {
     border-style: solid;
     border-color: #2E2F30;
 }
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+thead th {
+    outline: 2px solid black;
+}
