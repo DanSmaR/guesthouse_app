@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_19_140443) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_031949) do
   create_table "addresses", force: :cascade do |t|
     t.string "street", null: false
     t.string "neighborhood", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_140443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "state"
+  end
+
+  create_table "booking_rates", force: :cascade do |t|
+    t.integer "booking_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.decimal "rate", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_rates_on_booking_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -62,8 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_140443) do
     t.text "description"
     t.boolean "pets", default: false
     t.text "use_policy"
-    t.datetime "checkin_hour", default: "2023-11-19 17:00:00"
-    t.datetime "checkout_hour", default: "2023-11-19 15:00:00"
+    t.datetime "checkin_hour", default: "2023-11-20 17:00:00"
+    t.datetime "checkout_hour", default: "2023-11-20 15:00:00"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -136,6 +146,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_19_140443) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "booking_rates", "bookings"
   add_foreign_key "bookings", "guests"
   add_foreign_key "bookings", "rooms"
   add_foreign_key "guesthouse_owners", "users"

@@ -59,9 +59,9 @@ class BookingsController < ApplicationController
     @booking = @room.bookings.new(session[:booking])
     @booking&.prepare_for_creation(@guesthouse, current_user.guest)
     if @booking&.save
+      @booking&.create_booking_rates
       session[:booking] = nil
-      flash[:notice] = 'Reserva realizada com sucesso!'
-      redirect_to booking_path(@booking)
+      redirect_to booking_path(@booking), notice: 'Reserva realizada com sucesso!'
     else
       flash.now[:alert] = 'Não foi possível realizar a reserva. Tente novamente'
       render :new

@@ -241,3 +241,9 @@ n
 bspec/system/bookings/guesthouses_owners/guesthouse_owner_closes_active_guesthouse_bookings_spec.rb,1/b/1b98514e932360b1554818f9f6ca3f288540bf1a
 k
 ;spec/system/bookings/guests/user_view_bookings_list_spec.rb,b/6/b66b48fc114ae261c3a89c52b2f067eabdad38a1
+a
+1db/migrate/20231120031949_create_booking_rates.rb,e/f/efa0bd15cfc9420a9b8f0780eee8984beadcf82d
+J
+app/models/booking_rate.rb,2/7/27eef5668b98465230c953652eec13ab14c774e2
+P
+ spec/models/booking_rate_spec.rb,4/3/43f036c93ed587c7b6c35811412d67f8d3a77f9a

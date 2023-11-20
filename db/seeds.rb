@@ -76,14 +76,21 @@ guesthouses_names.each_with_index do |name, index|
                                                       { start_date: 2.months.from_now,
                                                         end_date: 3.months.from_now,
                                                         daily_rate: (index + 1) * 100 }])
-  guesthouse[index].rooms.first&.bookings&.create!([{check_in_date: 0.days.from_now, check_out_date: 2.days.from_now,
-                                                     number_of_guests: 2, guest: guest, total_price: 200, status: 0,
+  bookings = guesthouse[index].rooms.first&.bookings&.build([{check_in_date: 0.days.from_now,
+                                                              check_out_date: 2.days.from_now,
+                                                     number_of_guests: 2, guest: guest, status: 0,
                                                      check_in_hour: '14:00', check_out_hour: '12:00',
                                                      reservation_code: "#{index}A123AC1"},
-                                                    {check_in_date: 4.days.from_now, check_out_date: 5.days.from_now,
-                                                     number_of_guests: 2, guest: guest, total_price: 100, status: 0,
+                                                    {check_in_date: 4.days.from_now,
+                                                     check_out_date: 5.days.from_now,
+                                                     number_of_guests: 2, guest: guest, status: 0,
                                                      check_in_hour: '14:00', check_out_hour: '12:00',
                                                      reservation_code: "#{index}B123AC1"}])
+  bookings&.each do |booking|
+    booking.total_price = booking.get_total_price
+    booking.save!
+    booking.create_booking_rates
+  end
 end
 
 # Arrange
@@ -140,18 +147,23 @@ guesthouses_names2.each_with_index do |name, index|
                                       tv: index == 1 ? false : true, wardrobe: true,
                                       safe: true, accessible: index == 0 ? false : true,
                                       available: index.odd? ? true : false }])
-  guesthouse2[index].rooms.first&.room_rates&.create!([{ start_date: '2021-01-01',
-                                                         end_date: '2021-01-31',
+  guesthouse2[index].rooms.first&.room_rates&.create!([{ start_date: 0.days.from_now,
+                                                         end_date: 8.days.from_now,
                                                          daily_rate: (index + 2) * 100 },
-                                                       { start_date: '2021-02-01',
-                                                         end_date: '2021-02-28',
+                                                       { start_date: 1.month.from_now,
+                                                         end_date: 1.months.from_now + 10.days,
                                                          daily_rate: (index + 1) * 100 }])
-  guesthouse2[index].rooms.first&.bookings&.create!([{check_in_date: 0.days.from_now, check_out_date: 2.days.from_now,
-                                                     number_of_guests: 2, guest: guest, total_price: 200, status: 0,
+  bookings2 = guesthouse2[index].rooms.first&.bookings&.build([{check_in_date: 0.days.from_now, check_out_date: 2.days.from_now,
+                                                     number_of_guests: 2, guest: guest, status: 0,
                                                      check_in_hour: '14:00', check_out_hour: '12:00',
                                                      reservation_code: "#{index}C123AC1"},
-                                                    {check_in_date: 4.days.from_now, check_out_date: 5.days.from_now,
-                                                     number_of_guests: 2, guest: guest, total_price: 100, status: 0,
+                                                    {check_in_date: 8.days.from_now, check_out_date: 12.days.from_now,
+                                                     number_of_guests: 2, guest: guest, status: 0,
                                                      check_in_hour: '14:00', check_out_hour: '12:00',
                                                      reservation_code: "#{index}D123AC1"}])
+  bookings2&.each do |booking|
+    booking.total_price = booking.get_total_price
+    booking.save!
+    booking.create_booking_rates
+  end
 end

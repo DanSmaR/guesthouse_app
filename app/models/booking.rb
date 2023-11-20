@@ -10,6 +10,7 @@ class Booking < ApplicationRecord
   enum status: { pending: 0, active: 1, finished: 2, canceled: 3 }
   belongs_to :room
   belongs_to :guest
+  has_many :booking_rates, dependent: :destroy
 
   def prepare_for_creation(guesthouse, guest)
     self.guest = guest
@@ -59,6 +60,41 @@ class Booking < ApplicationRecord
       errors.add(:check_in_hour, 'é antes da hora de check-in padrão da pousada')
     end
     errors.empty?
+  end
+
+  def create_booking_rates
+    current_rate = nil
+    current_start_date = nil
+
+    (check_in_date...check_out_date).each do |date|
+      rate = room.room_rates.where('start_date <= ? AND end_date >= ?', date, date).first&.daily_rate || room.daily_rate
+
+      if rate != current_rate
+        if current_rate
+          booking_rates.create(start_date: current_start_date, end_date: date - 1.day, rate: current_rate)
+        end
+        current_rate = rate
+        current_start_date = date
+      end
+    end
+
+    booking_rates.create(start_date: current_start_date, end_date: check_out_date - 1.day, rate: current_rate)
+  end
+
+  def calculate_total_paid
+    total = 0
+    actual_checkout_date = Time.current.to_date
+    booking_rates.where('start_date <= ?', actual_checkout_date).each do |booking_rate|
+      days = (booking_rate.end_date - booking_rate.start_date).to_i + 1
+      total += booking_rate.rate * days
+    end
+
+    if room.guesthouse.checkout_hour < Time.now
+      extra_day_rate = room.room_rates.where('start_date <= ? AND end_date >= ?', actual_checkout_date, actual_checkout_date).first&.daily_rate || room.daily_rate
+      total += extra_day_rate
+    end
+
+    total
   end
 
   private
