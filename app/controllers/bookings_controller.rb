@@ -127,6 +127,26 @@ class BookingsController < ApplicationController
     end
   end
 
+  def check_out
+    @booking = nil
+    current_user.guesthouse_owner.guesthouse.rooms.each do |room|
+      @booking = room.bookings.find(params[:id]) if room.bookings.exists?(params[:id])
+    end
+    @total_paid = @booking&.calculate_total_paid
+    if request.patch?
+      if params[:payment_method].blank?
+        flash.now[:alert] = 'Método de Pagamento é obrigatório.'
+        render :check_out
+      else
+        @booking&.finished!
+        @booking&.update(check_out_confirmed_date: Date.today, check_out_confirmed_hour: Time.now,
+                         total_paid: @total_paid, payment_method: params[:payment_method])
+        flash[:notice] = 'Check-out realizado com sucesso!'
+        redirect_to booking_path(@booking)
+      end
+    end
+  end
+
   private
 
   def validate_cancel_conditions

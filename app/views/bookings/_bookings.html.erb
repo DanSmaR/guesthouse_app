@@ -41,6 +41,12 @@
             <%= button_to 'Check-In', check_in_booking_path(booking), method: :patch,
                           data: { confirm: 'Pode fazer o check-in?' } if booking.pending? %>
           </p>
+
+        <% elsif current_user&.guesthouse_owner? && request.path == active_bookings_path %>
+          <p>
+            <%= button_to 'Check-Out', check_out_booking_path(booking), method: :get,
+                          data: { confirm: 'Pode fazer o check-out?' } %>
+          </p>
         <% end %>
       </td>
     </tr>

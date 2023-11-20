@@ -41,6 +41,8 @@ Rails.application.routes.draw do
       patch :cancel
       patch :cancel_by_guesthouse_owner
       patch :check_in
+      get :check_out
+      patch :check_out
     end
   end
 

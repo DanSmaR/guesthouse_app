@@ -145,10 +145,6 @@ N
 app/views/rooms/_form.html.erb,3/3/33ae6e138b41bf968bf901ecbd071ab383317c65
 S
 #app/views/bookings/confirm.html.erb,7/c/7c23c4a330edbc518f1a439fa41f2ff643c4d41d
-a
-1spec/system/bookings/user_proceed_booking_spec.rb,6/3/63f7db8ff843e1b9c993fbf0294b676ff25d865a
-f
-6spec/system/bookings/user_booking_availability_spec.rb,1/4/146f401017f27d27657da80c9d47ccd4157590ae
 R
 "app/views/guesthouses/new.html.erb,b/0/b05a3e0caf8de76d702893dd53b291421ae54e63
 T
@@ -185,22 +181,10 @@ Wdb/migrate/20231116132137_change_registration_code_data_type_from_bookings_to_s
 Ndb/migrate/20231116133045_change_registration_code_name_from_bookings_table.rb,3/5/35a7627901d0d34c3bc50f3cdff74b81b50b370c
 P
  app/views/bookings/show.html.erb,a/8/a82b7031a7e772b5ed791e6b0cc5d4fa6dfcd330
-d
-4spec/system/bookings/user_view_bookings_list_spec.rb,f/b/fbaeb9245ac722019bb5bf1b523243e8917d35c8
 Q
 !app/views/bookings/index.html.erb,7/2/72d7d74ce26d87bc3374dd86100949931327b7ad
-g
-7spec/system/bookings/user_guest_cancels_booking_spec.rb,a/b/ab7d693bfd87e049360ce8b736eaada07f51989f
-y
-Ispec/system/bookings/guesthouse_owner_access_guesthouses_bookings_spec.rb,d/2/d2e0d290cb053df91a0f50e795beebbd72868cf8
 d
 4spec/system/guesthouses/user_show_guesthouse_spec.rb,6/2/623c54e91fb364423995b1c451a8792ab76aef51
-x
-Hspec/system/bookings/guesthouse_owner_cancels_guesthouse_booking_spec.rb,d/e/deda7cf960e65dc5bf9a411213269b80b61a70e5
-{
-Kspec/system/bookings/guesthouse_owner_detailed_guesthouses_bookings_spec.rb,8/c/8c14f8583bf557b6b27d80ae2e5e67f3c81326b4
-y
-Ispec/system/bookings/guesthouse_owner_check_in_guesthouse_booking_spec.rb,8/c/8c6b40a97cb398d32f74469d116e6697f730731a
 f
 6db/migrate/20231119140443_add_attributes_to_booking.rb,7/2/72ec79a519808fbdd97bf55ad8ab5c370cdbbe91
 E
@@ -215,8 +199,6 @@ e
 5db/migrate/20231031164630_create_guesthouse_owners.rb,0/b/0bb54ee0465210a572675a43746db4721a309359
 h
 8db/migrate/20231031172842_add_state_column_to_address.rb,d/6/d6903096d57fa8999bcaaf02f8df6b3428c4a185
-}
-Mspec/system/bookings/guesthouse_owner_sees_active_guesthouse_bookings_spec.rb,0/b/0b0d5ed23a411e07cfb77a41449f5d329e00acf3
 U
 %app/views/bookings/_bookings.html.erb,2/b/2b861d3e6dd4c430e6090b7d4f285e12272f4d58
 R
@@ -247,3 +229,12 @@ J
 app/models/booking_rate.rb,2/7/27eef5668b98465230c953652eec13ab14c774e2
 P
  spec/models/booking_rate_spec.rb,4/3/43f036c93ed587c7b6c35811412d67f8d3a77f9a
+U
+%app/views/bookings/check_out.html.erb,0/c/0c597675bcb8e817eabe8b419d9dd2d7b686b9e0
+`
+0app/views/devise/shared/_error_messages.html.erb,d/c/dcfb0a0fa321ac39c5bb1dcec97ec1473f2570a5
+t
+Ddb/migrate/20231120174758_add_payment_method_attribute_to_booking.rb,b/8/b8426ac2d156be30715fb53ffa8c7633fc282cd7
+:
+
+bin/bundle,8/d/8d6a126d12d5381c7693c27cad5d2eca28213623

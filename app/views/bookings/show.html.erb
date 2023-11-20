@@ -40,13 +40,31 @@
   </dl>
   <% unless @booking&.check_in_confirmed_date.nil? %>
     <hr>
-    <h3>Dados do Check-in efetivado</h3>
+    <h3>Dados do Check-In efetivado</h3>
     <dl>
       <dt><strong><%= Booking.human_attribute_name(:check_in_confirmed_date) %>:</strong></dt>
       <dd><%= @booking&.check_in_confirmed_date&.strftime('%d/%m/%Y') %></dd>
 
       <dt><strong><%= Booking.human_attribute_name(:check_in_confirmed_hour) %>:</strong></dt>
       <dd><%= @booking&.check_in_confirmed_hour&.strftime('%H:%M') %></dd>
+    </dl>
+  <% end %>
+
+  <% unless @booking&.check_out_confirmed_date.nil? %>
+    <hr>
+    <h3>Dados do Check-Out efetivado</h3>
+    <dl>
+      <dt><strong><%= Booking.human_attribute_name(:check_out_confirmed_date) %>:</strong></dt>
+      <dd><%= @booking&.check_out_confirmed_date&.strftime('%d/%m/%Y') %></dd>
+
+      <dt><strong><%= Booking.human_attribute_name(:check_out_confirmed_hour) %>:</strong></dt>
+      <dd><%= @booking&.check_out_confirmed_hour&.strftime('%H:%M') %></dd>
+
+      <dt><strong>Total Pago:</strong></dt>
+      <dd><%= number_to_currency(@booking&.total_paid, unit: 'R$', separator: ',', delimiter: '.') %></dd>
+
+      <dt><strong>Forma de Pagamento:</strong></dt>
+      <dd><%= t(@booking&.payment_method) %></dd>
     </dl>
   <% end %>
 </article>

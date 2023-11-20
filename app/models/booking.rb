@@ -71,26 +71,34 @@ class Booking < ApplicationRecord
 
       if rate != current_rate
         if current_rate
-          booking_rates.create(start_date: current_start_date, end_date: date - 1.day, rate: current_rate)
+          booking_rates.create(start_date: current_start_date, end_date: date, rate: current_rate)
         end
         current_rate = rate
         current_start_date = date
       end
     end
 
-    booking_rates.create(start_date: current_start_date, end_date: check_out_date - 1.day, rate: current_rate)
+    booking_rates.create(start_date: current_start_date, end_date: check_out_date, rate: current_rate)
   end
 
   def calculate_total_paid
     total = 0
     actual_checkout_date = Time.current.to_date
     booking_rates.where('start_date <= ?', actual_checkout_date).each do |booking_rate|
-      days = (booking_rate.end_date - booking_rate.start_date).to_i + 1
+      if booking_rate.end_date < actual_checkout_date
+        days = (booking_rate.end_date - booking_rate.start_date).to_i
+      else
+        days = (actual_checkout_date - booking_rate.start_date).to_i
+      end
+      days += 1 if actual_checkout_date == check_in_date
       total += booking_rate.rate * days
     end
 
-    if room.guesthouse.checkout_hour < Time.now
-      extra_day_rate = room.room_rates.where('start_date <= ? AND end_date >= ?', actual_checkout_date, actual_checkout_date).first&.daily_rate || room.daily_rate
+    if check_out_hour.strftime("%H:%M") < Time.now.strftime("%H:%M") && actual_checkout_date > check_in_date
+      extra_day_rate = room.room_rates.where('start_date <= ? AND end_date >= ?',
+                                             actual_checkout_date,
+                                             actual_checkout_date
+                                            ).first&.daily_rate || room.daily_rate
       total += extra_day_rate
     end
 

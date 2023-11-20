@@ -1,0 +1,24 @@
+<h3>Confirmação do Check-Out</h3>
+<p>
+  <strong><%= Booking.human_attribute_name(:reservation_code) %>:</strong> <%= @booking&.reservation_code %>
+</p>
+<p>
+  <strong><%= Booking.human_attribute_name(:room) %>:</strong> <%= @booking&.room&.name %>
+</p>
+<p>
+  <strong><%= Guesthouse.model_name.human %>:</strong> <%= @booking.room.guesthouse.brand_name %>
+</p>
+<p>
+  <strong>Valor total a ser pago:</strong> <%= number_to_currency(@total_paid, unit: 'R$', separator: ',', delimiter: '.') %>
+</p>
+<%= form_with url: check_out_booking_path(@booking), method: :patch do |f| %>
+  <p>
+    <%= f.label :payment_method, PaymentMethod.model_name.human %>
+    <%= f.select :payment_method,
+                 @booking&.room&.guesthouse&.payment_methods&.map { |method| [t(method.method), method.method] },
+                 prompt: 'Selecione o método de pagamento' %>
+  </p>
+  <p>
+    <%= f.submit 'Confirmar' %>
+  </p>
+<% end %>

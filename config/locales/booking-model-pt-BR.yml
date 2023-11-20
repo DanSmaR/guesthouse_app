@@ -4,6 +4,9 @@ pt-BR:
       booking: 'Reserva'
     attributes:
       booking:
+        room: 'Quarto'
+        guesthouse: 'Pousada'
+        reservation_code: 'Código da Reserva'
         check_in_date: 'Data de Check-in'
         check_in_hour: 'Hora de Check-in'
         check_out_date: 'Data de Check-out'
@@ -12,6 +15,13 @@ pt-BR:
         total_price: 'Preço Total'
         check_in_confirmed_date: 'Data de Confirmação do Check-in'
         check_in_confirmed_hour: 'Hora de Confirmação do Check-in'
+        check_out_confirmed_date: 'Data de Confirmação do Check-out'
+        check_out_confirmed_hour: 'Hora de Confirmação do Check-out'
+        payment_method: 'Método de Pagamento'
+        payment_methods:
+          credit_card: 'Cartão de Crédito'
+          debit_card: 'Cartão de Débito'
+          pix: 'Pix'
         status: 'Situação'
         statuses:
           pending: 'Pendente'

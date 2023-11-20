@@ -70,7 +70,7 @@ guesthouses_names.each_with_index do |name, index|
                                      tv: index == 1 ? false : true, wardrobe: true,
                                      safe: true, accessible: index == 0 ? false : true,
                                      available: index.odd? ? true : false }])
-  guesthouse[index].rooms.first&.room_rates&.create!([{ start_date: 2.days.from_now,
+  guesthouse[index].rooms.first&.room_rates&.create!([{ start_date: 1.days.from_now,
                                                         end_date: 20.days.from_now,
                                                         daily_rate: (index + 2) * 100 },
                                                       { start_date: 2.months.from_now,

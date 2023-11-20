@@ -82,7 +82,7 @@ describe 'Guesthouse owner check in booking' do
       expect(current_path).to eq(booking_path(guesthouse[0].rooms.first&.bookings&.first))
       expect(page).to have_content('Check-in realizado com sucesso')
       expect(page).to have_content('Situação: Ativa')
-      expect(page).to have_content('Dados do Check-in efetivado')
+      expect(page).to have_content('Dados do Check-In efetivado')
       expect(page).to have_content('Data de Confirmação do Check-in: ' +
                                      guesthouse[0].rooms.first&.bookings&.first
                                        &.check_in_confirmed_date.strftime('%d/%m/%Y'))
