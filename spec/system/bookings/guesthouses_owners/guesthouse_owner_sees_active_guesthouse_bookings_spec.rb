@@ -63,7 +63,7 @@ describe 'Guesthouse owner visit active guesthouse bookings' do
                                          safe: true, accessible: index == 0 ? false : true,
                                          available: index.odd? ? true : false }])
       guesthouse[index].rooms.first&.bookings&.create!([{check_in_date: 1.days.from_now, check_out_date: 2.days.from_now,
-                                                         number_of_guests: 2, guest: guest, total_price: 200, status: 1,
+                                                         number_of_guests: 2, guest: guest, total_price: 200, status: 0,
                                                          check_in_hour: '14:00', check_out_hour: '12:00',
                                                          reservation_code: "#{index}A123AC1"},
                                                         {check_in_date: 4.days.from_now, check_out_date: 5.days.from_now,
@@ -75,7 +75,7 @@ describe 'Guesthouse owner visit active guesthouse bookings' do
     # Act
     login_as user[0], scope: :user
     visit guesthouse_owner_bookings_path
-    travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 0.days.from_now.day, 14, 0, 0) do
+    travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 1.days.from_now.day, 14, 0, 0) do
       click_on 'Check-In', match: :first
       click_on 'Estadias Ativas'
 
