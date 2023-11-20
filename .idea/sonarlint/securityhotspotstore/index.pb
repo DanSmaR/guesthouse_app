@@ -215,3 +215,9 @@ e
 5db/migrate/20231031164630_create_guesthouse_owners.rb,0/b/0bb54ee0465210a572675a43746db4721a309359
 h
 8db/migrate/20231031172842_add_state_column_to_address.rb,d/6/d6903096d57fa8999bcaaf02f8df6b3428c4a185
+}
+Mspec/system/bookings/guesthouse_owner_sees_active_guesthouse_bookings_spec.rb,0/b/0b0d5ed23a411e07cfb77a41449f5d329e00acf3
+U
+%app/views/bookings/_bookings.html.erb,2/b/2b861d3e6dd4c430e6090b7d4f285e12272f4d58
+R
+"app/views/bookings/active.html.erb,7/5/754786d67861d26feb88179c56e2ef54ec60759a

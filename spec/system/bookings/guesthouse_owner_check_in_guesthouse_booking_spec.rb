@@ -172,6 +172,7 @@ describe 'Guesthouse owner check in booking' do
       # Assert
       expect(page).to have_content('Pousada Nascer do Sol', count: 1)
       expect(page).to have_content('Quarto Aquarela 0', count: 1)
+      expect(page).to have_content('Pendente', count: 1)
       expect(page).to_not have_content(-1.day.from_now.strftime('%d/%m/%Y'))
       expect(page).to have_content(3.days.from_now.strftime('%d/%m/%Y'), count: 1)
       expect(page).to have_content(4.days.from_now.strftime('%d/%m/%Y'))

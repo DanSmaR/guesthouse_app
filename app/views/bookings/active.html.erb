@@ -1,0 +1,7 @@
+<article>
+  <h2>Estadias Ativas</h2>
+  <% if @bookings.empty? %>
+    <p style="color: red">Nenhuma estadia ativa no momento.</p>
+  <% end %>
+  <%= render 'bookings/bookings', bookings: @bookings%>
+</article>

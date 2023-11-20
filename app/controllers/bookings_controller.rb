@@ -11,6 +11,10 @@ class BookingsController < ApplicationController
     @bookings = get_guesthouse_owner_bookings if current_user&.guesthouse_owner?
     render :index
   end
+
+  def active
+    @bookings = get_guesthouse_owner_active_bookings if current_user&.guesthouse_owner?
+  end
   def new
     @room = Room.find(params[:room_id])
     @booking = @room.bookings.new(session[:booking])
@@ -137,6 +141,16 @@ class BookingsController < ApplicationController
     bookings = []
     current_user.guesthouse_owner.guesthouse.rooms.each do |room|
       room.bookings.where(status: :pending).each do |booking|
+        bookings << booking
+      end
+    end
+    bookings
+  end
+
+  def get_guesthouse_owner_active_bookings
+    bookings = []
+    current_user.guesthouse_owner.guesthouse.rooms.each do |room|
+      room.bookings.where(status: :active).each do |booking|
         bookings << booking
       end
     end
