@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
+  def index
+    @guesthouse = Guesthouse.find(params[:guesthouse_id])
+    @reviews = @guesthouse.reviews
+  end
+
   def create
     @booking = current_user.guest.bookings.find(params[:booking_id])
     @review = @booking&.build_review(review_params)

@@ -34,31 +34,17 @@
     <% end %>
   </dl>
 
+  <hr>
+
   <section>
     <h3>Algumas Avaliações</h3>
     <p>
       <%= link_to 'Ver todas as avaliações', guesthouse_reviews_path(@guesthouse.id) %>
     </p>
-    <% if @reviews.empty? %>
-      <p>Ainda não há avaliações para esta <%= Guesthouse.model_name.human %>.</p>
-    <% end %>
-    <ul>
-      <% @reviews.each do |review| %>
-        <li>
-          <dl>
-            <dt><strong><%= Guest.model_name.human %>:</strong></dt>
-            <dd><%= review.guest.name %></dd>
-            <dt><strong><%= Review.human_attribute_name(:comment) %>:</strong></dt>
-            <dd><%= review.comment %></dd>
-            <dt><strong><%= Review.human_attribute_name(:rating) %>:</strong></dt>
-            <dd>
-              <%= t("activerecord.attributes.review.ratings.#{review.rating}") %> - <%= review.rating_before_type_cast %>
-            </dd>
-          </dl>
-        </li>
-      <% end %>
-    </ul>
+    <%= render 'shared/reviews', reviews: @reviews %>
   </section>
+
+  <hr>
 
   <%= render "rooms/basic_room", guesthouse: @guesthouse, rooms: @rooms %>
 </article>

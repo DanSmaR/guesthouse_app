@@ -1,0 +1,19 @@
+<% if reviews.empty? %>
+  <p>Ainda não há <%= Review.model_name.human(count: reviews.count) %> para esta <%= Guesthouse.model_name.human %>.</p>
+<% end %>
+<ul>
+  <% reviews.each do |review| %>
+    <li>
+      <dl>
+        <dt><strong><%= Guest.model_name.human %>:</strong></dt>
+        <dd><%= review.guest.name %></dd>
+        <dt><strong><%= Review.human_attribute_name(:comment) %>:</strong></dt>
+        <dd><%= review.comment %></dd>
+        <dt><strong><%= Review.human_attribute_name(:rating) %>:</strong></dt>
+        <dd>
+          <%= t("activerecord.attributes.review.ratings.#{review.rating}") %> - <%= review.rating_before_type_cast %>
+        </dd>
+      </dl>
+    </li>
+  <% end %>
+</ul>

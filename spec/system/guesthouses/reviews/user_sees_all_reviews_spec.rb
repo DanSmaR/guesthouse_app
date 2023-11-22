@@ -5,7 +5,7 @@ describe 'User sees all reviews from a guesthouse' do
     # Arrange
     cities = %w[Itapetininga Camboriú]
     states = %w[SP SC]
-    guesthouses_names = %w[Pousada\ Nascer\ do\ Sol Praiana]
+    guesthouses_names = %w[Nascer\ do\ Sol Praiana]
     user_names = %w[Joao Cesar]
     guesthouse =  {
       0 => '', 1 => ''
@@ -169,12 +169,14 @@ describe 'User sees all reviews from a guesthouse' do
 
       click_on 'Pousada Nascer do Sol'
       click_on 'Ver todas as avaliações'
+
       # Assert
       expect(page).to have_content('Avaliações da Pousada Nascer do Sol')
-      expect(page).to have_content('Nota média: 2')
+      expect(page).to have_link('Voltar', href: guesthouse_path(guesthouse[0]))
+      expect(page).to have_content('Nota Média: 3')
       expect(page).to have_content('Hóspede: Maria', count: 4)
       expect(page).to have_content('Muito boa pousada')
-      expect(page).to have_content('Nota: 5')
+      expect(page).to have_content('Nota: Ótimo - 5')
       expect(page).to have_content('Não gostei')
       expect(page).to have_content('Nota: Ruim - 1')
       expect(page).to have_content('Bonzinho')

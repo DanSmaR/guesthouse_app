@@ -112,7 +112,7 @@ describe 'User sees rating form from a finished booking' do
                                                       'Regular = 2',
                                                       'Bom = 3',
                                                       'Muito Bom = 4',
-                                                      'Excelente = 5'])
+                                                      'Ótimo = 5'])
         expect(page).to have_field('Comentário', type: 'textarea')
         expect(page).to have_button('Enviar')
       end
@@ -359,7 +359,7 @@ describe 'User rates a booking' do
                                                         'Regular = 2',
                                                         'Bom = 3',
                                                         'Muito Bom = 4',
-                                                        'Excelente = 5'])
+                                                        'Ótimo = 5'])
       expect(page).to have_field('Comentário', type: 'textarea')
       expect(page).to have_button('Enviar')
     end

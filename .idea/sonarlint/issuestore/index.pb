@@ -252,3 +252,7 @@ U
 %config/locales/review-model-pt-BR.yml,6/a/6a8400d449a34bebdaf2df105fa6280211fc7c29
 m
 =spec/system/guesthouses/reviews/user_sees_all_reviews_spec.rb,5/c/5ce20fb5de23f747de1702c0baaf8e529c894968
+P
+ app/views/reviews/index.html.erb,9/a/9a71f28e6a432f059eeb0e0ba8ba2dea0de30fb3
+R
+"app/views/shared/_reviews.html.erb,3/5/35acee16b786a32c2f9f843d861006c54d4d7ab6

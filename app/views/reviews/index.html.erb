@@ -1,0 +1,9 @@
+<article>
+  <h2><%= Review.model_name.human(count: @reviews.count) %> da <%= @guesthouse.brand_name %></h2>
+  <h3>Nota Média: <%= @guesthouse.average_rating %></h3>
+  <p>
+    <%= link_to 'Voltar', guesthouse_path(@guesthouse) %>
+  </p>
+
+  <%= render 'shared/reviews', reviews: @reviews %>
+</article>

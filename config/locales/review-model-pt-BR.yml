@@ -1,7 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      review: 'Avaliação'
+      review:
+        one: 'Avaliação'
+        other: 'Avaliações'
     attributes:
       review:
         rating: 'Nota'
