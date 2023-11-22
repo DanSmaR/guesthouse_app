@@ -71,7 +71,7 @@
   <% if @booking&.finished? && !@booking&.review && current_user&.guest? && current_user.guest == @booking&.guest %>
     <div id="review-form">
       <h3><%= Review.model_name.human %></h3>
-      <%= form_with(model: [@booking, @booking.build_review] ) do |f| %>
+      <%= form_with(model: [@booking, @booking.build_review], html: { id: "review-form" } ) do |f| %>
         <fieldset>
           <legend>Avalie sua estadia</legend>
           <p>
