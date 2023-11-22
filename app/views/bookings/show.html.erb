@@ -68,29 +68,31 @@
     </dl>
   <% end %>
 
-  <% if @booking&.finished? && current_user&.guest? && current_user.guest == @booking&.guest %>
-    <h3><%= Review.model_name.human %></h3>
-    <%= form_with(model: [@booking, @booking.build_review] ) do |f| %>
-      <fieldset>
-        <legend>Avalie sua estadia</legend>
-        <p>
-          <%= f.label :rating %>
-          <%= f.select :rating,
-                       Review.ratings.map { |rating, value| [
-                         t("activerecord.attributes.review.ratings_opt.#{rating.titleize} = #{value}"), value
-                       ] },
-                       prompt: 'Selecione uma opção' %>
-        </p>
+  <% if @booking&.finished? && !@booking&.review && current_user&.guest? && current_user.guest == @booking&.guest %>
+    <div id="review-form">
+      <h3><%= Review.model_name.human %></h3>
+      <%= form_with(model: [@booking, @booking.build_review] ) do |f| %>
+        <fieldset>
+          <legend>Avalie sua estadia</legend>
+          <p>
+            <%= f.label :rating %>
+            <%= f.select :rating,
+                         Review.ratings.map { |rating, value| [
+                           t("activerecord.attributes.review.ratings_opt.#{rating.titleize} = #{value}"), rating
+                         ] },
+                         prompt: 'Selecione uma opção' %>
+          </p>
+
+          <p>
+            <%= f.label :comment %>
+            <%= f.text_area :comment %>
+          </p>
+        </fieldset>
 
         <p>
-          <%= f.label :comment %>
-          <%= f.text_area :comment %>
+          <%= f.submit 'Enviar' %>
         </p>
-      </fieldset>
-
-      <p>
-        <%= f.submit 'Enviar' %>
-      </p>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </article>
