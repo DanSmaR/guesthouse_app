@@ -186,7 +186,9 @@ describe 'User access his bookings list' do
         expect(page).to have_content('R$ 100,00', count: 2)
         expect(page).to have_content('R$ 500,00', count: 2)
         expect(page).to have_content('Pendente', count: 3)
-        expect(page).to have_content('Finalizada', count: 1)
+        within 'tbody tr:nth-child(1)' do
+          expect(page).to have_content('Finalizada', count: 1)
+        end
         expect(page).to have_content('0A123AC1')
         expect(page).to have_content('1A123AC1')
         expect(page).to have_content('0B123AC1')

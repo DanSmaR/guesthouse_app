@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User sees finished and pending bookings' do
+describe 'User sees rating form from a finished booking' do
   context "when logged in" do
     it 'successfully' do
       # Arrange
@@ -102,25 +102,13 @@ describe 'User sees finished and pending bookings' do
         login_as user3, scope: :user
         click_on 'Entrar'
         click_on 'Minhas Reservas'
+        click_on 'Detalhes', match: :first
 
         # Assert
-        expect(page).to have_content('Pousada Nascer do Sol', count: 2)
-        expect(page).to have_content('Pousada Praiana', count: 2)
-        expect(page).to have_content('Quarto Aquarela 0', count: 2)
-        expect(page).to have_content('Quarto Aquarela 1', count: 2)
-        expect(page).to have_content(-4.day.from_now.strftime('%d/%m/%Y'))
-        expect(page).to have_content(-3.days.from_now.strftime('%d/%m/%Y'), count: 4)
-        expect(page).to have_content(0.days.from_now.strftime('%d/%m/%Y'))
-        expect(page).to have_content('R$ 100,00', count: 2)
-        expect(page).to have_content('R$ 500,00', count: 2)
-        expect(page).to have_content('Pendente', count: 3)
-        expect(page).to have_content('Finalizada', count: 1)
-        expect(page).to have_content('0A123AC1')
-        expect(page).to have_content('1A123AC1')
-        expect(page).to have_content('0B123AC1')
-        expect(page).to have_content('1B123AC1')
-        expect(page).to have_button('Cancelar', count: 3)
-        expect(page).to have_link('Detalhes', count: 4)
+        expect(page).to have_content('Avalie sua estadia')
+        expect(page).to have_field('Avaliação', type: 'number')
+        expect(page).to have_field('Comentário', type: 'text')
+        expect(page).to have_button('Enviar')
       end
     end
   end
