@@ -2,6 +2,7 @@
   <dt><h4><%= link_to guesthouse.brand_name, guesthouse_path(guesthouse) %></h4></dt>
   <dd><%= guesthouse.address.city %> - <%= guesthouse.address.state %></dd>
 
+  <% rate = guesthouse.average_rating %>
   <dt><strong><%= Review.human_attribute_name(:rating) %>:</strong></dt>
-  <dd><%= guesthouse.average_rating %></dd>
+  <dd><%= rate.blank? ? 'Sem nota' : rate %></dd>
 </dl>
