@@ -238,3 +238,5 @@ Ddb/migrate/20231120174758_add_payment_method_attribute_to_booking.rb,b/8/b8426
 :
 
 bin/bundle,8/d/8d6a126d12d5381c7693c27cad5d2eca28213623
+r
+Bspec/system/bookings/guests/user_rates_checked_out_booking_spec.rb,3/a/3afbadd3d428ba7ef2dce56f73a0ab1a34ebe0d9
