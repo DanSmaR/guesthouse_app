@@ -1,4 +1,7 @@
 <dl id="<%= dom_id guesthouse %>">
   <dt><h4><%= link_to guesthouse.brand_name, guesthouse_path(guesthouse) %></h4></dt>
   <dd><%= guesthouse.address.city %> - <%= guesthouse.address.state %></dd>
+
+  <dt><strong><%= Review.human_attribute_name(:rating) %>:</strong></dt>
+  <dd><%= guesthouse.average_rating %></dd>
 </dl>

@@ -180,13 +180,6 @@ describe 'User landing in the home page' do
 
       # Act
       travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 15, 0, 0) do
-        bookings.each_value do |booking|
-          booking.each do |book|
-            puts book.room.guesthouse.brand_name
-            puts book.review.attributes
-          end
-        end
-
         visit root_path
 
         # Assert

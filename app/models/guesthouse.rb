@@ -46,6 +46,12 @@ class Guesthouse < ApplicationRecord
       .where(active: true, addresses: { city: query })
       .order(:brand_name)
   end
+
+  def average_rating
+    reviews = Review.joins(booking: { room: :guesthouse }).where(guesthouses: { id: id })
+    reviews.average(:rating)&.round
+  end
+
   private
 
   def at_least_one_payment_method
