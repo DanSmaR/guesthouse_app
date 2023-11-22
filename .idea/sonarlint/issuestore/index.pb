@@ -250,3 +250,5 @@ U
 %app/controllers/reviews_controller.rb,c/9/c9516f32d5692b50deb8c4cbfd73e4072e44e271
 U
 %config/locales/review-model-pt-BR.yml,6/a/6a8400d449a34bebdaf2df105fa6280211fc7c29
+m
+=spec/system/guesthouses/reviews/user_sees_all_reviews_spec.rb,5/c/5ce20fb5de23f747de1702c0baaf8e529c894968
