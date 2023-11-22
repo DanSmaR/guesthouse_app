@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       get :check_out
       patch :check_out
     end
+    resources :reviews, only: %i[new create]
   end
 
   resources :searches, only: %i[index] do

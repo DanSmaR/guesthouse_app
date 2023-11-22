@@ -35,11 +35,11 @@ describe 'User cancels his booking' do
                                   air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                   available: true }])
 
-      guesthouse.rooms.first&.bookings&.create!([{check_in_date: 7.days.from_now, check_out_date: 9.days.from_now,
+      guesthouse.rooms.first&.bookings&.create!([{check_in_date: 8.days.from_now, check_out_date: 10.days.from_now,
                                                   number_of_guests: 2, guest: guest, total_price: 200, status: 0,
                                                   check_in_hour: '14:00', check_out_hour: '12:00',
                                                   reservation_code: 'A123AC12'},
-                                                 {check_in_date: 4.days.from_now, check_out_date: 5.days.from_now,
+                                                 {check_in_date: 10.days.from_now, check_out_date: 11.days.from_now,
                                                   number_of_guests: 2, guest: guest, total_price: 100, status: 0,
                                                   check_in_hour: '14:00', check_out_hour: '12:00',
                                                   reservation_code: 'B123AC13'}])
@@ -53,8 +53,8 @@ describe 'User cancels his booking' do
       expect(page).to have_content('Reserva cancelada com sucesso!')
       expect(page).to have_content('Pousada Nascer do Sol', count: 1)
       expect(page).to have_content('Quarto Primavera', count: 1)
-      expect(page).to have_content(4.days.from_now.strftime('%d/%m/%Y'))
-      expect(page).to have_content(5.days.from_now.strftime('%d/%m/%Y'))
+      expect(page).to have_content(10.days.from_now.strftime('%d/%m/%Y'))
+      expect(page).to have_content(11.days.from_now.strftime('%d/%m/%Y'))
       expect(page).to have_content('R$ 100,00')
       expect(page).to have_content('Pendente')
       expect(page).to have_content('B123AC13')

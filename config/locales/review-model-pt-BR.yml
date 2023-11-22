@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      review: 'Avaliação'
+    attributes:
+      review:
+        rating: 'Nota'
+        ratings_opt:
+          'Terrible = 0': 'Péssimo = 0'
+          'Bad = 1': 'Ruim = 1'
+          'Regular = 2': 'Regular = 2'
+          'Good = 3': 'Bom = 3'
+          'Very Good = 4': 'Muito Bom = 4'
+          'Great = 5': 'Excelente = 5'
+        comment: 'Comentário'

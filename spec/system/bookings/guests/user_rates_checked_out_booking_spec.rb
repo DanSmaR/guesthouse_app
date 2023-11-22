@@ -106,8 +106,14 @@ describe 'User sees rating form from a finished booking' do
 
         # Assert
         expect(page).to have_content('Avalie sua estadia')
-        expect(page).to have_field('Avaliação', type: 'number')
-        expect(page).to have_field('Comentário', type: 'text')
+        expect(page).to have_select('Nota', options: ['Selecione uma opção',
+                                                      'Péssimo = 0',
+                                                      'Ruim = 1',
+                                                      'Regular = 2',
+                                                      'Bom = 3',
+                                                      'Muito Bom = 4',
+                                                      'Excelente = 5'])
+        expect(page).to have_field('Comentário', type: 'textarea')
         expect(page).to have_button('Enviar')
       end
     end

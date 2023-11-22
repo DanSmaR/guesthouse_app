@@ -240,3 +240,13 @@ Ddb/migrate/20231120174758_add_payment_method_attribute_to_booking.rb,b/8/b8426
 bin/bundle,8/d/8d6a126d12d5381c7693c27cad5d2eca28213623
 r
 Bspec/system/bookings/guests/user_rates_checked_out_booking_spec.rb,3/a/3afbadd3d428ba7ef2dce56f73a0ab1a34ebe0d9
+[
++db/migrate/20231122140338_create_reviews.rb,3/d/3d7cc8aef922b99a95295a85522a33f3231c434f
+D
+app/models/review.rb,0/f/0f59eafde02492c2a50c3efad86d56cc6772c65d
+J
+spec/models/review_spec.rb,3/6/36e16de3ec423c81f1b3aaf6e87213127f87736a
+U
+%app/controllers/reviews_controller.rb,c/9/c9516f32d5692b50deb8c4cbfd73e4072e44e271
+U
+%config/locales/review-model-pt-BR.yml,6/a/6a8400d449a34bebdaf2df105fa6280211fc7c29

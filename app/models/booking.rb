@@ -11,6 +11,7 @@ class Booking < ApplicationRecord
   belongs_to :room
   belongs_to :guest
   has_many :booking_rates, dependent: :destroy
+  has_one :review, dependent: :destroy
 
   def prepare_for_creation(guesthouse, guest)
     self.guest = guest
