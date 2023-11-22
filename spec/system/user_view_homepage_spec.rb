@@ -138,7 +138,17 @@ describe 'User landing in the home page' do
                                                                     number_of_guests: 2, guest: guest, status: 0,
                                                                     check_in_hour: DateTime.now.beginning_of_day + 2.day + 14.hours,
                                                                     check_out_hour: DateTime.now.beginning_of_day + 1.day + 12.hours,
-                                                                    reservation_code: "#{index}B123AC1"}])
+                                                                    reservation_code: "#{index}B123AC1"},
+                                                                    {check_in_date: 5.days.from_now, check_out_date: 7.days.from_now,
+                                                                    number_of_guests: 2, guest: guest, status: 0,
+                                                                    check_in_hour: DateTime.now.beginning_of_day + 5.day + 14.hours,
+                                                                    check_out_hour: DateTime.now.beginning_of_day + 1.day + 12.hours,
+                                                                    reservation_code: "#{index}C123AC1"},
+                                                                    {check_in_date: 7.days.from_now, check_out_date: 10.days.from_now,
+                                                                    number_of_guests: 2, guest: guest, status: 0,
+                                                                    check_in_hour: DateTime.now.beginning_of_day + 7.day + 14.hours,
+                                                                    check_out_hour: DateTime.now.beginning_of_day + 1.day + 12.hours,
+                                                                    reservation_code: "#{index}D123AC1"}])
         bookings[index]&.each do |booking|
           booking.total_price = booking.get_total_price
           booking.save!
@@ -164,22 +174,54 @@ describe 'User landing in the home page' do
 
       travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 2.days.from_now.day, 14, 0, 0) do
         bookings.each_value do |booking|
-          booking.last.update!(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
-          booking.last.active!
+          booking[1].update!(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+          booking[1].active!
         end
       end
 
       travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 12, 0, 0) do
         bookings.each_value do |booking|
+          booking[1].finished!
+          booking[1].update!(check_out_confirmed_date: Date.today, check_out_confirmed_hour: Time.now,
+                               total_paid: booking[1].calculate_total_paid, payment_method: 'credit_card')
+          booking[1].create_review!(rating: 1, comment: 'Não gostei', guest: guest)
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 14, 0, 0) do
+        bookings.each_value do |booking|
+          booking[2].update!(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+          booking[2].active!
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 7.days.from_now.day, 12, 0, 0) do
+        bookings.each_value do |booking|
+          booking[2].finished!
+          booking[2].update!(check_out_confirmed_date: Date.today, check_out_confirmed_hour: Time.now,
+                               total_paid: booking[2].calculate_total_paid, payment_method: 'credit_card')
+          booking[2].create_review!(rating: 3, comment: 'Bonzinho', guest: guest)
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 7.days.from_now.day, 14, 0, 0) do
+        bookings.each_value do |booking|
+          booking.last.update!(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+          booking.last.active!
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 10.days.from_now.day, 12, 0, 0) do
+        bookings.each_value do |booking|
           booking.last.finished!
           booking.last.update!(check_out_confirmed_date: Date.today, check_out_confirmed_hour: Time.now,
-                               total_paid: booking.last.calculate_total_paid, payment_method: 'credit_card')
-          booking.last.create_review!(rating: 1, comment: 'Não gostei', guest: guest)
+                             total_paid: booking.last.calculate_total_paid, payment_method: 'credit_card')
+          booking.last.create_review!(rating: 2, comment: 'Mais ou menos', guest: guest)
         end
       end
 
       # Act
-      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 15, 0, 0) do
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 10.days.from_now.day, 15, 0, 0) do
         visit root_path
 
         # Assert

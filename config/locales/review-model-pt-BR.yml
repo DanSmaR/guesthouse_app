@@ -5,11 +5,18 @@ pt-BR:
     attributes:
       review:
         rating: 'Nota'
+        ratings:
+          terrible: 'Péssimo'
+          bad: 'Ruim'
+          regular: 'Regular'
+          good: 'Bom'
+          very_good: 'Muito Bom'
+          great: 'Ótimo'
         ratings_opt:
           'Terrible = 0': 'Péssimo = 0'
           'Bad = 1': 'Ruim = 1'
           'Regular = 2': 'Regular = 2'
           'Good = 3': 'Bom = 3'
           'Very Good = 4': 'Muito Bom = 4'
-          'Great = 5': 'Excelente = 5'
+          'Great = 5': 'Ótimo = 5'
         comment: 'Comentário'

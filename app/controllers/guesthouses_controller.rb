@@ -30,6 +30,7 @@ class GuesthousesController < ApplicationController
     else
       @rooms = @guesthouse.rooms.filter(&:available)
     end
+    @reviews = @guesthouse.reviews.last(3)
   end
 
   def edit
