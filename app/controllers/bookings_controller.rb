@@ -154,7 +154,7 @@ class BookingsController < ApplicationController
   end
 
   def get_guest_bookings
-    current_user.guest.bookings.where(status: :pending)
+    current_user.guest.bookings.where(status: [:pending, :finished]).order(status: :desc, check_in_date: :asc)
   end
 
   def get_guesthouse_owner_bookings

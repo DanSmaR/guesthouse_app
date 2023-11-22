@@ -67,4 +67,8 @@
       <dd><%= t(@booking&.payment_method) %></dd>
     </dl>
   <% end %>
+
+  <% if current_user&.guest? && current_user.guest.bookings.exists?(@booking&.id)%>
+    <h3>Avalie sua Estadia</h3>
+  <% end %>
 </article>

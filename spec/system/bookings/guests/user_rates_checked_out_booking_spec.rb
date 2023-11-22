@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User rates his checked-out booking' do
+describe 'User sees finished and pending bookings' do
   context "when logged in" do
     it 'successfully' do
       # Arrange
@@ -108,9 +108,9 @@ describe 'User rates his checked-out booking' do
         expect(page).to have_content('Pousada Praiana', count: 2)
         expect(page).to have_content('Quarto Aquarela 0', count: 2)
         expect(page).to have_content('Quarto Aquarela 1', count: 2)
-        expect(page).to have_content(1.day.from_now.strftime('%d/%m/%Y'))
-        expect(page).to have_content(2.days.from_now.strftime('%d/%m/%Y'), count: 2)
-        expect(page).to have_content(5.days.from_now.strftime('%d/%m/%Y'))
+        expect(page).to have_content(-4.day.from_now.strftime('%d/%m/%Y'))
+        expect(page).to have_content(-3.days.from_now.strftime('%d/%m/%Y'), count: 4)
+        expect(page).to have_content(0.days.from_now.strftime('%d/%m/%Y'))
         expect(page).to have_content('R$ 100,00', count: 2)
         expect(page).to have_content('R$ 500,00', count: 2)
         expect(page).to have_content('Pendente', count: 3)
@@ -119,11 +119,8 @@ describe 'User rates his checked-out booking' do
         expect(page).to have_content('1A123AC1')
         expect(page).to have_content('0B123AC1')
         expect(page).to have_content('1B123AC1')
-        expect(page).to have_button('Cancelar', count: 1)
-        expect(page).to have_link('Detalhes', href: booking_path(Booking.find(id: 1)))
-        expect(page).to have_link('Detalhes', href: booking_path(Booking.find(id: 2)))
-        expect(page).to have_link('Detalhes', href: booking_path(Booking.find(id: 3)))
-        expect(page).to have_link('Detalhes', href: booking_path(Booking.find(id: 4)))
+        expect(page).to have_button('Cancelar', count: 3)
+        expect(page).to have_link('Detalhes', count: 4)
       end
     end
   end
