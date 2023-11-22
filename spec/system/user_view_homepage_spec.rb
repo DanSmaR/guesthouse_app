@@ -60,91 +60,142 @@ describe 'User landing in the home page' do
 
     it 'should see some guesthouses' do
       # Arrange
-      cities = %w[Itapetininga Sorocaba São\ Paulo Rio\ de\ Janeiro Belo\ Horizonte Sorocaba]
-      states = %w[SP SP SP RJ MG SP]
-      guesthouses_names =
-        %w[Nascer\ do\ Sol Lua\ Cheia Estrela\ Cadente Lago\ Verde Alto\ do\ Mirante Vista\ Linda]
-      user_names = %w[Joao Maria Jose Pedro Ana Paulo]
+      cities = %w[Itapetininga Camboriú]
+      states = %w[SP SC]
+      guesthouses_names = %w[Pousada\ Nascer\ do\ Sol Praiana]
+      user_names = %w[Joao Cesar]
       guesthouse =  {
-      0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
+        0 => '', 1 => ''
       }
       user = {
-      0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
+        0 => '', 1 => ''
       }
       guesthouse_owner = {
-      0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => ''
+        0 => '', 1 => ''
+      }
+
+      bookings = {
+        0 => '', 1 => ''
       }
 
       PaymentMethod.create!(method: 'credit_card')
       PaymentMethod.create!(method: 'debit_card')
       PaymentMethod.create!(method: 'pix')
 
+      user3 = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password', role: 0)
+      guest = user3.create_guest!(name: 'Maria', surname: 'Silva', identification_register_number: '12345678910')
+
       guesthouses_names.each_with_index do |name, index|
         user[index] = User.create!(name: user_names[index], email: "#{user_names[index].downcase}@email.com",
                                    password: 'password', role: 1)
         guesthouse_owner[index] = user[index].build_guesthouse_owner
         guesthouse[index] = guesthouse_owner[index].build_guesthouse(corporate_name: "#{name} LTDA.",
-        brand_name: "Pousada #{name}",
-        registration_code: "#{index}47032102000152",
-        phone_number: "#{index}1598308183",
-        email: "contato@#{name.downcase.gsub(" ", "")}.com.br", description: "Descrição da Pousada #{name}",
-        pets: true, use_policy: 'Não é permitido fumar nas dependências da pousada',
-        checkin_hour: '14:00', checkout_hour: '12:00', active: index == 2 ? false : true)
+                                                                     brand_name: "Pousada #{name}",
+                                                                     registration_code: "#{index}47032102000152",
+                                                                     phone_number: "#{index}1598308183",
+                                                                     email: "contato@#{name.downcase.gsub(" ", "")}.com.br",
+                                                                     description: "Descrição da Pousada #{name}",
+                                                                     pets: index.odd? ? true : false,
+                                                                     use_policy: 'Não é permitido fumar nas dependências da pousada',
+                                                                     checkin_hour: '14:00', checkout_hour: '12:00',
+                                                                     active: true)
 
-        guesthouse[index].build_address(street: "Rua das Flores, #{index}000",
-                                        neighborhood: 'Vila Belo Horizonte' ,
-        city: cities[index], state: states[index], postal_code: "#{index}1001-000")
+        guesthouse[index].build_address(street: index.odd? ? "Rua #{index},  #{index}000" : "Avenida #{index}, #{index}000",
+                                        neighborhood: index.even? ? "Bairro #{index}" : "Centro #{index}",
+                                        city: cities[index], state: states[index], postal_code: "#{index}1001-000")
 
         guesthouse[index].payment_methods = PaymentMethod.all
         guesthouse[index].save!
 
-        guesthouse[index].rooms.create!([{ name: 'Quarto Primavera',
+        guesthouse[index].rooms.create!([{ name: "Quarto Aquarela #{index}",
                                            description: 'Quarto com vista para a serra',
                                            size: 30, max_people: 2, daily_rate: 100,
                                            bathroom: true, balcony: true,
-                                           air_conditioning: true, tv: true, wardrobe: true,
-                                           safe: true, accessible: true,
-                                           available: index.odd? ? true : false },
-                                        { name: 'Quarto Verão',
-                                          description: 'Quarto com vista para o mar',
-                                          size: 30, max_people: 2, daily_rate: 100,
-                                          bathroom: true, balcony: true,
-                                          air_conditioning: true, tv: true, wardrobe: true,
-                                          safe: true, accessible: true,
-                                          available: index.even? ? true : false }])
-        guesthouse[index].rooms.first&.room_rates&.create!([{ start_date: '2021-01-01',
-                                                              end_date: '2021-01-31',
-                                                              daily_rate: (index + 2) * 100 },
-                                                           { start_date: '2021-02-01',
-                                                             end_date: '2021-02-28',
-                                                             daily_rate: (index + 1) * 100 }])
+                                           air_conditioning: index.even? ? true : false,
+                                           tv: index.even? ? true : false, wardrobe: true,
+                                           safe: true, accessible: index.even? ? true : false,
+                                           available: true },
+                                         { name: "Quarto Oceano #{index}",
+                                           description: 'Quarto com vista para o mar',
+                                           size: 30, max_people: 2, daily_rate: 100,
+                                           bathroom: true, balcony: true,
+                                           air_conditioning: index == 0 ? false : true,
+                                           tv: index == 1 ? false : true, wardrobe: true,
+                                           safe: true, accessible: index == 0 ? false : true,
+                                           available: index.odd? ? true : false }])
+        guesthouse[index].rooms.first&.room_rates&.create!([{ start_date: 3.days.from_now,
+                                                              end_date: 20.days.from_now,
+                                                              daily_rate: 200 },
+                                                            { start_date: 2.months.from_now,
+                                                              end_date: 3.months.from_now,
+                                                              daily_rate: 300 }])
+        bookings[index] = guesthouse[index].rooms.first&.bookings&.build([{check_in_date: 1.days.from_now, check_out_date: 2.days.from_now,
+                                                                    number_of_guests: 2, guest: guest, status: 0,
+                                                                    check_in_hour: DateTime.now.beginning_of_day + 1.day + 14.hours,
+                                                                    check_out_hour: DateTime.now.beginning_of_day + 1.day + 12.hours,
+                                                                    reservation_code: "#{index}A123AC1"},
+                                                                   {check_in_date: 2.days.from_now, check_out_date: 5.days.from_now,
+                                                                    number_of_guests: 2, guest: guest, status: 0,
+                                                                    check_in_hour: DateTime.now.beginning_of_day + 2.day + 14.hours,
+                                                                    check_out_hour: DateTime.now.beginning_of_day + 1.day + 12.hours,
+                                                                    reservation_code: "#{index}B123AC1"}])
+        bookings[index]&.each do |booking|
+          booking.total_price = booking.get_total_price
+          booking.save!
+          booking.create_booking_rates
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 1.days.from_now.day, 14, 0, 0) do
+        bookings.each_value do |booking|
+          booking.first.update!(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+          booking.first.active!
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 2.days.from_now.day, 12, 0, 0) do
+        bookings.each_value do |booking|
+          booking.first.finished!
+          booking.first.update!(check_out_confirmed_date: Date.today, check_out_confirmed_hour: Time.now,
+          total_paid: booking.first.calculate_total_paid, payment_method: 'credit_card')
+          booking.first.create_review!(rating: 5, comment: 'Muito boa pousada', guest: guest)
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 2.days.from_now.day, 14, 0, 0) do
+        bookings.each_value do |booking|
+          booking.last.update!(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+          booking.last.active!
+        end
+      end
+
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 12, 0, 0) do
+        bookings.each_value do |booking|
+          booking.last.finished!
+          booking.last.update!(check_out_confirmed_date: Date.today, check_out_confirmed_hour: Time.now,
+                               total_paid: booking.last.calculate_total_paid, payment_method: 'credit_card')
+          booking.last.create_review!(rating: 1, comment: 'Não gostei', guest: guest)
+        end
       end
 
       # Act
-      visit(root_path)
+      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 15, 0, 0) do
+        bookings.each_value do |booking|
+          booking.each do |book|
+            puts book.room.guesthouse.brand_name
+            puts book.review.attributes
+          end
+        end
 
-      # Assert
-      expect(page).to_not have_content('Nenhuma pousada cadastrada')
-      # last 3 active guesthouses
-      within 'section#last3_guesthouses' do
-        expect(page).to have_content('Pousada Vista Linda')
-        expect(page).to have_content('Sorocaba')
-        expect(page).to have_content('Pousada Alto do Mirante')
-        expect(page).to have_content('Belo Horizonte')
-        expect(page).to have_content('Pousada Lago Verde')
-        expect(page).to have_content('Rio de Janeiro')
-        expect(page).to_not have_content('Pousada Estrela Cadente')
-        expect(page).to_not have_content('Pousada Lua Cheia')
-        expect(page).to_not have_content('Pousada Nascer do Sol')
-      end
-      # show the remaining active guesthouses out of the div#last_guesthouses
-      within 'section#remaining_guesthouses' do
-        expect(page).to have_content('Pousada Lua Cheia')
-        expect(page).to have_content('Sorocaba')
+        visit root_path
+
+        # Assert
+        expect(page).to_not have_content('Nenhuma pousada cadastrada')
         expect(page).to have_content('Pousada Nascer do Sol')
-        expect(page).to have_content('Itapetininga')
-        expect(page).to_not have_content('Pousada Estrela Cadente')
-        expect(page).to_not have_content('São Paulo')
+        expect(page).to have_content('Itapetininga - SP')
+        expect(page).to have_content('Nota: 3', count: 2)
+        expect(page).to have_content('Pousada Praiana')
+        expect(page).to have_content('Camboriú - SC')
       end
     end
 

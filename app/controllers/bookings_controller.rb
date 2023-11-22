@@ -117,8 +117,8 @@ class BookingsController < ApplicationController
       @booking = room.bookings.find(params[:id]) if room.bookings.exists?(params[:id])
     end
     if @booking&.can_check_in
-      @booking&.active!
       @booking&.update(check_in_confirmed_date: Date.today, check_in_confirmed_hour: Time.now)
+      @booking&.active!
       flash[:notice] = 'Check-in realizado com sucesso!'
       redirect_to booking_path(@booking)
     else
