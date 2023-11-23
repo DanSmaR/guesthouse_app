@@ -42,23 +42,19 @@ To run the tests, run `rspec` in the project directory.
 
 The database is seeded with a default user with the following credentials:
 
-**User 1**
+**User 1 - Guesthouse Owner**
 - name: João
 - email: joao@email.com
 - password: password
 
-**User 2**
-- name: Maria
-- email: maria@email.com
+**User 2 - Guest**
+- name: Marcia
+- email: marcia@email.com
 - password: password
 
 The user João already has a complete profile, with a guesthouse, rooms and rooms_rates.
-The user Maria has only guesthouse and rooms.
+The user Marcia is a guest with reserved bookings.
 
 ## Contributing
 
 Contributions are welcome. Please open a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License.
