@@ -22,3 +22,4 @@ pt-BR:
           'Very Good = 4': 'Muito Bom = 4'
           'Great = 5': 'Ótimo = 5'
         comment: 'Comentário'
+        response: 'Resposta'

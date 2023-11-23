@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reviews, only: %i[] do
+  resources :reviews, only: %i[update] do
     get 'guesthouse_owner', to: 'reviews#guesthouse_owner', on: :collection
     get :respond, on: :member
   end

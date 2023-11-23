@@ -12,6 +12,10 @@ class ReviewsController < ApplicationController
     render :index
   end
 
+  def respond
+    @review = current_user.guesthouse_owner.guesthouse.reviews.find(params[:id])
+  end
+
   def create
     @booking = current_user.guest.bookings.find(params[:booking_id])
     @review = @booking&.build_review(review_params)
@@ -26,9 +30,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+
+  end
+
   private
 
   def review_params
     params.require(:review).permit(:rating, :comment)
+  end
+
+  def respond_params
+    params.require(:review).permit(:response)
   end
 end

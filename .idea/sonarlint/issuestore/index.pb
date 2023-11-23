@@ -262,3 +262,7 @@ y
 Ispec/system/guesthouses/reviews/guesthouse_owner_sees_all_reviews_spec.rb,e/a/ea36b8b0c5e8a40b3b8722c0e0ffe9f68ef50875
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+w
+Gspec/system/guesthouses/reviews/guesthouse_owner_respond_review_spec.rb,e/9/e918b9b743422805697e56b817bd32f408004305
+R
+"app/views/reviews/respond.html.erb,4/5/4576de9197577356db9c42e2f05e011e439f3de3
