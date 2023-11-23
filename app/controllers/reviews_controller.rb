@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :get_review, only: [:respond, :update]
 
   def index
     @guesthouse = Guesthouse.find(params[:guesthouse_id])
@@ -13,7 +14,7 @@ class ReviewsController < ApplicationController
   end
 
   def respond
-    @review = current_user.guesthouse_owner.guesthouse.reviews.find(params[:id])
+  #
   end
 
   def create
@@ -31,10 +32,20 @@ class ReviewsController < ApplicationController
   end
 
   def update
-
+    if @review.update(respond_params)
+      flash[:notice] = 'Resposta adicionada com sucesso!'
+      redirect_to guesthouse_reviews_path(@review.guesthouse)
+    else
+      flash.now[:alert] = 'Não foi possível adicionar a resposta'
+      render :respond
+    end
   end
 
   private
+
+  def get_review
+    @review = current_user.guesthouse_owner.guesthouse.reviews.find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:rating, :comment)
