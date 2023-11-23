@@ -41,7 +41,7 @@
     <p>
       <%= link_to 'Ver todas as avaliações', guesthouse_reviews_path(@guesthouse.id) %>
     </p>
-    <%= render 'shared/reviews', reviews: @reviews %>
+    <%= render 'shared/reviews', reviews: @reviews, guesthouse: @guesthouse %>
   </section>
 
   <hr>

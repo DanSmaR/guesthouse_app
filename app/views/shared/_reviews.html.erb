@@ -13,6 +13,13 @@
         <dd>
           <%= t("activerecord.attributes.review.ratings.#{review.rating}") %> - <%= review.rating_before_type_cast %>
         </dd>
+        <% unless review.response.nil? %>
+          <%  if current_user&.guest? && current_user.guest.reviews.exists?(review.id) ||
+            current_user&.guesthouse_owner? && current_user.guesthouse_owner.guesthouse == guesthouse  %>
+            <dt><strong><%=  Review.human_attribute_name(:response)  %></strong></dt>
+            <dd><%= review.response %></dd>
+          <%  end %>
+        <% end %>
       </dl>
       <% if current_user&.guesthouse_owner? && current_user.guesthouse_owner.guesthouse == guesthouse %>
         <p>
