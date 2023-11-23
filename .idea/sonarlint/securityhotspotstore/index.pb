@@ -256,3 +256,7 @@ P
  app/views/reviews/index.html.erb,9/a/9a71f28e6a432f059eeb0e0ba8ba2dea0de30fb3
 R
 "app/views/shared/_reviews.html.erb,3/5/35acee16b786a32c2f9f843d861006c54d4d7ab6
+N
+spec/support/devise_methods.rb,4/3/43a0d5e2dde7f9e178aa4f7df65ed5af49b44be1
+y
+Ispec/system/guesthouses/reviews/guesthouse_owner_sees_all_reviews_spec.rb,e/a/ea36b8b0c5e8a40b3b8722c0e0ffe9f68ef50875
