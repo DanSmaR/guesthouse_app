@@ -14,6 +14,11 @@
           <%= t("activerecord.attributes.review.ratings.#{review.rating}") %> - <%= review.rating_before_type_cast %>
         </dd>
       </dl>
+      <% if current_user&.guesthouse_owner? && current_user.guesthouse_owner.guesthouse == guesthouse %>
+        <p>
+          <%= link_to 'Responder Avaliação', respond_review_path(review) %>
+        </p>
+      <% end %>
     </li>
   <% end %>
 </ul>

@@ -14,6 +14,9 @@
         <li>
           <%= link_to 'Estadias Ativas', active_bookings_path %>
         </li>
+        <li>
+          <%= link_to 'Avaliações', guesthouse_owner_reviews_path %>
+        </li>
       <% end %>
       <% if current_user&.guest? %>
         <li>

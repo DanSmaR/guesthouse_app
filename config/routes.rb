@@ -55,4 +55,9 @@ Rails.application.routes.draw do
       get :guesthouses_advanced
     end
   end
+
+  resources :reviews, only: %i[] do
+    get 'guesthouse_owner', to: 'reviews#guesthouse_owner', on: :collection
+    get :respond, on: :member
+  end
 end

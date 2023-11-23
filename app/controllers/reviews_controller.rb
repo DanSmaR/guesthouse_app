@@ -6,6 +6,12 @@ class ReviewsController < ApplicationController
     @reviews = @guesthouse.reviews
   end
 
+  def guesthouse_owner
+    @guesthouse = current_user.guesthouse_owner.guesthouse
+    @reviews = @guesthouse.reviews
+    render :index
+  end
+
   def create
     @booking = current_user.guest.bookings.find(params[:booking_id])
     @review = @booking&.build_review(review_params)

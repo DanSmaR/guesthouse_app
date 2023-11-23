@@ -5,5 +5,5 @@
     <%= link_to 'Voltar', guesthouse_path(@guesthouse) %>
   </p>
 
-  <%= render 'shared/reviews', reviews: @reviews %>
+  <%= render 'shared/reviews', reviews: @reviews, guesthouse: @guesthouse %>
 </article>

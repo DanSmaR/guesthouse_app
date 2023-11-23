@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User sees all reviews from a guesthouse' do
+describe 'Guesthouse owner sees all reviews from a guesthouse' do
   it 'successfully' do
     # Arrange
     cities = %w[Itapetininga Camboriú]
@@ -163,8 +163,10 @@ describe 'User sees all reviews from a guesthouse' do
       end
     end
 
-    # Act
     travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 10.days.from_now.day, 15, 0, 0) do
+      reviews = Review.all
+
+      # Act
       login_as user[0], scope: :user
       visit root_path
 
@@ -183,6 +185,13 @@ describe 'User sees all reviews from a guesthouse' do
       expect(page).to have_content('Nota: Bom - 3')
       expect(page).to have_content('Mais ou menos')
       expect(page).to have_content('Nota: Regular - 2')
+      reviews.each_with_index do |review, index|
+        if index.even?
+          expect(page).to have_link('Responder Avaliação', count: 1, href: respond_review_path(review))
+        else
+          expect(page).to_not have_link('Responder Avaliação', count: 1, href: respond_review_path(review))
+        end
+      end
       expect(page).to have_link('Responder Avaliação', count: 4)
     end
   end
