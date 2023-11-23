@@ -266,3 +266,5 @@ w
 Gspec/system/guesthouses/reviews/guesthouse_owner_respond_review_spec.rb,e/9/e918b9b743422805697e56b817bd32f408004305
 R
 "app/views/reviews/respond.html.erb,4/5/4576de9197577356db9c42e2f05e011e439f3de3
+d
+4db/migrate/20231123144110_add_response_to_reviews.rb,e/c/ecc3645f29b70f0a07236604d116d8336f538976

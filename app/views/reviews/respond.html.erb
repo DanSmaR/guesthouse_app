@@ -1,4 +1,14 @@
 <article>
+  <% if @review.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% @review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <h2>Responder <%= Review.model_name.human %></h2>
   <p>
     <%= link_to 'Voltar', guesthouse_owner_reviews_path %>

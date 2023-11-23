@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :respond, :update]
   before_action :get_review, only: [:respond, :update]
 
   def index
@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
   def update
     if @review.update(respond_params)
       flash[:notice] = 'Resposta adicionada com sucesso!'
-      redirect_to guesthouse_reviews_path(@review.guesthouse)
+      redirect_to guesthouse_owner_reviews_path
     else
       flash.now[:alert] = 'Não foi possível adicionar a resposta'
       render :respond
