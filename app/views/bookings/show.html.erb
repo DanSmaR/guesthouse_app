@@ -95,4 +95,11 @@
       <% end %>
     </div>
   <% end %>
+
+  <% unless @booking.review.nil? %>
+    <hr>
+
+    <h3><%= Review.model_name.human %></h3>
+    <%= render 'shared/reviews', reviews: [@booking.review] %>
+  <% end %>
 </article>
