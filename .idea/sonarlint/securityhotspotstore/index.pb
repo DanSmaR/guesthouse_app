@@ -260,3 +260,5 @@ N
 spec/support/devise_methods.rb,4/3/43a0d5e2dde7f9e178aa4f7df65ed5af49b44be1
 y
 Ispec/system/guesthouses/reviews/guesthouse_owner_sees_all_reviews_spec.rb,e/a/ea36b8b0c5e8a40b3b8722c0e0ffe9f68ef50875
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

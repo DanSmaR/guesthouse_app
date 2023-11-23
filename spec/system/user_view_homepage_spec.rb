@@ -32,6 +32,24 @@ describe 'User landing in the home page' do
       expect(page).to have_content('Itapetininga - SP')
     end
 
+    it 'does not see the guesthouse owner menu options' do
+      # Arrange
+      user = User.create!(name: 'Marcia', email: 'marcia@email.com', password: 'password', role: 0)
+      guest = user.build_guest(name: 'Marcia', surname: 'Silva', identification_register_number: '12345678910')
+
+      # Act
+      login_as user, scope: :user
+      visit('/')
+
+      # Assert
+      within 'header' do
+        expect(page).to_not have_content('Minhas Pousadas')
+        expect(page).to_not have_content('Estadias Ativas')
+        expect(page).to_not have_content('Reservas', exact: true)
+        expect(page).to_not have_content('Avaliações')
+      end
+    end
+
     it 'should not exist registered guesthouses' do
       # Arrange
       # rails already cleaned the database by default
@@ -54,6 +72,10 @@ describe 'User landing in the home page' do
       within 'header' do
         expect(page).to have_content('Pousada App')
         expect(page).to have_content('Entrar')
+        expect(page).to_not have_content('Minhas Pousadas')
+        expect(page).to_not have_content('Estadias Ativas')
+        expect(page).to_not have_content('Reservas', exact: true)
+        expect(page).to_not have_content('Avaliações')
       end
       expect(page).to have_content('Sejam bem vindos(as) ao Pousada App')
     end
