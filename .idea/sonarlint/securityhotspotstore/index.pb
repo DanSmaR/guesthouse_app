@@ -268,3 +268,5 @@ m
 =spec/system/reviews/guesthouse_owner_sees_all_reviews_spec.rb,8/d/8d37e60d8cc169cda7900a05a7a5b076dcd439bb
 k
 ;spec/system/reviews/guesthouse_owner_respond_review_spec.rb,5/a/5a33a358ea6a61611d86c33a9d784c18478eb015
+[
++spec/requests/api/v1/guesthouse_api_spec.rb,c/4/c4e461c298ee599a8d4970c7cc46b3fab316f282
