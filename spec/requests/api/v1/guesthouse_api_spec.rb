@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe 'Guesthouse API', type: :request do
   context 'GET /api/v1/guesthouses' do
-    it 'returns a list of guesthouses' do
+    it 'returns a list of active guesthouses' do
       # Arrange
-      cities = %w[Itapetininga Camboriú]
-      states = %w[SP SC]
-      guesthouses_names = %w[Nascer\ do\ Sol Praiana]
-      user_names = %w[Joao Cesar]
+      cities = %w[Itapetininga Sorocaba Camboriú]
+      states = %w[SP SP SC]
+      guesthouses_names = %w[Nascer\ do\ Sol Sorocabana Praiana]
+      user_names = %w[Joao Marlene Cesar]
       guesthouse =  {
         0 => '', 1 => ''
       }
@@ -35,7 +35,7 @@ describe 'Guesthouse API', type: :request do
                                                                      pets: index.odd? ? true : false,
                                                                      use_policy: 'Não é permitido fumar nas dependências da pousada',
                                                                      checkin_hour: '14:00', checkout_hour: '12:00',
-                                                                     active: true)
+                                                                     active: index.even? ? true : false)
 
         guesthouse[index].build_address(street: index.odd? ? "Rua #{index},  #{index}000" : "Avenida #{index}, #{index}000",
                                         neighborhood: index.even? ? "Bairro #{index}" : "Centro #{index}",
@@ -53,6 +53,7 @@ describe 'Guesthouse API', type: :request do
       expect(response.content_type).to include('application/json')
 
       parsed_body = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed_body.size).to eq(2)
       expect(parsed_body[0][:corporate_name]).to_not eq('Pousada Nascer do Sol LTDA.')
       expect(parsed_body[0][:brand_name]).to eq('Pousada Nascer do Sol')
       expect(parsed_body[0][:registration_code]).to_not eq('47032102000152')
@@ -78,19 +79,19 @@ describe 'Guesthouse API', type: :request do
       expect(parsed_body[1][:corporate_name]).to_not eq('Pousada Praiana LTDA.')
       expect(parsed_body[1][:brand_name]).to eq('Pousada Praiana')
       expect(parsed_body[1][:registration_code]).to_not eq('147032102000152')
-      expect(parsed_body[1][:phone_number]).to eq('11598308183')
+      expect(parsed_body[1][:phone_number]).to eq('21598308183')
       expect(parsed_body[1][:email]).to eq('contato@praiana.com.br')
       expect(parsed_body[1][:description]).to eq('Descrição da Pousada Praiana')
-      expect(parsed_body[1][:pets]).to eq(true)
+      expect(parsed_body[1][:pets]).to eq(false)
       expect(parsed_body[1][:use_policy]).to eq('Não é permitido fumar nas dependências da pousada')
       expect(DateTime.parse(parsed_body[1][:checkin_hour])).to eq(guesthouse[1].checkin_hour)
       expect(DateTime.parse(parsed_body[1][:checkout_hour])).to eq(guesthouse[1].checkout_hour)
       expect(parsed_body[1][:active]).to eq(true)
-      expect(parsed_body[1][:address][:street]).to eq('Rua 1,  1000')
-      expect(parsed_body[1][:address][:neighborhood]).to eq('Centro 1')
+      expect(parsed_body[1][:address][:street]).to eq('Avenida 2, 2000')
+      expect(parsed_body[1][:address][:neighborhood]).to eq('Bairro 2')
       expect(parsed_body[1][:address][:city]).to eq('Camboriú')
       expect(parsed_body[1][:address][:state]).to eq('SC')
-      expect(parsed_body[1][:address][:postal_code]).to eq('11001-000')
+      expect(parsed_body[1][:address][:postal_code]).to eq('21001-000')
       expect(parsed_body[1][:payment_methods][0][:method]).to eq('credit_card')
       expect(parsed_body[1][:payment_methods][1][:method]).to eq('debit_card')
       expect(parsed_body[1][:payment_methods][2][:method]).to eq('pix')
@@ -110,5 +111,7 @@ describe 'Guesthouse API', type: :request do
       parsed_body = JSON.parse(response.body, symbolize_names: true)
       expect(parsed_body).to be_empty
     end
+
+    it
   end
 end
