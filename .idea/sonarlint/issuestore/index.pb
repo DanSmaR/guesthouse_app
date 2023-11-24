@@ -270,3 +270,7 @@ k
 ;spec/system/reviews/guesthouse_owner_respond_review_spec.rb,5/a/5a33a358ea6a61611d86c33a9d784c18478eb015
 [
 +spec/requests/api/v1/guesthouse_api_spec.rb,c/4/c4e461c298ee599a8d4970c7cc46b3fab316f282
+X
+(app/controllers/api/v1/api_controller.rb,b/1/b10a180c7d251bc9a71de04207b6ca6072c43073
+`
+0app/controllers/api/v1/guesthouses_controller.rb,0/a/0a576f7262fba0fadd19183d35e3464e258b8203

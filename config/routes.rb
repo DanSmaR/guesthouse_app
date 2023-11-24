@@ -60,4 +60,10 @@ Rails.application.routes.draw do
     get 'guesthouse_owner', to: 'reviews#guesthouse_owner', on: :collection
     get :respond, on: :member
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :guesthouses, only: %i[index]
+    end
+  end
 end
