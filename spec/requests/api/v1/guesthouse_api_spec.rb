@@ -97,5 +97,18 @@ describe 'Guesthouse API', type: :request do
       expect(parsed_body[1].keys).to_not include(:created_at)
       expect(parsed_body[1].keys).to_not include(:updated_at)
     end
+
+    it 'returns a empty list of guesthouses' do
+      # Arrange
+      # Act
+      get '/api/v1/guesthouses'
+
+      # Assert
+      expect(response).to have_http_status(200)
+      expect(response.content_type).to include('application/json')
+
+      parsed_body = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed_body).to be_empty
+    end
   end
 end
