@@ -91,10 +91,10 @@ describe 'Rooms API', type: :request do
       expect(parsed_body[0][:wardrobe]).to eq(true)
       expect(parsed_body[0][:safe]).to eq(true)
       expect(parsed_body[0][:accessible]).to eq(true)
-      expect(parsed_body[0][:available]).to eq(true)
       expect(parsed_body[0][:guesthouse_id]).to eq(1)
       expect(parsed_body[0].keys).to_not include(:created_at)
       expect(parsed_body[0].keys).to_not include(:updated_at)
+      expect(parsed_body[0].keys).to_not include(:available)
 
       expect(parsed_body[1][:name]).to eq('Quarto Céu 0')
       expect(parsed_body[1][:description]).to eq('Quarto com vista para a montanha')
@@ -108,10 +108,10 @@ describe 'Rooms API', type: :request do
       expect(parsed_body[1][:wardrobe]).to eq(true)
       expect(parsed_body[1][:safe]).to eq(true)
       expect(parsed_body[1][:accessible]).to eq(true)
-      expect(parsed_body[1][:available]).to eq(true)
       expect(parsed_body[1][:guesthouse_id]).to eq(1)
       expect(parsed_body[1].keys).to_not include(:created_at)
       expect(parsed_body[1].keys).to_not include(:updated_at)
+      expect(parsed_body[0].keys).to_not include(:available)
     end
 
     it 'returns a empty list of rooms' do
