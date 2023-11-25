@@ -265,5 +265,18 @@ describe 'Guesthouse API', type: :request do
       expect(parsed_body.keys).to_not include(:corporate_name)
       expect(parsed_body.keys).to_not include(:registration_code)
     end
+
+    it 'fails if it is not found' do
+      # Arrange
+      # Act
+      get '/api/v1/guesthouses/0'
+
+      # Assert
+      expect(response).to have_http_status(:not_found)
+      expect(response.content_type).to include('application/json')
+
+      parsed_body = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed_body[:message]).to eq('Not found')
+    end
   end
 end
