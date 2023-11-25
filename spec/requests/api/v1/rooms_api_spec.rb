@@ -452,6 +452,5 @@ describe 'Rooms API', type: :request do
         expect(parsed_body.keys).to_not include(:total_price)
       end
     end
-
   end
 end
