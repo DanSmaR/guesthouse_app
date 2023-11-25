@@ -240,8 +240,7 @@ describe 'Rooms API', type: :request do
 
         # Act
         query = { check_in_date: 1.days.from_now, check_out_date: 2.days.from_now, number_of_guests: 2 }
-        url_query = query.to_query
-        get "/api/v1/guesthouses/#{guesthouse[0].id}/rooms/#{guesthouse[0].rooms[0].id}/availability?#{url_query}"
+        get "/api/v1/rooms/#{guesthouse[0].rooms[0].id}/availability?#{query.to_query}"
 
         # Assert
         expect(response).to have_http_status(200)
