@@ -259,6 +259,7 @@ describe 'Guesthouse API', type: :request do
       expect(parsed_body[:payment_methods][0][:method]).to eq('credit_card')
       expect(parsed_body[:payment_methods][1][:method]).to eq('debit_card')
       expect(parsed_body[:payment_methods][2][:method]).to eq('pix')
+      expect(parsed_body[:average_rating]).to eq(guesthouse[0].average_rating)
       expect(parsed_body.keys).to_not include(:created_at)
       expect(parsed_body.keys).to_not include(:updated_at)
       expect(parsed_body.keys).to_not include(:corporate_name)
