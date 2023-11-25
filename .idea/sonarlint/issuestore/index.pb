@@ -274,3 +274,5 @@ X
 (app/controllers/api/v1/api_controller.rb,b/1/b10a180c7d251bc9a71de04207b6ca6072c43073
 `
 0app/controllers/api/v1/guesthouses_controller.rb,0/a/0a576f7262fba0fadd19183d35e3464e258b8203
+V
+&spec/requests/api/v1/rooms_api_spec.rb,a/f/afc8a12a74c3b0b6e070483a2bec2ef6d72d53ab
