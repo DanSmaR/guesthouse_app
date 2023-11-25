@@ -9,14 +9,23 @@ class Api::V1::RoomsController < Api::V1::ApiController
   def availability
     room = Room.find(params[:id])
     booking = room.bookings.new(booking_params)
-    if booking&.required_fields && booking.check_availability
-      render json: { message: 'Quarto disponível!',
-                     total_price: booking.get_total_price,
-                     available: true },
-             status: :ok
-    else
-      render json: { message: 'Quarto não disponível neste período. Tente novamente' }, status: :unprocessable_entity
+
+    unless booking&.required_fields
+      return render json: { message: 'Preencha todos os campos!', errors: booking.errors.full_messages },
+                    status: :bad_request
     end
+
+    unless booking.check_availability
+      return render json: { message: 'Quarto Indisponível!',
+                            errors: booking.errors.full_messages,
+                            available: false },
+                    status: :conflict
+    end
+
+    render json: { message: 'Quarto disponível!',
+                   total_price: booking.get_total_price,
+                   available: true },
+           status: :ok
   end
 
   private
