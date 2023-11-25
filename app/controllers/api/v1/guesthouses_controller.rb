@@ -10,7 +10,8 @@ class Api::V1::GuesthousesController < Api::V1::ApiController
                          include: { address: { except: [:created_at, :updated_at] },
                                     payment_methods: { except: [:created_at, :updated_at] } })
                 .merge(checkin_hour: guesthouse.checkin_hour.strftime("%H:%M"),
-                       checkout_hour: guesthouse.checkout_hour.strftime("%H:%M"))
+                       checkout_hour: guesthouse.checkout_hour.strftime("%H:%M"),
+                       average_rating: guesthouse.average_rating)
     end
     render json: guesthouses.as_json(except: [:created_at, :updated_at, :registration_code, :corporate_name],
                                      include: [:address, :payment_methods]), status: :ok
