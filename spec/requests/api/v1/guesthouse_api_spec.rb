@@ -278,5 +278,17 @@ describe 'Guesthouse API', type: :request do
       parsed_body = JSON.parse(response.body, symbolize_names: true)
       expect(parsed_body[:message]).to eq('Not found')
     end
+
+    it 'raises an internal error' do
+      # Arrange
+      allow(Guesthouse).to receive(:all).and_raise(ActiveRecord::ActiveRecordError)
+
+      # Act
+      get '/api/v1/guesthouses'
+
+      # Assert
+      expect(response).to have_http_status(:internal_server_error)
+      expect(response.content_type).to include('application/json')
+    end
   end
 end
