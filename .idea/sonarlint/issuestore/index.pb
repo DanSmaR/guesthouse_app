@@ -278,3 +278,5 @@ V
 &spec/requests/api/v1/rooms_api_spec.rb,a/f/afc8a12a74c3b0b6e070483a2bec2ef6d72d53ab
 Z
 *app/controllers/api/v1/rooms_controller.rb,b/f/bf9458ec96feb95c9451ae630b64890510de2957
+6
+API.md,b/3/b3957a949c176d1fc10aa389bd3f1f93f2ed43ef
