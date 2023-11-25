@@ -78,26 +78,29 @@ describe 'Rooms API', type: :request do
       expect(response.content_type).to include('application/json')
 
       parsed_body = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed_body.size).to eq(2)
       expect(parsed_body[0][:name]).to eq('Quarto Aquarela 0')
       expect(parsed_body[0][:description]).to eq('Quarto com vista para a serra')
       expect(parsed_body[0][:size]).to eq(30)
       expect(parsed_body[0][:max_people]).to eq(2)
-      expect(parsed_body[0][:daily_rate]).to eq(100)
+      expect(parsed_body[0][:daily_rate]).to eq("100.0")
       expect(parsed_body[0][:bathroom]).to eq(true)
       expect(parsed_body[0][:balcony]).to eq(true)
-      expect(parsed_body[0][:air_conditioning]).to eq(false)
-      expect(parsed_body[0][:tv]).to eq(false)
+      expect(parsed_body[0][:air_conditioning]).to eq(true)
+      expect(parsed_body[0][:tv]).to eq(true)
       expect(parsed_body[0][:wardrobe]).to eq(true)
       expect(parsed_body[0][:safe]).to eq(true)
-      expect(parsed_body[0][:accessible]).to eq(false)
+      expect(parsed_body[0][:accessible]).to eq(true)
       expect(parsed_body[0][:available]).to eq(true)
       expect(parsed_body[0][:guesthouse_id]).to eq(1)
+      expect(parsed_body[0].keys).to_not include(:created_at)
+      expect(parsed_body[0].keys).to_not include(:updated_at)
 
-      expect(parsed_body[1][:name]).to eq('Quarto Céu 2')
+      expect(parsed_body[1][:name]).to eq('Quarto Céu 0')
       expect(parsed_body[1][:description]).to eq('Quarto com vista para a montanha')
       expect(parsed_body[1][:size]).to eq(50)
       expect(parsed_body[1][:max_people]).to eq(4)
-      expect(parsed_body[1][:daily_rate]).to eq(300)
+      expect(parsed_body[1][:daily_rate]).to eq("300.0")
       expect(parsed_body[1][:bathroom]).to eq(true)
       expect(parsed_body[1][:balcony]).to eq(true)
       expect(parsed_body[1][:air_conditioning]).to eq(true)
@@ -107,12 +110,54 @@ describe 'Rooms API', type: :request do
       expect(parsed_body[1][:accessible]).to eq(true)
       expect(parsed_body[1][:available]).to eq(true)
       expect(parsed_body[1][:guesthouse_id]).to eq(1)
+      expect(parsed_body[1].keys).to_not include(:created_at)
+      expect(parsed_body[1].keys).to_not include(:updated_at)
     end
 
-    it 'returns a empty list of guesthouses' do
+    it 'returns a empty list of rooms' do
       # Arrange
+      cities = %w[Itapetininga Sorocaba Camboriú]
+      states = %w[SP SP SC]
+      guesthouses_names = %w[Nascer\ do\ Sol Sorocabana Praiana]
+      user_names = %w[Joao Marlene Cesar]
+      guesthouse =  {
+        0 => '', 1 => ''
+      }
+      user = {
+        0 => '', 1 => ''
+      }
+      guesthouse_owner = {
+        0 => '', 1 => ''
+      }
+
+      PaymentMethod.create!(method: 'credit_card')
+      PaymentMethod.create!(method: 'debit_card')
+      PaymentMethod.create!(method: 'pix')
+
+      guesthouses_names.each_with_index do |name, index|
+        user[index] = User.create!(name: user_names[index], email: "#{user_names[index].downcase}@email.com",
+                                   password: 'password', role: 1)
+        guesthouse_owner[index] = user[index].build_guesthouse_owner
+        guesthouse[index] = guesthouse_owner[index].build_guesthouse(corporate_name: "#{name} LTDA.",
+                                                                     brand_name: "Pousada #{name}",
+                                                                     registration_code: "#{index}47032102000152",
+                                                                     phone_number: "#{index}1598308183",
+                                                                     email: "contato@#{name.downcase.gsub(" ", "")}.com.br",
+                                                                     description: "Descrição da Pousada #{name}",
+                                                                     pets: index.odd? ? true : false,
+                                                                     use_policy: 'Não é permitido fumar nas dependências da pousada',
+                                                                     checkin_hour: '14:00', checkout_hour: '12:00',
+                                                                     active: index.even? ? true : false)
+
+        guesthouse[index].build_address(street: index.odd? ? "Rua #{index},  #{index}000" : "Avenida #{index}, #{index}000",
+                                        neighborhood: index.even? ? "Bairro #{index}" : "Centro #{index}",
+                                        city: cities[index], state: states[index], postal_code: "#{index}1001-000")
+
+        guesthouse[index].payment_methods = PaymentMethod.all
+        guesthouse[index].save!
+      end
       # Act
-      get '/api/v1/guesthouses'
+      get '/api/v1/guesthouses/1/rooms'
 
       # Assert
       expect(response).to have_http_status(200)
