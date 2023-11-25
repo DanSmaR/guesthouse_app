@@ -63,6 +63,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :rooms, only: %i[] do
+        get 'availability', on: :member
+      end
       resources :guesthouses, only: %i[index show] do
         resources :rooms, only: %i[index]
       end
