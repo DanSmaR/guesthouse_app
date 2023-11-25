@@ -447,8 +447,8 @@ describe 'Rooms API', type: :request do
         parsed_body = JSON.parse(response.body, symbolize_names: true)
         expect(parsed_body.keys).to_not include(:available)
         expect(parsed_body[:message]).to eq("Preencha todos os campos!")
-        expect(parsed_body[:errors]).to eq(["Data de Check-out Não pode estar em branco",
-                                            "Quantidade de Hóspedes Não pode estar em branco"])
+        expect(parsed_body[:errors]).to eq(["Data de Check-out não pode estar em branco",
+                                            "Quantidade de Hóspedes não pode estar em branco"])
         expect(parsed_body.keys).to_not include(:total_price)
       end
     end
