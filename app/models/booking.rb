@@ -31,7 +31,7 @@ class Booking < ApplicationRecord
   end
 
   def required_fields
-    empty_field_error_message = "Não pode estar em branco"
+    empty_field_error_message = "não pode estar em branco"
     errors.add(:check_in_date, empty_field_error_message) if check_in_date.blank?
     errors.add(:check_out_date, empty_field_error_message) if check_out_date.blank?
     errors.add(:number_of_guests, empty_field_error_message) if number_of_guests.blank?
