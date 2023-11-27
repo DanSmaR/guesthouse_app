@@ -1,5 +1,7 @@
 # Pousada App
 
+## [API Documentation](API.md)
+
 ## Description
 
 This project is a web application for managing guesthouses. It allows guesthouse owners to register their guesthouses, manage rooms, and handle bookings. It also allows users to search for guesthouses, book rooms, and make payments.
