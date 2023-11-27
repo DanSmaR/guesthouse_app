@@ -161,12 +161,12 @@ describe 'User access his bookings list' do
       # Act
       login_as user[0], scope: :user
       visit guesthouse_owner_bookings_path
-      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 2.days.from_now.day, 14, 0, 0) do
+      travel_to 2.days.from_now.change(hour: 14) do
         page.all('button', text: 'Check-In')[1].click
         click_on 'Estadias Ativas'
       end
 
-      travel_to Time.new(0.year.from_now.year, 0.month.from_now.month, 5.days.from_now.day, 12, 0, 0) do
+      travel_to 5.days.from_now.change(hour: 12) do
         click_on 'Check-Out', match: :first
         select 'Cartão de crédito', from: 'payment_method'
         click_on 'Confirmar'
