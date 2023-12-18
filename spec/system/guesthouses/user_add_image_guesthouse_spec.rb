@@ -23,6 +23,7 @@ describe 'User add image to guesthouse' do
 
     guesthouse.payment_methods = PaymentMethod.all
     guesthouse.save!
+    paths = (1..4).map { |id| "app/assets/images/guesthouse/pousada_#{id}.jpg" }
 
     # Act
     login_as(user)
@@ -30,5 +31,13 @@ describe 'User add image to guesthouse' do
 
     # Assert
     expect(page).to have_field('Imagens')
+
+    attach_file('Imagens', paths)
+    click_button 'Atualizar Pousada'
+
+    expect(page).to have_content 'Fotos'
+    (1..4).each { |id| expect(page).to have_css("img[src*='pousada_#{id}.jpg']") }
   end
+
+
 end

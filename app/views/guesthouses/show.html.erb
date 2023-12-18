@@ -36,6 +36,18 @@
 
   <hr>
 
+  <% if @guesthouse.images.attached? %>
+    <section>
+      <h3>Fotos</h3>
+
+      <ul>
+        <% @guesthouse.images.each do |image| %>
+          <li><%= image_tag image, width: '300' %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
   <section>
     <h3>Algumas Avaliações</h3>
     <p>

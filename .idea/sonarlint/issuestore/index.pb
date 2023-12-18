@@ -290,3 +290,7 @@ R
 "config/environments/development.rb,e/5/e54c3d8d363f5b004526c7fcab8f8eb31da5a209
 S
 #app/views/guesthouses/edit.html.erb,c/4/c4c4562fbdb8e9691551617cc9c2a8a3fae2752d
+C
+config/database.yml,2/c/2c912561029efc03ffae15b01b7337417d7a99bd
+V
+&app/assets/images/guesthouse/image.txt,e/b/ebdc96a8e44451149a53748e97bac78ac137ebf1
