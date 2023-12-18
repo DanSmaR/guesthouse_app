@@ -38,7 +38,14 @@ describe 'User delete image from guesthouse' do
 
     # Assert
     expect(all("img[src*='pousada_'][src$='.jpg']").count).to eq 3
-    (1..3).each { |id| expect(page).to have_css("img[src*='pousada_#{id}.jpg']") }
+    (1..3).each { |id| expect(page).to have_css("img[src$='pousada_#{id}.jpg']") }
     expect(page).to have_button 'Remover', count: 3
+
+    click_button 'Remover', match: :first
+
+    expect(page).to have_content 'Imagem removida com sucesso'
+    expect(all("img[src*='pousada_'][src$='.jpg']").count).to eq 2
+    expect(page).to_not have_css("img[src$='pousada_1.jpg']")
+    expect(page).to have_button 'Remover', count: 2
   end
 end
