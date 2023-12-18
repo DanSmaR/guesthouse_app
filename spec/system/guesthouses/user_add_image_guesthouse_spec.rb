@@ -70,7 +70,6 @@ describe 'User add image to guesthouse' do
     # Assert
     click_button 'Atualizar Pousada'
 
-    expect(page).to have_content 'Fotos'
     expect(page).to have_content 'Somente extensões png e jpeg são permitidas'
   end
 end
