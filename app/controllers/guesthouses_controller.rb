@@ -39,6 +39,11 @@ class GuesthousesController < ApplicationController
 
   def update
     @guesthouse.payment_method_ids = params[:guesthouse][:payment_method_ids]
+    if params[:guesthouse][:images].blank? && @guesthouse.images.attached?
+      params[:guesthouse][:images] = @guesthouse.images
+    else
+      params[:guesthouse][:images] = @guesthouse.images.attach(params[:guesthouse][:images])
+    end
     if @guesthouse.update(guesthouse_params)
       flash[:notice] = 'Pousada atualizada com sucesso'
       redirect_to @guesthouse
