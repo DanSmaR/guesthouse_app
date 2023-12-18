@@ -58,7 +58,7 @@ class GuesthousesController < ApplicationController
                                        :checkout_hour, :pets,
                                        :active, payment_method_ids: [],
                                         address_attributes: [:id, :street, :neighborhood,
-                                                             :city, :state, :postal_code])
+                                                             :city, :state, :postal_code], images: [])
   end
 
   def set_guesthouse

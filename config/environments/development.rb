@@ -64,4 +64,8 @@ Rails.application.configure do
   # Rails.application.config.after_initialize do
   #   Rails.application.load_seed
   # end
+  #
+  # Store files locally.
+  config.active_storage.service = :local
+
 end

@@ -280,3 +280,13 @@ Z
 *app/controllers/api/v1/rooms_controller.rb,b/f/bf9458ec96feb95c9451ae630b64890510de2957
 6
 API.md,b/3/b3957a949c176d1fc10aa389bd3f1f93f2ed43ef
+i
+9spec/system/guesthouses/user_add_image_guesthouse_spec.rb,c/5/c5371ac0e15976dc3fc9b07f261ab064083c7f8f
+7
+Gemfile,d/e/de3150c01c3a946a6168173c4116741379fe3579
+B
+config/storage.yml,9/8/98fb829828f5d6f179e3be17f70e2491a1b76852
+R
+"config/environments/development.rb,e/5/e54c3d8d363f5b004526c7fcab8f8eb31da5a209
+S
+#app/views/guesthouses/edit.html.erb,c/4/c4c4562fbdb8e9691551617cc9c2a8a3fae2752d

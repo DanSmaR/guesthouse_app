@@ -9,6 +9,7 @@ class Guesthouse < ApplicationRecord
   has_many :bookings, through: :rooms
   has_many :reviews, through: :bookings
   accepts_nested_attributes_for :address
+  has_many_attached :images
 
   validate :at_least_one_payment_method
 

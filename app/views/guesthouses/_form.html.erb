@@ -121,6 +121,14 @@
     <% end %>
   </fieldset>
 
+  <fieldset>
+    <legend>Adicionar Imagens</legend>
+    <p>
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
+    </p>
+  </fieldset>
+
   <p>
     <%= f.submit %>
   </p>
