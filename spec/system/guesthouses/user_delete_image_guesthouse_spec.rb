@@ -37,9 +37,8 @@ describe 'User delete image from guesthouse' do
     visit edit_guesthouse_path(guesthouse)
 
     # Assert
-    expect(page).to have_field('Imagens')
-    expect(page).to have_button 'Remover', count: 3
-    expect(find("img[src*='pousada_][src$='.jpg'']")).to eq 3
+    expect(all("img[src*='pousada_'][src$='.jpg']").count).to eq 3
     (1..3).each { |id| expect(page).to have_css("img[src*='pousada_#{id}.jpg']") }
+    expect(page).to have_button 'Remover', count: 3
   end
 end

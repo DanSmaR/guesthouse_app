@@ -128,8 +128,21 @@
       <%= f.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
     </p>
   </fieldset>
-
   <p>
     <%= f.submit %>
   </p>
+<% end %>
+
+<% if guesthouse.images.attached? %>
+  <section>
+    <h3>Remover Fotos</h3>
+    <ul>
+      <% guesthouse.images.each do |image| %>
+        <li>
+          <%= image_tag image, width: '100' %>
+          <%= button_to 'Remover' %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
 <% end %>
