@@ -12,7 +12,6 @@ class Guesthouse < ApplicationRecord
   has_many_attached :images
 
   validate :at_least_one_payment_method
-  validate :image_type
 
   before_create :only_one_guesthouse_per_owner
   before_update :only_one_guesthouse_per_owner
@@ -73,13 +72,5 @@ class Guesthouse < ApplicationRecord
   def add_on_owner_error
     errors.add(:base, 'pode ter apenas uma pousada')
     throw(:abort)
-  end
-
-  def image_type
-    images.each do |img|
-      unless img.content_type.in?(%w[image/jpeg image/png])
-        errors.add(:images, 'Somente extensões png e jpeg são permitidas')
-      end
-    end
   end
 end

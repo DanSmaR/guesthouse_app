@@ -39,10 +39,13 @@ class GuesthousesController < ApplicationController
 
   def update
     @guesthouse.payment_method_ids = params[:guesthouse][:payment_method_ids]
-    if params[:guesthouse][:images].blank? && @guesthouse.images.attached?
-      params[:guesthouse][:images] = @guesthouse.images
+    if params[:guesthouse][:images].blank?
+      params[:guesthouse].delete(:images)
+    elsif !validate_image_type
+      flash.now[:alert] = 'Somente extensões png e jpeg são permitidas'
+      render :edit and return
     else
-      params[:guesthouse][:images] = @guesthouse.images.attach(params[:guesthouse][:images])
+      add_to_previous_images
     end
     if @guesthouse.update(guesthouse_params)
       flash[:notice] = 'Pousada atualizada com sucesso'
@@ -54,6 +57,23 @@ class GuesthousesController < ApplicationController
   end
 
   private
+
+  def add_to_previous_images
+    @guesthouse.images.attach(params[:guesthouse][:images])
+    params[:guesthouse][:images] = @guesthouse.images.blobs
+  end
+
+  def validate_image_type
+    is_valid = true
+    params[:guesthouse][:images].each do |image|
+      next if image.blank?
+      unless image.content_type.in?(%w[image/jpeg image/png])
+        is_valid = false
+        break
+      end
+    end
+    is_valid
+  end
 
   def guesthouse_params
     params.require(:guesthouse).permit(:corporate_name, :brand_name, :description,
