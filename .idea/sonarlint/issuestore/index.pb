@@ -292,7 +292,7 @@ S
 #app/views/guesthouses/edit.html.erb,c/4/c4c4562fbdb8e9691551617cc9c2a8a3fae2752d
 C
 config/database.yml,2/c/2c912561029efc03ffae15b01b7337417d7a99bd
-V
-&app/assets/images/guesthouse/image.txt,e/b/ebdc96a8e44451149a53748e97bac78ac137ebf1
 l
 <spec/system/guesthouses/user_delete_image_guesthouse_spec.rb,6/8/688218897c13777034f54c692e03901e8bf85949
+`
+0app/controllers/guesthouses/images_controller.rb,5/8/5853be3a162dba03cfd4c0519c3ff9eb9abc8ffc

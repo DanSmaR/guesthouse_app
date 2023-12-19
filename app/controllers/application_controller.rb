@@ -1,10 +1,16 @@
 class ApplicationController < ActionController::Base
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found_error
   # call the configure_permitted_parameters method before any action in our application
   # if the controller that the action is coming from is a devise_controller
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :redirect_guesthouse_owner
 
   private
+
+  def not_found_error
+    flash[:alert] = "Não possui autorização para acessar esse recurso"
+    redirect_back fallback_location: root_path, status: 303
+  end
 
   def redirect_guesthouse_owner
     # TODO: when user is already registered and is trying to login again, it should receive a message
