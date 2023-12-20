@@ -302,3 +302,7 @@ S
 #config/locales/room-model-pt-BR.yml,b/f/bffb08cb47d0c2d9d9d41e6e58eb6c15ba026649
 Q
 !app/views/shared/_photos.html.erb,8/b/8b7821a91a0cc197bef86de419ac556ba3becb9a
+`
+0spec/system/rooms/user_delete_image_room_spec.rb,2/5/25208406bf785013f4b2211542d7cd8b690f2cd1
+Z
+*app/controllers/rooms/images_controller.rb,e/d/edf27ddba29d23df8835ec3b8725df6f32c0721d

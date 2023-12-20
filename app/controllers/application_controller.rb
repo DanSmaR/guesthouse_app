@@ -64,4 +64,11 @@ class ApplicationController < ActionController::Base
     instance_model.images.attach(img_params)
     instance_model.images.blobs
   end
+
+  def authenticate_guesthouse_owner!
+    unless current_user.guesthouse_owner?
+      flash[:alert] = "Não possui autorização para acessar esse recurso"
+      redirect_back fallback_location: root_path
+    end
+  end
 end

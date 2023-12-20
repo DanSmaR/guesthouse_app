@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         get :confirm
       end
     end
+    resources :images, only: %i[destroy], module: :rooms
   end
 
   resources :bookings, only: %i[index show] do

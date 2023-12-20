@@ -84,3 +84,17 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<% if room.images.attached? %>
+  <section>
+    <h3>Remover Fotos</h3>
+    <ul>
+      <% room.images.each do |image| %>
+        <li>
+          <%= image_tag image, width: '100', alt: "inn outside overview" %>
+          <%= button_to 'Remover', room_image_path(room, image), method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
