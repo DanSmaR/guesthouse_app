@@ -47,7 +47,7 @@ describe 'User add image to rooms' do
 
     expect(current_path).to eq guesthouse_room_path(guesthouse, guesthouse.rooms.first)
     expect(page).to have_content 'Fotos'
-    expect(all("img[src*='quarto_'][src$='.jpg']").count).to eq 3
+    expect(all("img[src*='room_'][src$='.jpg']").count).to eq 3
     (1..3).each { |id| expect(page).to have_css("img[src*='room_#{id}.jpg']") }
   end
 

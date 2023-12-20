@@ -76,6 +76,11 @@
   </p>
 
   <p>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true, accept: 'image/png,image/jpeg' %>
+  </p>
+
+  <p>
     <%= form.submit %>
   </p>
 <% end %>

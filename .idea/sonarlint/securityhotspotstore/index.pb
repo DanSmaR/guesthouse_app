@@ -298,3 +298,7 @@ l
 0app/controllers/guesthouses/images_controller.rb,5/8/5853be3a162dba03cfd4c0519c3ff9eb9abc8ffc
 ^
 .spec/system/rooms/user_add_image_rooms_spec.rb,7/e/7e6712a57e758091313dbed7588c3c41422a7959
+S
+#config/locales/room-model-pt-BR.yml,b/f/bffb08cb47d0c2d9d9d41e6e58eb6c15ba026649
+Q
+!app/views/shared/_photos.html.erb,8/b/8b7821a91a0cc197bef86de419ac556ba3becb9a

@@ -47,4 +47,21 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+
+  def validate_image_type(img_params)
+    is_valid = true
+    img_params.each do |image|
+      next if image.blank?
+      unless image.content_type.in?(%w[image/jpeg image/png])
+        is_valid = false
+        break
+      end
+    end
+    is_valid
+  end
+
+  def add_to_previous_images(instance_model, img_params)
+    instance_model.images.attach(img_params)
+    instance_model.images.blobs
+  end
 end

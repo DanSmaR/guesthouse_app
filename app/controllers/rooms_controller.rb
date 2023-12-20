@@ -31,6 +31,14 @@ class RoomsController < ApplicationController
   end
 
   def update
+    if params[:room][:images].blank?
+      params[:room].delete(:images)
+    elsif !validate_image_type params[:room][:images]
+      flash.now[:alert] = 'Somente extensões png e jpeg são permitidas'
+      render :edit and return
+    else
+      params[:room][:images] = add_to_previous_images(@room, params[:room][:images])
+    end
     if @room.update(room_params)
       flash[:notice] = 'Quarto atualizado com sucesso'
       redirect_to guesthouse_room_path(@room.guesthouse, @room)
@@ -57,7 +65,7 @@ class RoomsController < ApplicationController
                                  :bathroom, :balcony,
                                  :air_conditioning, :tv,
                                  :wardrobe, :safe,
-                                 :accessible, :available)
+                                 :accessible, :available, images: [])
   end
 
   # TODO - Refactor the content of this method

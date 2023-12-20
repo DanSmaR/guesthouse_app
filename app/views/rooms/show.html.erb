@@ -10,6 +10,10 @@
     </p>
   </section>
 
+  <hr>
+
+  <%= render 'shared/photos', instance_model: @room %>
+
   <% if @guesthouse.guesthouse_owner.user == current_user %>
     <section  id="room_rates">
       <h3>Diárias por Período</h3>

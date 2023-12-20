@@ -7,4 +7,5 @@ class Room < ApplicationRecord
   belongs_to :guesthouse
   has_many :room_rates, dependent: :destroy, inverse_of: :room
   has_many :bookings, dependent: :destroy
+  has_many_attached :images
 end

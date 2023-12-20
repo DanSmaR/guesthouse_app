@@ -1,30 +1,30 @@
 <div id="<%= dom_id room %>">
 <h3><%= room.name %></h3>
   <dl>
-    <dt>Descrição:</dt>
+    <dt><%= Room.human_attribute_name(:description) %>:</dt>
     <dd><%= room.description %></dd>
-    <dt>Tamanho:</dt>
+    <dt><%= Room.human_attribute_name(:size) %>:</dt>
     <dd><%= room.size %> m<sup>2</sup></dd>
-    <dt>Acomodação Máxima:</dt>
+    <dt><%= Room.human_attribute_name(:max_people) %>:</dt>
     <dd><%= room.max_people %></dd>
-    <dt>Valor da Diária:</dt>
+    <dt><%= Room.human_attribute_name(:daily_rate) %>:</dt>
     <dd><%= number_to_currency(room.daily_rate, unit: 'R$ ', separator: ',', delimiter: '.') %></dd>
-    <dt>Banheiro:</dt>
+    <dt><%= Room.human_attribute_name(:bathroom) %>:</dt>
     <dd><%= room.bathroom? == true ? 'Sim' : 'Não' %></dd>
-    <dt>Varanda:</dt>
+    <dt><%= Room.human_attribute_name(:balcony) %>:</dt>
     <dd><%= room.balcony? == true ? 'Sim' : 'Não' %></dd>
-    <dt>Ar Condicionado:</dt>
+    <dt><%= Room.human_attribute_name(:air_conditioning) %>:</dt>
     <dd><%= room.air_conditioning == true ? 'Sim' : 'Não' %></dd>
-    <dt>TV:</dt>
+    <dt><%= Room.human_attribute_name(:tv) %>:</dt>
     <dd><%= room.tv == true ? 'Sim' : 'Não' %></dd>
-    <dt>Guarda-roupa:</dt>
+    <dt><%= Room.human_attribute_name(:wardrobe) %>:</dt>
     <dd><%= room.wardrobe == true ? 'Sim' : 'Não' %></dd>
-    <dt>Cofre:</dt>
+    <dt><%= Room.human_attribute_name(:safe) %>:</dt>
     <dd><%= room.safe == true ? 'Sim' : 'Não' %></dd>
-    <dt>Acessível para PCDs:</dt>
+    <dt><%= Room.human_attribute_name(:accessible) %>:</dt>
     <dd><%= room.accessible == true ? 'Sim' : 'Não' %></dd>
     <% if guesthouse.guesthouse_owner.user == current_user %>
-      <dt>Disponibilidade:</dt>
+      <dt><%= Room.human_attribute_name(:available) %>:</dt>
       <dd><%= room.available == true ? 'Sim' : 'Não' %></dd>
     <% end %>
   </dl>
