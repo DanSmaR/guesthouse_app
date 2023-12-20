@@ -33,7 +33,7 @@ describe 'User add image to rooms' do
                                 air_conditioning: true, tv: true, wardrobe: true, safe: true, accessible: true,
                                 available: false }])
 
-    paths = (1..4).map { |id| "app/assets/images/guesthouse/pousada_#{id}.jpg" }
+    paths = (1..3).map { |id| "app/assets/images/rooms/room_#{id}.jpg" }
 
     # Act
     login_as(user)
@@ -47,8 +47,8 @@ describe 'User add image to rooms' do
 
     expect(current_path).to eq guesthouse_room_path(guesthouse, guesthouse.rooms.first)
     expect(page).to have_content 'Fotos'
-    expect(all("img[src*='quarto_'][src$='.jpg']").count).to eq 4
-    (1..4).each { |id| expect(page).to have_css("img[src*='pousada_#{id}.jpg']") }
+    expect(all("img[src*='quarto_'][src$='.jpg']").count).to eq 3
+    (1..3).each { |id| expect(page).to have_css("img[src*='room_#{id}.jpg']") }
   end
 
   # it 'gets an error message if the file type is not "jpeg" or "png"' do
