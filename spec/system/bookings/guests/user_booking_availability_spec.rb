@@ -49,7 +49,7 @@ describe 'User access room booking' do
     expect(page).to have_content('Varanda: Sim')
     expect(page).to have_content('Ar Condicionado: Sim')
     expect(page).to have_content('TV: Sim')
-    expect(page).to have_content('Guarda-roupa: Sim')
+    expect(page).to have_content('Guarda-Roupa: Sim')
     expect(page).to have_content('Cofre: Sim')
     expect(page).to have_content('Acessível para PCDs: Sim')
     expect(page).to_not have_content('Disponibilidade: Sim')

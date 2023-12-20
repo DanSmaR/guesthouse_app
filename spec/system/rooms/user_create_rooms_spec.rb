@@ -33,13 +33,13 @@ describe 'User registers room' do
     fill_in 'Nome', with: 'Quarto 1'
     fill_in 'Descrição', with: 'Quarto com vista para a serra'
     fill_in 'Tamanho', with: 30
-    fill_in 'Acomodação máxima', with: 2
-    fill_in 'Valor da diária', with: 100
+    fill_in 'Acomodação Máxima', with: 2
+    fill_in 'Valor da Diária', with: 100
     check 'Banheiro'
     check 'Varanda'
-    check 'Ar condicionado'
+    check 'Ar Condicionado'
     check 'TV'
-    check 'Guarda-roupa'
+    check 'Guarda-Roupa'
     check 'Cofre'
     check 'Acessível para PCDs'
 
@@ -56,10 +56,10 @@ describe 'User registers room' do
     expect(page).to have_content('Varanda: Sim')
     expect(page).to have_content('Ar Condicionado: Sim')
     expect(page).to have_content('TV: Sim')
-    expect(page).to have_content('Guarda-roupa: Sim')
+    expect(page).to have_content('Guarda-Roupa: Sim')
     expect(page).to have_content('Cofre: Sim')
     expect(page).to have_content('Acessível para PCDs: Sim')
-    expect(page).to have_content('Disponibilidade: Sim')
+    expect(page).to have_content('Disponível: Sim')
   end
 
   it 'and must fill in all fields' do
