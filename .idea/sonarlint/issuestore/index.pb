@@ -296,3 +296,5 @@ l
 <spec/system/guesthouses/user_delete_image_guesthouse_spec.rb,6/8/688218897c13777034f54c692e03901e8bf85949
 `
 0app/controllers/guesthouses/images_controller.rb,5/8/5853be3a162dba03cfd4c0519c3ff9eb9abc8ffc
+^
+.spec/system/rooms/user_add_image_rooms_spec.rb,7/e/7e6712a57e758091313dbed7588c3c41422a7959
